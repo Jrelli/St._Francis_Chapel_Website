@@ -1,0 +1,22 @@
+# Build output
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Secrets: never commit real keys. Copy .env.example to .env instead.
+.env
+.env.*
+!.env.example
+
+# Raw source media (large originals and zips). Optimized copies live in src/assets/.
+media/
+
+# OS / editor noise
+.DS_Store
+__MACOSX/
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+*.log
