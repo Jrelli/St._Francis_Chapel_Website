@@ -1,0 +1,192 @@
+---
+/**
+ * Site footer. Every contact item comes from src/config/site.ts and is left out entirely
+ * when its value is blank: no empty headings, no broken mailto:/tel: links.
+ */
+import { footerNav } from '../config/nav';
+import { site } from '../config/site';
+import { has } from '../lib/config';
+import Fact from './Fact.astro';
+
+const { facebook, youtube } = site.social;
+const hasContact = has(site.mailingAddress) || has(site.email) || has(site.phone);
+const hasSocial = has(facebook) || has(youtube);
+const year = new Date().getFullYear();
+// tel: links need digits only (plus an optional leading +).
+const telHref = `tel:${site.phone.value.replace(/[^\d+]/g, '')}`;
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <section aria-labelledby="footer-about">
+      <h2 id="footer-about" class="site-footer__name">
+        {site.name.value}
+      </h2>
+      {has(site.taglineLatin) && (
+        <p class="site-footer__latin" lang="la">
+          <Fact f={site.taglineLatin} />
+        </p>
+      )}
+      <p class="site-footer__note">A traditional Latin Mass mission in East Tennessee.</p>
+    </section>
+
+    {hasContact && (
+      <section aria-labelledby="footer-contact">
+        <h2 id="footer-contact">Contact</h2>
+        {has(site.mailingAddress) && (
+          <address>
+            <Fact f={site.mailingAddress}>
+              {site.mailingAddress.value.map((line) => (
+                <>
+                  {line}
+                  <br />
+                </>
+              ))}
+            </Fact>
+          </address>
+        )}
+        {has(site.email) && (
+          <p>
+            <a href={`mailto:${site.email.value}`}>
+              <Fact f={site.email} />
+            </a>
+          </p>
+        )}
+        {has(site.phone) && (
+          <p>
+            <a href={telHref}>
+              <Fact f={site.phone} />
+            </a>
+          </p>
+        )}
+      </section>
+    )}
+
+    {hasSocial && (
+      <section aria-labelledby="footer-social" class="site-footer__social">
+        <h2 id="footer-social">Follow</h2>
+        <ul role="list">
+          {has(facebook) && (
+            <li>
+              <a href={facebook.value} rel="noopener">
+                <Fact f={facebook}>Facebook</Fact>
+              </a>
+            </li>
+          )}
+          {has(youtube) && (
+            <li>
+              <a href={youtube.value} rel="noopener">
+                <Fact f={youtube}>YouTube</Fact>
+              </a>
+            </li>
+          )}
+        </ul>
+      </section>
+    )}
+
+    <nav aria-labelledby="footer-more">
+      <h2 id="footer-more">More</h2>
+      <ul role="list">
+        {footerNav
+          .filter((item) => item.href !== '/donate/' || has(site.donateUrl))
+          .map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))}
+      </ul>
+    </nav>
+  </div>
+
+  <div class="container site-footer__base">
+    <p>
+      &copy; {year} {site.name.value}
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--navy);
+    color: #f3ecdc; /* ~11:1 on navy */
+    margin-top: 3rem;
+    border-top: 4px solid var(--gold-on-navy);
+  }
+
+  .site-footer__grid {
+    display: grid;
+    gap: 1.75rem;
+    padding-block: 2.5rem 1.5rem;
+  }
+
+  @media (min-width: 40em) {
+    .site-footer__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 64em) {
+    .site-footer__grid {
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    }
+  }
+
+  h2 {
+    color: var(--gold-on-navy);
+    font-size: 1.35rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .site-footer__name {
+    font-size: 1.6rem;
+  }
+
+  .site-footer__latin {
+    font-style: italic;
+  }
+
+  .site-footer__note {
+    color: #d9cfbb; /* ~9:1 on navy */
+  }
+
+  address {
+    font-style: normal;
+    margin-bottom: 0.75rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li + li {
+    margin-top: 0.35rem;
+  }
+
+  a {
+    color: #fff;
+    text-decoration-color: var(--gold-on-navy);
+  }
+
+  a:focus-visible {
+    outline-color: var(--gold-on-navy);
+  }
+
+  /* Make each link a comfortable tap target. */
+  li a,
+  p a {
+    display: inline-block;
+    padding-block: 0.3rem;
+  }
+
+  .site-footer__base {
+    border-top: 1px solid rgb(255 255 255 / 0.2);
+    padding-block: 1rem 1.5rem;
+    font-size: 0.9rem;
+    color: #d9cfbb;
+  }
+
+  .site-footer__base p {
+    margin: 0;
+  }
+</style>

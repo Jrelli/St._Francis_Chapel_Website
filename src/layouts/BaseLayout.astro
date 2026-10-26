@@ -1,0 +1,63 @@
+---
+/**
+ * The page shell every page uses: <head> metadata, header, main content, footer.
+ * Usage: <BaseLayout title="Calendar" description="…"> page content </BaseLayout>
+ */
+import '@fontsource-variable/cormorant-garamond/wght.css';
+import '@fontsource-variable/source-serif-4/wght.css';
+import '@fontsource-variable/source-serif-4/wght-italic.css';
+import '../styles/global.css';
+import '../styles/print.css';
+
+import { getImage } from 'astro:assets';
+import sealImage from '../assets/brand/seal.png';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { site } from '../config/site';
+
+interface Props {
+  /** Page name; becomes "<title> | Saint Francis Mission Chapel". Omit on the home page. */
+  title?: string;
+  description?: string;
+}
+
+const { title, description = site.description.value || site.tagline.value } = Astro.props;
+const fullTitle = title ? `${title} | ${site.name.value}` : site.name.value;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url.value).href;
+// Social-share preview image (Facebook, iMessage, etc.).
+const ogImage = await getImage({ src: sealImage, width: 1200, format: 'jpeg' });
+const ogImageUrl = new URL(ogImage.src, Astro.site ?? site.url.value).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="theme-color" content="#f8f2e4" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name.value} />
+    <meta property="og:title" content={fullTitle} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:alt" content={`${site.name.value} seal`} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">
+      Skip to main content
+    </a>
+    <Header />
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

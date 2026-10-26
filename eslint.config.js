@@ -13,5 +13,10 @@ export default [
   ...astro.configs['jsx-a11y-recommended'],
   {
     languageOptions: { globals: { ...globals.browser, ...globals.node } },
+    rules: {
+      // Safari drops list semantics for screen readers when `list-style: none` is set,
+      // so role="list" on unstyled <ul>s is intentional, not redundant.
+      'astro/jsx-a11y/no-redundant-roles': ['error', { ul: ['list'] }],
+    },
   },
 ];

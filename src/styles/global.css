@@ -1,0 +1,232 @@
+/*
+ * Global styles. Mobile-first: base rules target phones; @media (min-width) adds desktop layout.
+ * Colors: every text/background pair below meets WCAG AA (most meet AAA). Gold is used
+ * for text only on navy (#d4af37, ~6.4:1) or as the darker "antique" gold on parchment.
+ */
+
+:root {
+  --parchment: #f8f2e4;
+  --surface: #fffbf2;
+  --ink: #2b2118; /* ~14:1 on parchment */
+  --ink-muted: #5a4636; /* ~8:1 */
+  --red: #7a2318; /* oxblood, toned toward the seal's sepia; ~9:1 */
+  --red-tint: #f3e0d8;
+  --navy: #1f2e4a; /* ~12:1 */
+  --navy-deep: #16223a;
+  --gold: #b8892b; /* decorative rules/borders only on light backgrounds */
+  --gold-on-navy: #d4af37;
+  --gold-text: #8a6416; /* ~4.8:1, antique gold text on parchment */
+  --rule: #ddcca4;
+
+  --font-body: 'Source Serif 4 Variable', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --font-display: 'Cormorant Garamond Variable', 'Garamond', 'Times New Roman', serif;
+
+  --gutter: 1rem;
+  --radius: 6px;
+  --measure: 68ch;
+  --page-max: 72rem;
+
+  color-scheme: light;
+}
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  /* 19px base: comfortable for older readers. Users' browser zoom/font settings still apply. */
+  font-size: 118.75%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--parchment);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+/* <main> is focusable only so the skip link can move focus there; no ring needed. */
+main:focus {
+  outline: none;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 650;
+  line-height: 1.15;
+  color: var(--red);
+  margin: 0 0 0.5em;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.1rem, 7vw, 3.2rem);
+}
+h2 {
+  font-size: clamp(1.7rem, 5vw, 2.2rem);
+}
+h3 {
+  font-size: 1.4rem;
+}
+
+p,
+ul,
+ol {
+  margin: 0 0 1em;
+}
+
+a {
+  color: var(--red);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Strong, consistent keyboard focus ring. */
+:focus-visible {
+  outline: 3px solid var(--navy);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--gutter);
+  top: -100px;
+  z-index: 10;
+  background: var(--navy);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+}
+.skip-link:focus {
+  top: 0.5rem;
+}
+
+/* ---------- Layout helpers ---------- */
+
+.container {
+  width: 100%;
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.prose {
+  max-width: var(--measure);
+}
+
+.section {
+  padding-block: 2rem;
+}
+
+.ornament {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  margin: 2rem auto;
+  max-width: 24rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-top: 4px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+
+.eyebrow {
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  color: var(--gold-text);
+  font-weight: 600;
+  margin: 0 0 0.25rem;
+}
+
+.muted {
+  color: var(--ink-muted);
+}
+
+/* ---------- Buttons ---------- */
+
+.button {
+  display: inline-block;
+  min-height: 48px; /* comfortable tap target */
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--radius);
+  border: 2px solid var(--navy);
+  background: var(--navy);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  line-height: 1.4;
+}
+.button:hover {
+  background: var(--navy-deep);
+}
+.button--outline {
+  background: transparent;
+  color: var(--navy);
+}
+.button--outline:hover {
+  background: var(--navy);
+  color: #fff;
+}
+.button--gold {
+  background: var(--gold-on-navy);
+  border-color: var(--gold-on-navy);
+  color: var(--navy-deep); /* ~6.4:1 */
+}
+.button--gold:hover {
+  background: #e2c25a;
+}
+
+/* ---------- Placeholders & dev-only markers ---------- */
+
+.placeholder-note {
+  border: 2px dashed var(--gold);
+  background: var(--surface);
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius);
+  color: var(--ink-muted);
+}
+
+/* Only rendered in `npm run dev` (see Fact.astro). */
+.unconfirmed {
+  outline: 2px dotted #c2410c;
+  outline-offset: 2px;
+  cursor: help;
+}

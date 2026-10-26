@@ -1,0 +1,63 @@
+/*
+ * Print stylesheet: plain black-on-white, no navigation, and printed link addresses so a
+ * paper copy (e.g. directions) is still useful. Phase 2 adds a dedicated "Print directions" view.
+ */
+@media print {
+  @page {
+    margin: 1.5cm;
+  }
+
+  html {
+    font-size: 12pt;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .site-header nav,
+  .menu-toggle,
+  .skip-link,
+  .no-print,
+  .live-status,
+  .site-footer__social {
+    display: none !important;
+  }
+
+  .card {
+    border: 1px solid #999;
+    background: none;
+    break-inside: avoid;
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: #000;
+    break-after: avoid;
+  }
+
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  /* Show where external links go. */
+  a[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.85em;
+    word-break: break-all;
+  }
+
+  img {
+    max-height: 8cm;
+    filter: grayscale(1);
+  }
+
+  .site-footer {
+    background: none !important;
+    color: #000 !important;
+    border-top: 1px solid #000;
+  }
+}

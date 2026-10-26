@@ -14,7 +14,7 @@
 export interface Fact<T = string> {
   value: T;
   confirmed: boolean;
-  todo?: string;
+  todo?: string | undefined;
 }
 
 const fact = <T>(value: T, confirmed: boolean, todo?: string): Fact<T> => ({
