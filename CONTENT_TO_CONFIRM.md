@@ -84,3 +84,11 @@ Every stub page shows a dashed "placeholder" box until real copy is written. Sti
 | ☐   | Where DNS is hosted today                                 | Check the domain's nameservers in GoDaddy (see README)          |
 | ☑   | Email on the domain                                       | Google Workspace, live: preserve its DNS records during cutover |
 | ☐   | Who owns the Cloudflare, GitHub and Google Cloud accounts | Use a shared chapel account, not a personal one                 |
+
+## Editor guide: `CONTENT_GUIDE.md`
+
+| ✓   | Item                                                  | Notes                                                     |
+| --- | ----------------------------------------------------- | --------------------------------------------------------- |
+| ☐   | Website volunteer contact (name, email)               | Fill in the _[name, email]_ blank at the top of the guide |
+| ☐   | The chapel calendar's display name in Google Calendar | The guide assumes "Saint Francis Mission Chapel"          |
+| ☐   | Bulletins Drive folder name                           | The guide calls it "Bulletins" (Phase 2)                  |
