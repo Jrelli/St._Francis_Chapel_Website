@@ -1,0 +1,49 @@
+---
+/**
+ * A list of events grouped by day. Used on the home page and the Calendar page.
+ *
+ * KEEP IN SYNC with renderEventDays() in src/scripts/this-week.ts, which builds the same
+ * markup in the browser when live events arrive.
+ *
+ * data-end on each event lets the browser script hide events that have already ended
+ * (the page may have been built hours ago).
+ */
+import { formatDay, formatTimeRange } from '../lib/dates';
+import { groupByDay, NOTICE_LABELS, type ChapelEvent } from '../lib/events';
+
+interface Props {
+  events: ChapelEvent[];
+  /** Heading level for each day, so the page outline stays correct. */
+  headingLevel?: 3 | 4;
+  showDescriptions?: boolean;
+}
+
+const { events, headingLevel = 3, showDescriptions = false } = Astro.props;
+const Heading = `h${headingLevel}` as const;
+const days = groupByDay(events);
+---
+
+<ol class="event-days" role="list">
+  {days.map((day) => (
+    <li class="event-day">
+      <Heading class="event-day__date">{formatDay(day.date)}</Heading>
+      <ul class="event-items" role="list">
+        {day.events.map((e) => (
+          <li class="event" data-end={e.end} data-notice={e.notice}>
+            <p class="event__when">
+              {e.allDay ? 'All day' : formatTimeRange(new Date(e.start), new Date(e.end))}
+            </p>
+            <p class="event__title">
+              {e.notice && (
+                <span class={`badge badge--${e.notice}`}>{NOTICE_LABELS[e.notice]}</span>
+              )}
+              {e.title}
+            </p>
+            {e.location && <p class="event__where">{e.location}</p>}
+            {showDescriptions && e.description && <p class="event__desc">{e.description}</p>}
+          </li>
+        ))}
+      </ul>
+    </li>
+  ))}
+</ol>

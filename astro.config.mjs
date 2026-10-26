@@ -1,6 +1,6 @@
 // @ts-check
 import sitemap from '@astrojs/sitemap';
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 import { site } from './src/config/site.ts';
 import { unconfirmedFacts } from './src/lib/config.ts';
 
@@ -25,6 +25,19 @@ export default defineConfig({
   trailingSlash: 'always',
 
   integrations: [sitemap(), unconfirmedReport],
+
+  // Typed, validated environment variables. Only `context: 'client'` values can reach
+  // the browser; the build-time key is a server secret and never appears in page output.
+  env: {
+    schema: {
+      GOOGLE_API_KEY: envField.string({ context: 'server', access: 'secret', optional: true }),
+      PUBLIC_GOOGLE_CALENDAR_BROWSER_KEY: envField.string({
+        context: 'client',
+        access: 'public',
+        optional: true,
+      }),
+    },
+  },
 
   build: {
     // Always emit CSS as files (never inline <style>) so our CSP can forbid inline styles.

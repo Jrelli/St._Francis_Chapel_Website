@@ -1,0 +1,62 @@
+/**
+ * Build-time calendar loader. Runs only during `astro build` / `astro dev`, never in the browser.
+ *
+ * - No GOOGLE_API_KEY → sample events (clearly labelled on the page).
+ * - Key set but Google fails → the BUILD FAILS on purpose. Cloudflare then keeps the
+ *   last good deploy online, which is better than silently publishing sample events.
+ */
+import { GOOGLE_API_KEY } from 'astro:env/server';
+import { site } from '../config/site';
+import { startOfDay } from './dates';
+import { eventsBetween, fetchGoogleEvents, type ChapelEvent } from './events';
+import { mockEvents } from './mock-events';
+
+export const DAYS_AHEAD = 90;
+
+export interface EventFeed {
+  events: ChapelEvent[];
+  source: 'google' | 'mock';
+  /** ISO instant the data was fetched; shown as "As of …" if live refresh fails. */
+  fetchedAt: string;
+}
+
+// Several pages need events; fetch once per build and share the promise.
+let cached: Promise<EventFeed> | undefined;
+
+export function getEventFeed(): Promise<EventFeed> {
+  cached ??= load();
+  return cached;
+}
+
+async function load(): Promise<EventFeed> {
+  const now = new Date();
+  const from = startOfDay(now);
+  const to = startOfDay(now, DAYS_AHEAD);
+  const calendarId = site.calendar.id.value.trim();
+
+  if (!GOOGLE_API_KEY || !calendarId) {
+    console.warn('[calendar] No GOOGLE_API_KEY or calendar ID set: using SAMPLE events.');
+    return {
+      events: eventsBetween(mockEvents(now, DAYS_AHEAD), from, to),
+      source: 'mock',
+      fetchedAt: now.toISOString(),
+    };
+  }
+
+  let lastError: unknown;
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    try {
+      const events = await fetchGoogleEvents(calendarId, GOOGLE_API_KEY, from, to);
+      console.info(`[calendar] Loaded ${events.length} events from Google Calendar.`);
+      return { events, source: 'google', fetchedAt: now.toISOString() };
+    } catch (err) {
+      lastError = err;
+      console.warn(`[calendar] Attempt ${attempt} failed: ${String(err)}`);
+    }
+  }
+  throw new Error(
+    `[calendar] Could not load Google Calendar events (${String(lastError)}). ` +
+      'Stopping the build so sample data is never published; the previous deploy stays live. ' +
+      'Check the API key restrictions and that the calendar is public.',
+  );
+}

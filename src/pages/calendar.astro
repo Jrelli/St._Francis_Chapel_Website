@@ -1,0 +1,87 @@
+---
+import EventList from '../components/EventList.astro';
+import { site } from '../config/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { DAYS_AHEAD, getEventFeed } from '../lib/calendar';
+import { has } from '../lib/config';
+import { formatMonth, formatStamp } from '../lib/dates';
+import type { ChapelEvent } from '../lib/events';
+
+const feed = await getEventFeed();
+
+// Group into months for headings, skipping anything that already ended (e.g. this morning's Mass).
+const nowIso = new Date().toISOString();
+const months: { label: string; events: ChapelEvent[] }[] = [];
+for (const e of feed.events.filter((ev) => ev.end > nowIso)) {
+  const label = formatMonth(new Date(e.start));
+  const last = months[months.length - 1];
+  if (last?.label === label) last.events.push(e);
+  else months.push({ label, events: [e] });
+}
+
+const calId = encodeURIComponent(site.calendar.id.value);
+const googleUrl = `https://calendar.google.com/calendar/embed?src=${calId}&ctz=${encodeURIComponent(site.calendar.timeZone.value)}`;
+const icalUrl = `https://calendar.google.com/calendar/ical/${calId}/public/basic.ics`;
+---
+
+<BaseLayout
+  title="Calendar"
+  description="Masses, feasts and events at Saint Francis Mission Chapel for the next three months."
+>
+  <div class="container section calendar">
+    <h1>Calendar</h1>
+    <div class="prose">
+      <p>
+        Masses, feasts and events for the next {Math.round(DAYS_AHEAD / 30)} months. All times are
+        Central Time. For last-minute changes, check <a href="/#this-week-heading">This Week</a> on
+        the home page.
+      </p>
+      {has(site.calendar.id) && (
+        <p class="no-print">
+          <a href={googleUrl} rel="noopener">
+            Open in Google Calendar
+          </a>{' '}
+          ·{' '}
+          <a href={icalUrl} rel="noopener">
+            Add to your phone’s calendar
+          </a>
+        </p>
+      )}
+    </div>
+
+    {feed.source === 'mock' && (
+      <p class="sample-note prose">
+        <strong>Sample events, not real times.</strong> Real events will appear here once the Google
+        Calendar is connected.
+      </p>
+    )}
+
+    {months.length === 0 ? (
+      <p>No events are scheduled yet. Please check back soon.</p>
+    ) : (
+      months.map((month) => (
+        <section class="calendar__month" aria-label={month.label}>
+          <h2>{month.label}</h2>
+          <EventList events={month.events} showDescriptions />
+        </section>
+      ))
+    )}
+
+    {feed.source === 'google' && (
+      <p class="muted">As of {formatStamp(new Date(feed.fetchedAt))}.</p>
+    )}
+  </div>
+</BaseLayout>
+
+<style>
+  .calendar {
+    max-width: 48rem;
+  }
+  .calendar__month {
+    margin-top: 2rem;
+  }
+  .calendar__month h2 {
+    border-bottom: 3px double var(--gold);
+    padding-bottom: 0.25rem;
+  }
+</style>

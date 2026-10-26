@@ -230,3 +230,93 @@ img {
   outline-offset: 2px;
   cursor: help;
 }
+
+/* ---------- Event lists ----------
+ * Global (not component-scoped) because src/scripts/this-week.ts also builds these
+ * elements in the browser, and scoped styles wouldn't apply to them.
+ */
+
+.event-days,
+.event-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.event-day + .event-day {
+  margin-top: 1.25rem;
+}
+
+.event-day__date {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 0.5rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.event {
+  padding: 0.4rem 0.75rem 0.4rem 0.9rem;
+  border-left: 3px solid var(--rule);
+  margin-bottom: 0.6rem;
+}
+
+.event p {
+  margin: 0;
+}
+
+.event__when {
+  font-weight: 700;
+}
+
+.event__where,
+.event__desc {
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+}
+
+.event__desc {
+  white-space: pre-line; /* keep line breaks from the calendar description */
+  margin-top: 0.25rem !important;
+}
+
+/* Exceptions (CANCELLED / CHANGED / NOTICE) stand out. */
+.event[data-notice] {
+  border-left-color: var(--red);
+  background: var(--red-tint);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.event[data-notice='cancelled'] .event__when {
+  text-decoration: line-through;
+}
+
+.badge {
+  display: inline-block;
+  margin-right: 0.5rem;
+  padding: 0.05rem 0.5rem;
+  border-radius: 3px;
+  background: var(--red);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  vertical-align: 0.1em;
+}
+.badge--changed {
+  background: var(--gold-text); /* white on antique gold ~5.4:1 */
+}
+.badge--notice {
+  background: var(--navy);
+}
+
+.sample-note {
+  border: 2px dashed var(--red);
+  background: var(--red-tint);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+}

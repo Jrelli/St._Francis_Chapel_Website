@@ -1,0 +1,80 @@
+---
+/**
+ * "This week": exceptions to the regular schedule (cancellations, changes, one-time events)
+ * from now through Saturday.
+ *
+ * 1. At build time it renders whatever the build fetched, so it works with JavaScript off.
+ * 2. In the browser, this-week.ts fetches the live calendar and replaces the list, so a
+ *    same-day cancellation shows up without waiting for the next rebuild.
+ * 3. If that fetch fails or times out, the build-time list stays, labelled "As of …".
+ */
+import type { EventFeed } from '../lib/calendar';
+import { formatStamp } from '../lib/dates';
+import { selectThisWeek } from '../lib/events';
+import { site } from '../config/site';
+import EventList from './EventList.astro';
+
+interface Props {
+  feed: EventFeed;
+}
+
+const { feed } = Astro.props;
+const events = selectThisWeek(feed.events, new Date());
+const isSample = feed.source === 'mock';
+---
+
+<section
+  class="this-week card"
+  aria-labelledby="this-week-heading"
+  data-this-week
+  data-calendar-id={site.calendar.id.value}
+>
+  <h2 id="this-week-heading">This Week</h2>
+  <p class="this-week__intro">Changes to the regular schedule, and special events.</p>
+
+  {isSample && (
+    <p class="sample-note" data-sample-note>
+      <strong>Sample events, not real times.</strong> Real events will appear here once the Google
+      Calendar is connected.
+    </p>
+  )}
+
+  <div data-this-week-body>
+    {events.length > 0 ? (
+      <EventList events={events} showDescriptions />
+    ) : (
+      <p class="this-week__empty">No changes to the regular schedule this week.</p>
+    )}
+  </div>
+
+  <p class="live-status muted" data-live-status aria-live="polite">
+    {isSample ? '' : `As of ${formatStamp(new Date(feed.fetchedAt))}.`}
+  </p>
+
+  <p class="this-week__more">
+    <a href="/calendar/">See the full calendar</a>
+  </p>
+</section>
+
+<script>
+  import '../scripts/this-week';
+</script>
+
+<style>
+  .this-week__intro {
+    color: var(--ink-muted);
+  }
+  .this-week__empty {
+    font-weight: 600;
+  }
+  .live-status {
+    font-size: 0.9rem;
+    margin: 1rem 0 0.25rem;
+  }
+  .live-status:empty {
+    display: none;
+  }
+  .this-week__more {
+    margin: 0.5rem 0 0;
+  }
+</style>
