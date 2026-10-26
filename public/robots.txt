@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://saintfrancischapel.com/sitemap-index.xml

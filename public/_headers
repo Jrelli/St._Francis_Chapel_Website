@@ -1,0 +1,30 @@
+# Cloudflare Pages response headers. Docs: https://developers.cloudflare.com/pages/configuration/headers/
+#
+# Content-Security-Policy, one directive at a time:
+#   default-src 'self'                         only load things from our own site by default
+#   script-src 'self'                          no inline or third-party scripts (Astro is set to never inline)
+#   style-src 'self'                           no inline styles either
+#   img-src 'self' data:                       our images (data: for tiny inline SVGs browsers use)
+#   font-src 'self'                            self-hosted fonts only
+#   connect-src 'self' https://www.googleapis.com   the live "This week" calendar fetch
+#   frame-src 'none'                           no embeds yet; Phase 2 maps will need an entry here
+#   frame-ancestors 'none'                     nobody may put our site in a frame (clickjacking)
+#   base-uri / form-action / object-src        close off rarely-needed, often-abused features
+#
+# Referrer-Policy must NOT be "no-referrer": Google checks the referrer to enforce the
+# browser API key's website restriction.
+#
+# HSTS has no "preload" on purpose; add it only once the domain setup is final.
+
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://www.googleapis.com; frame-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), browsing-topics=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Cross-Origin-Opener-Policy: same-origin
+
+# Astro fingerprints these filenames, so they can be cached "forever".
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
