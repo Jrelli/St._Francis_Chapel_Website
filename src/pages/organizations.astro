@@ -1,0 +1,75 @@
+---
+import Fact from '../components/Fact.astro';
+import LogoPlaceholder from '../components/LogoPlaceholder.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Placeholder from '../components/Placeholder.astro';
+import { site } from '../config/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { has } from '../lib/config';
+
+const { capuchins, sspx, homeschoolContact } = site.organizations;
+---
+
+<BaseLayout title="Associated Organizations">
+  <div class="container section">
+    <PageIntro title="Associated Organizations" />
+
+    <section class="org card">
+      <LogoPlaceholder organization="Capuchin Friars" />
+      <div>
+        <h2>Traditional Capuchin Friars Minor</h2>
+        <Placeholder what="a short description of the friars and their connection to the mission." />
+        {has(capuchins) && (
+          <p>
+            <a href={capuchins.value} rel="noopener">
+              <Fact f={capuchins}>Visit the Porziuncola Project</Fact>
+            </a>
+          </p>
+        )}
+      </div>
+    </section>
+
+    <section class="org card">
+      <LogoPlaceholder organization="SSPX" />
+      <div>
+        <h2>Society of Saint Pius X</h2>
+        <Placeholder what="a short description of the Society and its relationship to the mission." />
+        {has(sspx) && (
+          <p>
+            <a href={sspx.value} rel="noopener">
+              <Fact f={sspx}>Visit the SSPX website</Fact>
+            </a>
+          </p>
+        )}
+      </div>
+    </section>
+
+    <section class="org card">
+      <div>
+        <h2>Homeschool Groups</h2>
+        <Placeholder what="a short description of local homeschool groups." />
+        {has(homeschoolContact) && (
+          <p>
+            Contact: <Fact f={homeschoolContact} />
+          </p>
+        )}
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .org {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+    max-width: 52rem;
+  }
+  @media (min-width: 40em) {
+    .org {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
+</style>

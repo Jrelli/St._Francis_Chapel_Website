@@ -1,0 +1,70 @@
+---
+import AboutNav from '../../components/AboutNav.astro';
+import Fact from '../../components/Fact.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import { site } from '../../config/site';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { has } from '../../lib/config';
+
+const sections = [
+  {
+    href: '/about/our-story/',
+    title: 'Our Story',
+    text: 'How the mission began, including our letter to Bishop Beckman and his reply.',
+  },
+  {
+    href: '/about/first-visit/',
+    title: 'Visiting for the First Time',
+    text: 'What to expect at the Traditional Latin Mass, and how to prepare.',
+  },
+  {
+    href: '/about/staff/',
+    title: 'Staff',
+    text: 'The priests and volunteers who serve the mission.',
+  },
+  { href: '/about/faq/', title: 'Frequently Asked Questions', text: 'Common questions, answered.' },
+];
+---
+
+<BaseLayout title="About">
+  <div class="container section">
+    <PageIntro title="About the Chapel" />
+    <AboutNav />
+    {has(site.description) && (
+      <p class="prose">
+        <Fact f={site.description} />
+      </p>
+    )}
+    <ul class="about-cards" role="list">
+      {sections.map((s) => (
+        <li class="card">
+          <h2>
+            <a href={s.href}>{s.title}</a>
+          </h2>
+          <p>{s.text}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</BaseLayout>
+
+<style>
+  .about-cards {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+    display: grid;
+    gap: 1rem;
+  }
+  .about-cards h2 {
+    font-size: 1.5rem;
+  }
+  .about-cards p {
+    margin: 0;
+  }
+  @media (min-width: 40em) {
+    .about-cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

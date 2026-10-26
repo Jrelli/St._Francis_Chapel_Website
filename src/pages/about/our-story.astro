@@ -1,0 +1,28 @@
+---
+import AboutNav from '../../components/AboutNav.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import Placeholder from '../../components/Placeholder.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Our Story" description="How Saint Francis Mission Chapel began.">
+  <div class="container section">
+    <PageIntro eyebrow="About" title="Our Story" />
+    <AboutNav />
+    <div class="prose">
+      <Placeholder what="the history of the mission: how it began and who it serves." />
+
+      <h2>Letter to Bishop Beckman</h2>
+      <Placeholder what="the text of our letter to Bishop Beckman." />
+
+      <h2>Bishop Beckman’s Reply</h2>
+      <Placeholder what="the text of Bishop Beckman’s reply." />
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  h2 {
+    margin-top: 2rem;
+  }
+</style>

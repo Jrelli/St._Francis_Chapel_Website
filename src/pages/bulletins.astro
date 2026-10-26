@@ -1,0 +1,14 @@
+---
+import PageIntro from '../components/PageIntro.astro';
+import Placeholder from '../components/Placeholder.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Bulletins" description="Weekly bulletins from Saint Francis Mission Chapel.">
+  <div class="container section">
+    <PageIntro title="Bulletins" lead="This week’s bulletin and past issues, newest first." />
+    <div class="prose">
+      <Placeholder what="the bulletin archive, listed automatically from the chapel’s Google Drive folder." />
+    </div>
+  </div>
+</BaseLayout>

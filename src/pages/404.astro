@@ -1,0 +1,15 @@
+---
+import PageIntro from '../components/PageIntro.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page Not Found">
+  <div class="container section">
+    <PageIntro title="Page Not Found" lead="Sorry, we couldn’t find that page." />
+    <p>
+      <a class="button" href="/">
+        Go to the home page for Mass times
+      </a>
+    </p>
+  </div>
+</BaseLayout>

@@ -1,0 +1,49 @@
+---
+import AboutNav from '../../components/AboutNav.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import Placeholder from '../../components/Placeholder.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const topics = [
+  {
+    title: 'What to Expect at Mass',
+    what: 'an overview of the Traditional Latin Mass for newcomers.',
+  },
+  { title: 'What to Wear', what: 'dress standards and guidance on veils.' },
+  { title: 'Etiquette', what: 'silence, posture, and receiving Holy Communion.' },
+  { title: 'Confession', what: 'when and where Confession is heard.' },
+  { title: 'Children', what: 'guidance for families with young children.' },
+];
+---
+
+<BaseLayout
+  title="Visiting for the First Time"
+  description="What to know before your first visit to the Traditional Latin Mass at Saint Francis Mission Chapel."
+>
+  <div class="container section">
+    <PageIntro
+      eyebrow="About"
+      title="Visiting for the First Time"
+      lead="Everyone is welcome. Here is what to know before you come."
+    />
+    <AboutNav />
+    <div class="prose">
+      <p>
+        See <a href="/">Mass times</a> and <a href="/locations/">directions</a>. Rural GPS can be
+        unreliable, so please read the written directions before you set out.
+      </p>
+      {topics.map((t) => (
+        <section>
+          <h2>{t.title}</h2>
+          <Placeholder what={t.what} />
+        </section>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  h2 {
+    margin-top: 2rem;
+  }
+</style>

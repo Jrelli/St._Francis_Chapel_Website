@@ -1,0 +1,47 @@
+---
+import Fact from '../components/Fact.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Placeholder from '../components/Placeholder.astro';
+import { site } from '../config/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { has } from '../lib/config';
+---
+
+<BaseLayout
+  title="Chapel Build"
+  description="Building a permanent chapel for the Traditional Latin Mass in East Tennessee."
+>
+  <div class="container section">
+    <PageIntro title="Chapel Build" />
+    <div class="prose">
+      {has(site.chapelBuildBlurb) && (
+        <p class="lead">
+          <Fact f={site.chapelBuildBlurb} />
+        </p>
+      )}
+      {has(site.donateUrl) && (
+        <p>
+          <a class="button" href={site.donateUrl.value} rel="noopener">
+            Donate to the chapel build<span class="visually-hidden"> (secure Stripe page)</span>
+          </a>
+        </p>
+      )}
+
+      <h2>The Project</h2>
+      <Placeholder what="the story of the property and the plans for the chapel, with renderings." />
+
+      <h2>Construction Progress</h2>
+      {/* Phase 2: gallery built from photos placed in src/assets/photos/ */}
+      <Placeholder what="a photo gallery of construction progress." />
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .lead {
+    font-size: 1.15rem;
+  }
+  h2 {
+    margin-top: 2rem;
+  }
+</style>

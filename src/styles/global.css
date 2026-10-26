@@ -217,6 +217,7 @@ img {
 /* ---------- Placeholders & dev-only markers ---------- */
 
 .placeholder-note {
+  margin-bottom: 1rem;
   border: 2px dashed var(--gold);
   background: var(--surface);
   padding: 1rem 1.25rem;

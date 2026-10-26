@@ -1,0 +1,25 @@
+---
+/**
+ * A clearly marked box for copy that hasn't been written yet. Search the code for
+ * "<Placeholder" to find every spot still waiting on real content.
+ */
+interface Props {
+  /** What belongs here, e.g. "Our Story, including the letter to Bishop Beckman". */
+  what: string;
+}
+
+const { what } = Astro.props;
+---
+
+<div class="placeholder-note">
+  <p>
+    <strong>Coming soon:</strong> {what}
+  </p>
+  <slot />
+</div>
+
+<style>
+  .placeholder-note :global(p:last-child) {
+    margin-bottom: 0;
+  }
+</style>

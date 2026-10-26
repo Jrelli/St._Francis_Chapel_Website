@@ -1,0 +1,47 @@
+---
+/**
+ * Donations go to an external Stripe page. This site never collects payment details.
+ */
+import Fact from '../components/Fact.astro';
+import PageIntro from '../components/PageIntro.astro';
+import { site } from '../config/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { has } from '../lib/config';
+---
+
+<BaseLayout title="Donate" description="Support Saint Francis Mission Chapel and the chapel build.">
+  <div class="container section">
+    <PageIntro
+      title="Support the Mission"
+      lead="Your gifts sustain the mission and help build a permanent chapel."
+    />
+    <div class="prose">
+      {has(site.donateUrl) ? (
+        <>
+          <p>
+            <a class="button" href={site.donateUrl.value} rel="noopener">
+              Give online
+            </a>
+          </p>
+          <p class="muted">
+            You’ll be taken to a secure donation page run by Stripe. This website never sees your
+            card details.
+          </p>
+        </>
+      ) : (
+        has(site.email) && (
+          <p>
+            To give, please contact us at{' '}
+            <a href={`mailto:${site.email.value}`}>
+              <Fact f={site.email} />
+            </a>
+            .
+          </p>
+        )
+      )}
+      <p>
+        <a href="/chapel-build/">Learn about the chapel build</a>
+      </p>
+    </div>
+  </div>
+</BaseLayout>

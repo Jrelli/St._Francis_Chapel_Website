@@ -1,0 +1,39 @@
+---
+import PageIntro from '../components/PageIntro.astro';
+import Placeholder from '../components/Placeholder.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Phase 2: move locations into a data file with address, directions and map link for each.
+const locations = [
+  { name: 'Sunday Mass', note: 'location to be confirmed' },
+  { name: 'Holy Crucifixion Hermitage, Newport', note: 'Daily Mass and Confession' },
+];
+---
+
+<BaseLayout
+  title="Locations & Directions"
+  description="Where to find Mass and Confession, with written directions."
+>
+  <div class="container section">
+    <PageIntro
+      title="Locations & Directions"
+      lead="GPS can be unreliable on rural roads. Please read the written directions before you set out."
+    />
+    <div class="prose">
+      {locations.map((loc) => (
+        <section class="card location">
+          <h2>{loc.name}</h2>
+          <p class="muted">{loc.note}</p>
+          <Placeholder what="the street address, a map, and turn-by-turn written directions." />
+        </section>
+      ))}
+      <p class="muted no-print">A print-friendly version of these directions is coming soon.</p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .location {
+    margin-bottom: 1.5rem;
+  }
+</style>

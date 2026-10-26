@@ -1,0 +1,18 @@
+---
+// When writing the FAQ, make each question a native <details><summary> element: it expands
+// and collapses with no JavaScript and works with keyboards and screen readers.
+import AboutNav from '../../components/AboutNav.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import Placeholder from '../../components/Placeholder.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Frequently Asked Questions">
+  <div class="container section">
+    <PageIntro eyebrow="About" title="Frequently Asked Questions" />
+    <AboutNav />
+    <div class="prose">
+      <Placeholder what="common questions and answers." />
+    </div>
+  </div>
+</BaseLayout>

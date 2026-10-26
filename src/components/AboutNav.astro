@@ -1,0 +1,53 @@
+---
+/** Section navigation shared by the About pages. */
+const links = [
+  { href: '/about/', label: 'Overview' },
+  { href: '/about/our-story/', label: 'Our Story' },
+  { href: '/about/first-visit/', label: 'Visiting for the First Time' },
+  { href: '/about/staff/', label: 'Staff' },
+  { href: '/about/faq/', label: 'FAQ' },
+];
+const path = Astro.url.pathname;
+---
+
+<nav class="about-nav no-print" aria-label="About section">
+  <ul role="list">
+    {links.map((link) => (
+      <li>
+        <a href={link.href} aria-current={path === link.href ? 'page' : undefined}>
+          {link.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .about-nav ul {
+    list-style: none;
+    margin: 0 0 1.5rem;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .about-nav a {
+    display: inline-block;
+    padding: 0.45rem 0.9rem;
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--navy);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .about-nav a:hover {
+    border-color: var(--navy);
+  }
+  .about-nav a[aria-current='page'] {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: #fff;
+  }
+</style>

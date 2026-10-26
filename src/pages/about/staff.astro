@@ -1,0 +1,16 @@
+---
+import AboutNav from '../../components/AboutNav.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import Placeholder from '../../components/Placeholder.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Staff">
+  <div class="container section">
+    <PageIntro eyebrow="About" title="Staff" />
+    <AboutNav />
+    <div class="prose">
+      <Placeholder what="the priests who serve the mission and key volunteers, with photos if desired." />
+    </div>
+  </div>
+</BaseLayout>

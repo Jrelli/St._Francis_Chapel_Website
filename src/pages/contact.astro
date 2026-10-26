@@ -1,0 +1,112 @@
+---
+/**
+ * Contact details, all from src/config/site.ts. Blank fields are left out entirely.
+ * No contact form in Phase 1 (a form would need a third-party service).
+ */
+import Fact from '../components/Fact.astro';
+import PageIntro from '../components/PageIntro.astro';
+import { site } from '../config/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { has } from '../lib/config';
+
+const { facebook, youtube } = site.social;
+const telHref = `tel:${site.phone.value.replace(/[^\d+]/g, '')}`;
+---
+
+<BaseLayout title="Contact" description="How to reach Saint Francis Mission Chapel.">
+  <div class="container section">
+    <PageIntro title="Contact Us" />
+    <dl class="contact prose">
+      {has(site.email) && (
+        <div>
+          <dt>Email</dt>
+          <dd>
+            <a href={`mailto:${site.email.value}`}>
+              <Fact f={site.email} />
+            </a>
+          </dd>
+        </div>
+      )}
+      {has(site.phone) && (
+        <div>
+          <dt>Phone</dt>
+          <dd>
+            <a href={telHref}>
+              <Fact f={site.phone} />
+            </a>
+          </dd>
+        </div>
+      )}
+      {has(site.mailingAddress) && (
+        <div>
+          <dt>Mailing address</dt>
+          <dd>
+            <address>
+              <Fact f={site.mailingAddress}>
+                {site.mailingAddress.value.map((line) => (
+                  <>
+                    {line}
+                    <br />
+                  </>
+                ))}
+              </Fact>
+            </address>
+          </dd>
+        </div>
+      )}
+      {(has(facebook) || has(youtube)) && (
+        <div>
+          <dt>Follow us</dt>
+          <dd>
+            <ul role="list">
+              {has(facebook) && (
+                <li>
+                  <a href={facebook.value} rel="noopener">
+                    <Fact f={facebook}>Facebook</Fact>
+                  </a>
+                </li>
+              )}
+              {has(youtube) && (
+                <li>
+                  <a href={youtube.value} rel="noopener">
+                    <Fact f={youtube}>YouTube</Fact>
+                  </a>
+                </li>
+              )}
+            </ul>
+          </dd>
+        </div>
+      )}
+    </dl>
+    <p class="prose">
+      Looking for Mass? See <a href="/locations/">locations and directions</a>.
+    </p>
+  </div>
+</BaseLayout>
+
+<style>
+  .contact > div {
+    padding-block: 0.9rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  dt {
+    font-weight: 700;
+    color: var(--navy);
+  }
+  dd {
+    margin: 0.25rem 0 0;
+    font-size: 1.15rem;
+  }
+  address {
+    font-style: normal;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  dd a {
+    display: inline-block;
+    padding-block: 0.2rem;
+  }
+</style>
