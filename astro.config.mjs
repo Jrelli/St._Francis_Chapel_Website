@@ -1,12 +1,30 @@
 // @ts-check
 import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
+import { site } from './src/config/site.ts';
+import { unconfirmedFacts } from './src/lib/config.ts';
+
+/** Prints unconfirmed config facts at the end of every build, as a standing reminder. */
+const unconfirmedReport = {
+  name: 'unconfirmed-facts-report',
+  hooks: {
+    /** @param {{ logger: import('astro').AstroIntegrationLogger }} options */
+    'astro:build:done': ({ logger }) => {
+      const pending = unconfirmedFacts(site);
+      if (pending.length === 0) return;
+      logger.warn(
+        `${pending.length} site facts are still unconfirmed (see CONTENT_TO_CONFIRM.md):\n` +
+          pending.map(({ path }) => `  - ${path}`).join('\n'),
+      );
+    },
+  },
+};
 
 export default defineConfig({
-  site: 'https://saintfrancischapel.com',
+  site: site.url.value,
   trailingSlash: 'always',
 
-  integrations: [sitemap()],
+  integrations: [sitemap(), unconfirmedReport],
 
   build: {
     // Always emit CSS as files (never inline <style>) so our CSP can forbid inline styles.

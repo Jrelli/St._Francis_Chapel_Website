@@ -1,0 +1,26 @@
+---
+/**
+ * Renders a config fact's text. In `npm run dev` only, unconfirmed facts get a dotted
+ * outline and a tooltip with their TODO, so you can see what still needs checking.
+ * Production output is just the plain text.
+ *
+ * Usage: <Fact f={site.tagline} />   or wrap custom markup: <Fact f={site.email}>…</Fact>
+ */
+import type { Fact } from '../config/site';
+
+interface Props {
+  f: Fact<unknown>;
+}
+
+const { f } = Astro.props;
+const mark = import.meta.env.DEV && !f.confirmed;
+const text = typeof f.value === 'string' ? f.value : '';
+---
+
+{mark ? (
+  <span class="unconfirmed" title={`UNCONFIRMED${f.todo ? `: ${f.todo}` : ''}`}>
+    <slot>{text}</slot>
+  </span>
+) : (
+  <slot>{text}</slot>
+)}
