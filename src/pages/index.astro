@@ -1,9 +1,253 @@
 ---
+import { Image } from 'astro:assets';
+import engraving from '../assets/art/engraving.png';
+import linocut from '../assets/art/linocut-blessing.png';
+import EventList from '../components/EventList.astro';
+import Fact from '../components/Fact.astro';
+import Schedule from '../components/Schedule.astro';
+import ThisWeek from '../components/ThisWeek.astro';
+import { site } from '../config/site';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getEventFeed } from '../lib/calendar';
+import { has } from '../lib/config';
+import { selectUpcoming } from '../lib/events';
+
+const feed = await getEventFeed();
+const upcoming = selectUpcoming(feed.events, new Date());
+
+const { facebook, youtube } = site.social;
+const quickLinks = [
+  { href: '/about/first-visit/', label: 'Visiting for the first time' },
+  { href: '/locations/', label: 'Locations & directions' },
+  { href: '/bulletins/', label: 'Weekly bulletins' },
+  { href: '/calendar/', label: 'Full calendar' },
+  { href: '/about/', label: 'About the chapel' },
+  { href: '/contact/', label: 'Contact us' },
+  ...(has(facebook) ? [{ href: facebook.value, label: 'Facebook', external: true }] : []),
+  ...(has(youtube) ? [{ href: youtube.value, label: 'YouTube', external: true }] : []),
+];
 ---
 
 <BaseLayout>
-  <div class="container section">
-    <h1>Saint Francis Mission Chapel</h1>
+  <!-- Compact hero so Mass times stay above the fold on phones. -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <h1>{site.name.value}</h1>
+        {has(site.taglineLatin) && (
+          <p class="hero__latin" lang="la">
+            <Fact f={site.taglineLatin} />
+          </p>
+        )}
+        {has(site.tagline) && (
+          <p class="hero__tagline">
+            <Fact f={site.tagline} />
+          </p>
+        )}
+      </div>
+      <Image
+        src={engraving}
+        alt="Engraving of Saint Francis of Assisi with arms raised, bearing the stigmata"
+        widths={[240, 480]}
+        sizes="240px"
+        class="hero__art"
+        loading="eager"
+      />
+    </div>
+  </section>
+
+  <div class="container home-grid">
+    <div class="home-grid__schedule">
+      <Schedule />
+    </div>
+    <div class="home-grid__week">
+      <ThisWeek feed={feed} />
+    </div>
   </div>
+
+  <section class="container section" aria-labelledby="upcoming-heading">
+    <h2 id="upcoming-heading">Upcoming Events</h2>
+    {upcoming.length > 0 ? (
+      <div class="upcoming">
+        <EventList events={upcoming} />
+      </div>
+    ) : (
+      <p>No special events are scheduled yet.</p>
+    )}
+    <p>
+      <a href="/calendar/">See all feasts and events</a>
+    </p>
+  </section>
+
+  <section class="build" aria-labelledby="build-heading">
+    <div class="container build__inner">
+      <Image
+        src={linocut}
+        alt=""
+        widths={[180, 360]}
+        sizes="(min-width: 40em) 180px, 120px"
+        class="build__art"
+        loading="lazy"
+      />
+      <div>
+        <p class="eyebrow">Chapel Build</p>
+        <h2 id="build-heading">Help Us Build a Permanent Home</h2>
+        {has(site.chapelBuildBlurb) && (
+          <p class="prose">
+            <Fact f={site.chapelBuildBlurb} />
+          </p>
+        )}
+        <p class="build__actions">
+          <a class="button" href="/chapel-build/">
+            Follow the progress
+          </a>
+          {has(site.donateUrl) && (
+            <a class="button button--outline" href={site.donateUrl.value} rel="noopener">
+              Donate<span class="visually-hidden"> (secure Stripe page)</span>
+            </a>
+          )}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container section" aria-labelledby="links-heading">
+    <h2 id="links-heading">Quick Links</h2>
+    <ul class="quick-links" role="list">
+      {quickLinks.map((link) => (
+        <li>
+          <a href={link.href} rel={'external' in link ? 'noopener' : undefined}>
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
 </BaseLayout>
+
+<style>
+  .hero {
+    padding-block: 1.25rem 0.5rem;
+  }
+
+  .hero__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .hero h1 {
+    margin-bottom: 0.2rem;
+  }
+
+  .hero__latin {
+    font-style: italic;
+    color: var(--gold-text);
+    margin-bottom: 0.2rem;
+  }
+
+  .hero__tagline {
+    color: var(--ink-muted);
+    margin: 0;
+  }
+
+  /* The engraving is decoration on wide screens only; phones go straight to Mass times. */
+  .hero__art {
+    display: none;
+    width: 200px;
+    height: auto;
+    mix-blend-mode: multiply;
+  }
+
+  .home-grid {
+    display: grid;
+    gap: 2rem;
+    padding-block: 1rem 1rem;
+  }
+
+  .upcoming {
+    max-width: 48rem;
+    margin-bottom: 1rem;
+  }
+
+  .build {
+    background: var(--surface);
+    border-block: 3px double var(--gold);
+    padding-block: 2rem;
+    margin-block: 1rem;
+  }
+
+  .build__inner {
+    display: grid;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .build__art {
+    width: 120px;
+    margin-inline: auto;
+  }
+
+  .build__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .quick-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .quick-links a {
+    display: block;
+    padding: 0.8rem 1rem;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--gold);
+    border-radius: var(--radius);
+    color: var(--navy);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .quick-links a:hover {
+    border-left-color: var(--red);
+    color: var(--red);
+  }
+
+  @media (min-width: 40em) {
+    .quick-links {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .build__inner {
+      grid-template-columns: auto 1fr;
+    }
+    .build__art {
+      width: 180px;
+    }
+  }
+
+  @media (min-width: 64em) {
+    .hero {
+      padding-block: 1.5rem 0;
+    }
+    .hero__art {
+      display: block;
+      height: 260px;
+      width: auto;
+      object-fit: cover;
+      object-position: top;
+    }
+    .home-grid {
+      grid-template-columns: 3fr 2fr;
+      align-items: start;
+    }
+    .quick-links {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>

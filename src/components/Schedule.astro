@@ -1,0 +1,99 @@
+---
+/**
+ * The regular weekly schedule from src/data/schedule.yaml.
+ * Uses a description list (<dl>): screen readers announce each "days → time" pair together.
+ */
+import { schedule } from '../lib/schedule';
+
+const dev = import.meta.env.DEV;
+---
+
+<section class="schedule" aria-labelledby="schedule-heading">
+  <h2 id="schedule-heading">Mass &amp; Confession Times</h2>
+  <div class="schedule__groups">
+    {schedule.sections.map((section) => (
+      <div class="schedule__group card">
+        <h3>{section.title}</h3>
+        <dl>
+          {section.items.map((item) => (
+            <div
+              class:list={['schedule__item', { unconfirmed: dev && !item.confirmed }]}
+              title={dev && !item.confirmed ? 'UNCONFIRMED: from Wix draft' : undefined}
+            >
+              <dt>{item.days}</dt>
+              <dd>
+                {item.time && <span class="schedule__time">{item.time}</span>}
+                {item.what && <span class="schedule__what">{item.what}</span>}
+                {item.location && <span class="schedule__where">{item.location}</span>}
+                {item.details && <span class="schedule__details">{item.details}</span>}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    ))}
+  </div>
+  {schedule.note && <p class="schedule__note">{schedule.note}</p>}
+</section>
+
+<style>
+  .schedule__groups {
+    display: grid;
+    gap: 1rem;
+  }
+
+  h3 {
+    margin-bottom: 0.25rem;
+  }
+
+  dl {
+    margin: 0;
+  }
+
+  .schedule__item {
+    padding-block: 0.6rem;
+  }
+  .schedule__item + .schedule__item {
+    border-top: 1px solid var(--rule);
+  }
+
+  dt {
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  dd {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .schedule__time {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .schedule__what {
+    font-style: italic;
+  }
+
+  .schedule__where,
+  .schedule__details {
+    color: var(--ink-muted);
+    font-size: 0.95rem;
+  }
+
+  .schedule__note {
+    margin-top: 1rem;
+    padding-left: 0.9rem;
+    border-left: 3px solid var(--gold);
+    color: var(--ink-muted);
+  }
+
+  @media (min-width: 40em) {
+    .schedule__groups {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

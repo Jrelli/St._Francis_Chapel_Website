@@ -53,6 +53,13 @@ export const site = {
     youtube: fact('https://www.youtube.com/@saintfrancischapel', false, 'From Wix draft'),
   },
 
+  /** Short pitch used on the home page and Chapel Build page. */
+  chapelBuildBlurb: fact(
+    'On five acres of Tennessee land, we are building a chapel worthy of the Holy Sacrifice of the Mass, to bring the Traditional Latin Mass to East Tennessee permanently.',
+    false,
+    'Reworded from the Wix draft; confirm acreage and wording',
+  ),
+
   /** External Stripe donation page. The site never handles payments itself. */
   donateUrl: fact(
     'https://donate.stripe.com/5kQdRa1jLebudSg2gy8Vi01',
