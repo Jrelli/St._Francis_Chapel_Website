@@ -1,0 +1,54 @@
+# The REGULAR weekly schedule shown on the home page.
+#
+# One-time changes (a cancelled Mass, a feast-day time) go in the Google Calendar,
+# NOT here. Only edit this file when the normal week changes.
+#
+# How to edit (see CONTENT_GUIDE.md for screenshots-free step-by-step help):
+#   - Keep the indentation (spaces, not tabs) exactly as it is.
+#   - Put text that contains a colon (:) inside "quotes", e.g. "10:00 AM".
+#   - Leave `time: ""` empty if there is no set time.
+#   - `confirmed: false` means the entry still needs checking. Change to true once checked.
+#   - If you make a mistake, the site build stops with a message saying which line is wrong;
+#     the old version of the site stays online until it's fixed.
+
+note: Times sometimes change for feast days and the priest's travel. Please check this week's notices and the calendar before you come.
+
+sections:
+  - title: Holy Mass
+    items:
+      - days: Sundays
+        time: '10:00 AM'
+        what: Holy High Mass
+        details: A potluck follows around 11:30 AM. The location is listed on the calendar.
+        confirmed: false
+      - days: Daily
+        time: '8:00 AM'
+        location: Holy Crucifixion Hermitage, Newport
+        confirmed: false
+
+  - title: Confession
+    items:
+      - days: Sundays
+        time: '9:00 – 10:00 AM'
+        confirmed: false
+      - days: Daily
+        time: ''
+        location: Holy Crucifixion Hermitage, Newport
+        details: Ring the bell and ask for Father.
+        confirmed: false
+      - days: First Fridays
+        time: '5:00 – 5:30 PM'
+        confirmed: false
+      - days: First Saturdays
+        time: '7:30 – 8:45 AM'
+        confirmed: false
+      - days: Holy Days of Obligation
+        time: '5:00 – 5:30 PM'
+        confirmed: false
+
+  - title: Adoration
+    items:
+      - days: Thursdays
+        time: '5:00 – 8:00 PM'
+        what: Eucharistic Adoration
+        confirmed: false
