@@ -8,7 +8,7 @@
 import { GOOGLE_API_KEY } from 'astro:env/server';
 import { site } from '../config/site';
 import { startOfDay } from './dates';
-import { eventsBetween, fetchGoogleEvents, type ChapelEvent } from './events';
+import { cleanApiKey, eventsBetween, fetchGoogleEvents, type ChapelEvent } from './events';
 import { mockEvents } from './mock-events';
 
 export const DAYS_AHEAD = 90;
@@ -33,8 +33,9 @@ async function load(): Promise<EventFeed> {
   const from = startOfDay(now);
   const to = startOfDay(now, DAYS_AHEAD);
   const calendarId = site.calendar.id.value.trim();
+  const apiKey = cleanApiKey(GOOGLE_API_KEY);
 
-  if (!GOOGLE_API_KEY || !calendarId) {
+  if (!apiKey || !calendarId) {
     console.warn('[calendar] No GOOGLE_API_KEY or calendar ID set: using SAMPLE events.');
     return {
       events: eventsBetween(mockEvents(now, DAYS_AHEAD), from, to),
@@ -43,10 +44,19 @@ async function load(): Promise<EventFeed> {
     };
   }
 
+  // Google API keys are 39 characters starting with "AIza". Reporting only the length is safe
+  // and catches the common mistakes (pasting the wrong value, or a truncated key).
+  if (!/^AIza[\w-]{35}$/.test(apiKey)) {
+    console.warn(
+      `[calendar] GOOGLE_API_KEY doesn't look like a Google API key ` +
+        `(expected 39 characters starting with "AIza"; got ${apiKey.length} characters).`,
+    );
+  }
+
   let lastError: unknown;
   for (let attempt = 1; attempt <= 2; attempt++) {
     try {
-      const events = await fetchGoogleEvents(calendarId, GOOGLE_API_KEY, from, to);
+      const events = await fetchGoogleEvents(calendarId, apiKey, from, to);
       console.info(`[calendar] Loaded ${events.length} events from Google Calendar.`);
       return { events, source: 'google', fetchedAt: now.toISOString() };
     } catch (err) {

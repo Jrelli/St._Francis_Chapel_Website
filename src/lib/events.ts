@@ -158,7 +158,11 @@ export async function fetchGoogleEvents(
       signal: options.signal ?? null,
       credentials: 'omit',
     });
-    if (!res.ok) throw new Error(`Google Calendar API responded ${res.status} ${res.statusText}`);
+    if (!res.ok) {
+      throw new Error(
+        `Google Calendar API responded ${res.status} ${res.statusText}${await googleErrorMessage(res)}`,
+      );
+    }
     const body = (await res.json()) as GoogleEventsPage;
     for (const item of body.items ?? []) {
       const ev = normalizeGoogleEvent(item);
@@ -168,6 +172,28 @@ export async function fetchGoogleEvents(
     if (!pageToken) break;
   }
   return sortEvents(events);
+}
+
+/**
+ * Google explains failures in the response body, e.g. "API key not valid" or "Requests from
+ * referer <empty> are blocked". Those messages never echo the key, so they're safe to log.
+ */
+async function googleErrorMessage(res: Response): Promise<string> {
+  try {
+    const body = (await res.json()) as { error?: { message?: string } };
+    const message = body.error?.message?.slice(0, 300);
+    return message ? `: ${message}` : '';
+  } catch {
+    return '';
+  }
+}
+
+/** Removes whitespace and wrapping quotes that often sneak in when pasting a key. */
+export function cleanApiKey(key: string | undefined): string {
+  return (key ?? '')
+    .trim()
+    .replace(/^["']|["']$/g, '')
+    .trim();
 }
 
 export function sortEvents(events: ChapelEvent[]): ChapelEvent[] {

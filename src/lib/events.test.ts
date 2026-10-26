@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   buildEventsUrl,
+  cleanApiKey,
   groupByDay,
   htmlToText,
   normalizeGoogleEvent,
@@ -160,5 +161,17 @@ describe('mockEvents', () => {
     const thursday8am = mock.filter((e) => e.start === '2026-10-29T13:00:00.000Z');
     expect(thursday8am).toHaveLength(1);
     expect(thursday8am[0]?.notice).toBe('cancelled');
+  });
+});
+
+describe('cleanApiKey', () => {
+  it.each([
+    ['AIzaKEY', 'AIzaKEY'],
+    ['  AIzaKEY\n', 'AIzaKEY'],
+    ['"AIzaKEY"', 'AIzaKEY'],
+    ["'AIzaKEY' ", 'AIzaKEY'],
+    [undefined, ''],
+  ])('%j → %j', (raw, clean) => {
+    expect(cleanApiKey(raw)).toBe(clean);
   });
 });

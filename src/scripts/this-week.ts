@@ -13,6 +13,7 @@
 import { PUBLIC_GOOGLE_CALENDAR_BROWSER_KEY } from 'astro:env/client';
 import { endOfWeek, formatDay, formatStamp, formatTimeRange, startOfDay } from '../lib/dates';
 import {
+  cleanApiKey,
   fetchGoogleEvents,
   groupByDay,
   NOTICE_LABELS,
@@ -21,6 +22,7 @@ import {
 } from '../lib/events';
 
 const TIMEOUT_MS = 5000;
+const BROWSER_KEY = cleanApiKey(PUBLIC_GOOGLE_CALENDAR_BROWSER_KEY);
 
 function el<K extends keyof HTMLElementTagNameMap>(
   tag: K,
@@ -98,14 +100,14 @@ async function refresh(section: HTMLElement): Promise<void> {
   }
 
   const calendarId = section.dataset.calendarId;
-  if (!PUBLIC_GOOGLE_CALENDAR_BROWSER_KEY || !calendarId) return;
+  if (!BROWSER_KEY || !calendarId) return;
 
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
   try {
     const events = await fetchGoogleEvents(
       calendarId,
-      PUBLIC_GOOGLE_CALENDAR_BROWSER_KEY,
+      BROWSER_KEY,
       startOfDay(now),
       endOfWeek(now),
       { signal: controller.signal, maxPages: 1 },
