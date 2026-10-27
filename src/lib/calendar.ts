@@ -39,13 +39,20 @@ export function getEventFeed(): Promise<EventFeed> {
 }
 
 /**
- * On Cloudflare Pages, says which environment is building. Variables are set separately for
- * Production and Preview, which is the usual reason one is "missing".
+ * On Cloudflare, says which branch is building and where its variables live, since build
+ * variables are set separately from runtime ones (Workers) or per environment (Pages).
  */
 function cloudflareEnvNote(): string {
-  const branch = process.env.CF_PAGES_BRANCH;
-  if (!process.env.CF_PAGES || !branch) return '';
-  return ` (Cloudflare Pages build of branch "${branch}"; check this environment's variables)`;
+  if (process.env.WORKERS_CI) {
+    return (
+      ` (Cloudflare Workers build of branch "${process.env.WORKERS_CI_BRANCH ?? '?'}"; ` +
+      'set it under Settings → Build → Build variables and secrets)'
+    );
+  }
+  if (process.env.CF_PAGES) {
+    return ` (Cloudflare Pages build of branch "${process.env.CF_PAGES_BRANCH ?? '?'}"; check this environment's variables)`;
+  }
+  return '';
 }
 
 async function load(): Promise<EventFeed> {

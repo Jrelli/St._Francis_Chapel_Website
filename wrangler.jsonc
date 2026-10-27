@@ -1,0 +1,13 @@
+// Cloudflare deploy config. The site is static files only: no Worker script, no server code.
+// This file must exist: without it, `wrangler deploy` auto-configures the project by installing
+// Astro's Cloudflare SSR adapter (plus KV/Images bindings) and rebuilding the site, which we
+// don't want. With it, the deploy step just uploads dist/ as static assets (free, unlimited).
+{
+  "name": "st-francis-chapel-website",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    // Unknown URLs get dist/404.html with a real 404 status.
+    "not_found_handling": "404-page",
+  },
+}
