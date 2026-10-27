@@ -10,8 +10,9 @@
 
 :root {
   --bg: #ffffff;
-  --surface: #ffffff;
+  --surface: #f5f6f4; /* cards: a step off the white page so they stand out */
   --band: #e6e8e5; /* stakeholder's light gray, for section bands */
+  --header-bg: var(--band);
   --ink: #1e2321; /* ~16:1 */
   --ink-muted: #555c58; /* ~6.9:1; ~5.5:1 on --band */
   --accent: #e15045;
