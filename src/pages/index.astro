@@ -1,7 +1,6 @@
 ---
 import { Image } from 'astro:assets';
 import churchIllustration from '../assets/art/church-illustration.jpg';
-import aerialPhoto from '../assets/photos/aerial-property.jpg';
 import EventList from '../components/EventList.astro';
 import Fact from '../components/Fact.astro';
 import Schedule from '../components/Schedule.astro';
@@ -29,21 +28,8 @@ const quickLinks = [
 ---
 
 <BaseLayout>
-  <!--
-    Aerial photo of the property behind the top of the page, fading into the parchment.
-    It's an <img> (not a CSS background) so it gets responsive sizes and needs no inline style.
-    The text sits below the fade, on near-solid parchment, so contrast stays AA.
-  -->
+  <!-- Compact hero so Mass times stay above the fold on phones. -->
   <section class="hero">
-    <Image
-      src={aerialPhoto}
-      alt=""
-      widths={[800, 1280, 1920, 2560, 3344]}
-      sizes="100vw"
-      class="hero__photo"
-      loading="eager"
-      fetchpriority="high"
-    />
     <div class="container hero__inner">
       <div class="hero__text">
         <h1>{site.name.value}</h1>
@@ -132,24 +118,7 @@ const quickLinks = [
 
 <style>
   .hero {
-    /* How much of the photo shows above the title. Kept short on phones so Mass times
-       stay above the fold. */
-    --photo-h: 8.5rem;
-    position: relative;
-    isolation: isolate; /* keeps the photo's negative z-index inside this section */
-    padding-block: var(--photo-h) 0.5rem;
-  }
-
-  .hero__photo {
-    position: absolute;
-    inset: 0 0 auto;
-    z-index: -1;
-    width: 100%;
-    height: calc(var(--photo-h) + 1.25rem);
-    object-fit: cover;
-    object-position: center 22%;
-    /* Fade the photo out toward the bottom so it melts into the parchment. */
-    mask-image: linear-gradient(to bottom, #000 35%, transparent 96%);
+    padding-block: 1.25rem 0.5rem;
   }
 
   .hero h1 {
@@ -236,14 +205,11 @@ const quickLinks = [
       grid-template-columns: 1fr 1fr;
       gap: 2rem;
     }
-    .hero {
-      --photo-h: 12rem;
-    }
   }
 
   @media (min-width: 64em) {
     .hero {
-      --photo-h: 16rem;
+      padding-block: 1.5rem 0;
     }
     .home-grid {
       grid-template-columns: 3fr 2fr;

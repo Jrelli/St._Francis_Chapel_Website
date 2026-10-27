@@ -53,18 +53,18 @@ Each entry has its own `confirmed:` flag. All are from the Wix draft.
 
 ## Images and logos
 
-| ✓   | Item                                                                     | Used on                                     | Notes                                                                                |
-| --- | ------------------------------------------------------------------------ | ------------------------------------------- | ------------------------------------------------------------------------------------ |
-| ☑   | Saint Francis Mission Chapel seal                                        | Header, favicon source                      | The chapel's own mark, confirmed 2026-10-26                                          |
-| ☑   | Saint Francis engraving (black and white)                                | About overview (wide screens)               | Approved for use 2026-10-26                                                          |
-| ☑   | Saint Francis linocut blessing (red)                                     | Not currently used                          | Approved for use 2026-10-26                                                          |
-| ☑   | Aerial photo of the property                                             | Home page header, fading into the page      | Provided 2026-10-26; AI-upscaled 2× (Real-ESRGAN, blended 60/40 with a plain resize) |
-| ☑   | Church illustration (watercolor)                                         | Home chapel-build box                       | Provided 2026-10-26                                                                  |
-| ☐   | SSPX logo                                                                | Associated Organizations (placeholder only) | **Not used until permission is confirmed**                                           |
-| ☐   | Capuchin Friars logo                                                     | Associated Organizations (placeholder only) | **Not used until permission is confirmed**                                           |
-| ☑   | 15 construction photos                                                   | Chapel Build gallery                        | Provided 2026-10-26; resized and metadata stripped                                   |
-| ☐   | People shown in the construction photos are OK with being on the website | Chapel Build gallery                        | Friars and volunteers are recognizable; worth a quick check                          |
-| ☐   | Renderings ("Chapel Rendering 7A", "Layout render 1/2")                  | Not used yet                                | Could illustrate "The Project" on Chapel Build                                       |
+| ✓   | Item                                                                     | Used on                                     | Notes                                                                                                |
+| --- | ------------------------------------------------------------------------ | ------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| ☑   | Saint Francis Mission Chapel seal                                        | Header, favicon source                      | The chapel's own mark, confirmed 2026-10-26                                                          |
+| ☑   | Saint Francis engraving (black and white)                                | About overview (wide screens)               | Approved for use 2026-10-26                                                                          |
+| ☑   | Saint Francis linocut blessing (red)                                     | Not currently used                          | Approved for use 2026-10-26                                                                          |
+| ☑   | Aerial photo of the property                                             | Not used                                    | Removed from the home page at the owner's request (2026-10-26); original is in media/property photos |
+| ☑   | Church illustration (watercolor)                                         | Home chapel-build box                       | Provided 2026-10-26                                                                                  |
+| ☐   | SSPX logo                                                                | Associated Organizations (placeholder only) | **Not used until permission is confirmed**                                                           |
+| ☐   | Capuchin Friars logo                                                     | Associated Organizations (placeholder only) | **Not used until permission is confirmed**                                                           |
+| ☑   | 15 construction photos                                                   | Chapel Build gallery                        | Provided 2026-10-26; resized and metadata stripped                                                   |
+| ☐   | People shown in the construction photos are OK with being on the website | Chapel Build gallery                        | Friars and volunteers are recognizable; worth a quick check                                          |
+| ☐   | Renderings ("Chapel Rendering 7A", "Layout render 1/2")                  | Not used yet                                | Could illustrate "The Project" on Chapel Build                                                       |
 
 ## Page copy
 

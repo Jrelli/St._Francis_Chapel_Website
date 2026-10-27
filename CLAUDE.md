@@ -8,7 +8,7 @@ DNS cutover), [CONTENT_GUIDE.md](CONTENT_GUIDE.md) (volunteer editors),
 ## Status (as of 2026-10-26)
 
 - **Phase 1 done:** scaffold, config, layout, home page, stub pages, calendar module, docs, CI.
-- **Content batch (2026-10-26):** aerial-photo hero, new tagline, church illustration on the home
+- **Content batch (2026-10-26):** new tagline (an aerial-photo hero was tried and removed at the owner's request), church illustration on the home
   build box, construction gallery (auto-loads `src/assets/photos/construction/`, alt text in
   `src/data/construction-photos.yaml`), staff (`src/data/staff.yaml`), FAQ (`src/data/faq.yaml`),
   mission-organization copy (About, Organizations), the letter to Bishop Beckman
