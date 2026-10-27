@@ -1,7 +1,7 @@
 # Rebuilds the live site every 3 hours so new Google Calendar events (and, in Phase 2,
 # new bulletins) appear without anyone touching code.
 #
-# How it works: Cloudflare Pages gives us a secret "deploy hook" URL. POSTing to it starts
+# How it works: Cloudflare (Workers Builds) gives us a secret "deploy hook" URL. POSTing to it starts
 # a fresh build, which re-fetches the calendar. Setup steps are in README.md.
 #
 # Note: GitHub pauses scheduled workflows in repos with no commits for 60 days. If that
@@ -12,7 +12,7 @@ name: Scheduled rebuild
 on:
   schedule:
     # Minute 17 avoids the top-of-hour rush, when GitHub often delays scheduled jobs.
-    # Times are UTC; every 3 hours is ~240 builds/month (Cloudflare free plan allows 500).
+    # Times are UTC; every 3 hours is ~240 builds/month (~1 minute each; within the free plan).
     - cron: '17 */3 * * *'
   workflow_dispatch: # adds a "Run workflow" button for manual rebuilds
 
@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Trigger Cloudflare Pages deploy hook
+      - name: Trigger Cloudflare deploy hook
         env:
           DEPLOY_HOOK_URL: ${{ secrets.CF_DEPLOY_HOOK_URL }}
         run: |

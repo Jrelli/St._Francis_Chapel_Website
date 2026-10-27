@@ -1,7 +1,7 @@
 # Saint Francis Mission Chapel website
 
 Static website for Saint Francis Mission Chapel, a Traditional Latin Mass mission in New Market,
-Tennessee. Built with [Astro](https://astro.build) and hosted free on Cloudflare Pages.
+Tennessee. Built with [Astro](https://astro.build) and hosted free on Cloudflare (Workers static assets).
 
 - **No server, database, logins or cookies.** Every page is plain HTML built ahead of time.
 - **Volunteers never touch code.** Events come from a public Google Calendar, and (Phase 2)
@@ -11,7 +11,7 @@ Tennessee. Built with [Astro](https://astro.build) and hosted free on Cloudflare
 **Contents:** [Local development](#local-development) · [Project layout](#project-layout) ·
 [Environment variables & Google setup](#environment-variables--google-setup) ·
 [How the calendar works](#how-the-calendar-works) ·
-[Deploying to Cloudflare Pages](#deploying-to-cloudflare-pages) ·
+[Deploying to Cloudflare](#deploying-to-cloudflare) ·
 [Scheduled rebuilds](#scheduled-rebuilds) · [Domain cutover guide](#domain-cutover-guide) ·
 [Security notes](#security-notes) · [Costs](#costs)
 
@@ -106,7 +106,7 @@ Use a chapel-owned Google account, not a personal one.
    - **Application restrictions → Websites**, add:
      - `https://saintfrancischapel.com/*`
      - `https://*.saintfrancischapel.com/*`
-     - `https://*.pages.dev/*` (better: your project's own, e.g. `https://*.sfmc.pages.dev/*`)
+     - `https://*.<your-subdomain>.workers.dev/*` (your Worker's address; see Deploying)
      - `http://localhost:4321/*` (optional, for testing live mode locally)
 6. Put the keys in `.env` locally and in Cloudflare (next sections). Run `npm run build` and look
    for `[calendar] Loaded N events from Google Calendar.`
@@ -119,7 +119,7 @@ calendar_). The build logs a warning, and the pages show a **"Test calendar"** n
 so it can't slip into production unnoticed. Delete the variable to go back to the chapel calendar.
 
 - Locally: put it in `.env`.
-- On Cloudflare: set it under **Preview** variables only, never **Production**.
+- On Cloudflare: add it to the Build variables while testing, and **delete it before launch**.
 - Keys created in a personal Google Cloud project work for testing. For launch, recreate them in a
   chapel-owned project so the site doesn't depend on one person's account.
 
@@ -152,22 +152,29 @@ Google Calendar ──(build, every ~3h)──► static HTML: This week, Upcomi
 - **Timezone:** builds run in UTC and visitors can be anywhere, so all date math goes through
   `src/lib/dates.ts`, which uses `America/Chicago` explicitly. Tests cover daylight-saving changes.
 
-## Deploying to Cloudflare Pages
+## Deploying to Cloudflare
+
+The site is deployed as a **Cloudflare Worker with static assets only** (no server code). That's
+what Cloudflare's dashboard creates by default now; it behaves like the older "Pages" product,
+and requests for static files are free and unlimited. [`wrangler.jsonc`](wrangler.jsonc) tells
+Cloudflare to upload `dist/` as-is. **Keep that file:** without it, the deploy step auto-installs an
+SSR adapter and rebuilds the site without our variables.
 
 Use a chapel-owned Cloudflare account. The free plan is enough.
 
 1. Push this repository to GitHub.
-2. Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to Git** → pick the repo.
+2. Cloudflare dashboard → **Workers & Pages → Create → Import a repository** → pick the repo.
 3. Build settings:
-   - Framework preset: **Astro**
    - Build command: `npm run build`
-   - Build output directory: `dist`
+   - Deploy command: `npx wrangler deploy` (the default)
    - Node version comes from `.node-version` automatically.
-4. **Settings → Variables and Secrets** (add to both _Production_ and _Preview_):
-   - `GOOGLE_API_KEY`: type **Secret**
-   - `PUBLIC_GOOGLE_CALENDAR_BROWSER_KEY`: type Text
-5. Deploy. The site appears at `https://<project>.pages.dev`. Every push to `main` redeploys;
-   other branches get preview URLs.
+4. **Settings → Build → Build variables and secrets.** These are the ones the build reads.
+   (The separate _Settings → Variables & Secrets_ list is for Worker code at runtime; this site
+   has none, so variables there do nothing.)
+   - `GOOGLE_API_KEY`: the build key
+   - `PUBLIC_GOOGLE_CALENDAR_BROWSER_KEY`: the browser key
+5. Deploy. The site appears at `https://st-francis-chapel-website.<your-subdomain>.workers.dev`.
+   Every push to `main` redeploys.
 
 `public/_headers` is applied by Cloudflare automatically (CSP and other security headers). If you
 later embed something (e.g. a map), its domain must be added to the CSP there or it will be blocked.
@@ -177,9 +184,8 @@ later embed something (e.g. a map), its domain must be added to the CSP there or
 Calendar changes reach the static pages on the next build, so we rebuild every 3 hours.
 (The live "This week" box doesn't wait. It updates immediately in visitors' browsers.)
 
-1. Cloudflare: Pages project → **Settings → Builds → Deploy hooks → Add deploy hook**
-   (name: `scheduled`, branch: `main`). Copy the URL. **Treat it like a password:** anyone with
-   it can trigger builds.
+1. Cloudflare: the Worker → **Settings → Builds → Deploy Hooks** → add one (name: `scheduled`,
+   branch: `main`). Copy the URL. **Treat it like a password:** anyone with it can trigger builds.
 2. GitHub: repo → **Settings → Secrets and variables → Actions → New repository secret**:
    name `CF_DEPLOY_HOOK_URL`, value = the hook URL.
 3. Test: GitHub → **Actions → Scheduled rebuild → Run workflow**, then watch a new deployment
@@ -187,23 +193,24 @@ Calendar changes reach the static pages on the next build, so we rebuild every 3
 
 Notes:
 
-- Every 3 hours ≈ 240 builds/month; the free plan allows 500, leaving plenty for normal edits.
-  Change the `cron:` line in `.github/workflows/scheduled-rebuild.yml` to adjust.
+- Every 3 hours ≈ 240 builds/month. Each build takes about a minute, well within the free plan's
+  build allowance. Change the `cron:` line in `.github/workflows/scheduled-rebuild.yml` to adjust.
 - **GitHub pauses scheduled workflows in a public repo after 60 days without commits** and emails
   the repo owner. Re-enable it on the Actions tab. If that becomes a nuisance, an alternative is a
   free Cloudflare Worker with a Cron Trigger that POSTs the same hook.
-- Need an update right now? Use **Run workflow** (above) or Cloudflare's **Retry deployment**.
+- Need an update right now? Use **Run workflow** (above), or **Retry build** on the Worker's
+  _Deployments_ tab in Cloudflare.
 
 ## Domain cutover guide
 
-> **Document only. Nothing here is automated.** Do this after the site works on `*.pages.dev`.
+> **Document only. Nothing here is automated.** Do this after the site works on its `*.workers.dev` address.
 
 **What we know (2026-10-26):** the domain is registered at **GoDaddy**, and
 **office@saintfrancischapel.com is a live Google Workspace mailbox**. That means branch **(a)**
 below applies: email must keep working through the move. Still to find out: where DNS is hosted.
 
 The plan: keep GoDaddy as the registrar, move **DNS** to Cloudflare (free), then point the domain
-at Cloudflare Pages. The canonical address is **`https://saintfrancischapel.com`** (apex); `www`
+at the Cloudflare Worker that serves the site. The canonical address is **`https://saintfrancischapel.com`** (apex); `www`
 redirects to it.
 
 Pick a quiet time (a weekday, not Saturday night before Mass). DNS changes can take a few hours to
@@ -248,7 +255,7 @@ email**. You can generate one there and add it later in Cloudflare.
 
 GoDaddy often adds a **"Parked"** `A @` record, a `www` CNAME to the parked page, and sometimes
 **domain forwarding**. Those are for GoDaddy's placeholder page: note them, but don't carry them
-over, because Pages replaces them. Turn off any GoDaddy domain forwarding.
+over, because Cloudflare replaces them. Turn off any GoDaddy domain forwarding.
 
 ### Step 2: Add the domain to Cloudflare and verify the import
 
@@ -302,14 +309,14 @@ GoDaddy records untouched** until everything is verified; they are the rollback 
 Cloudflare → the domain → **DNS → Settings → DNSSEC → Enable**. It shows a DS record; add it at
 GoDaddy (**DNSSEC → Add DS record**). Cloudflare confirms when it's active.
 
-### Step 7: Connect the custom domains to Pages, with one canonical address
+### Step 7: Connect the custom domains to the site, with one canonical address
 
-1. Pages project → **Custom domains → Set up a custom domain** → `saintfrancischapel.com`.
+1. The Worker → **Settings → Domains & Routes → Add → Custom domain** → `saintfrancischapel.com`.
    Repeat for `www.saintfrancischapel.com`. Cloudflare creates the DNS records and HTTPS
    certificates.
 2. Redirect `www` to the apex: Cloudflare → the domain → **Rules → Redirect Rules → Create rule
    from template → "Redirect from WWW to Root"**: 301, keep path and query string.
-   (Pages' own `_redirects` file can't redirect between hostnames, so this is done at the zone.)
+   (The site's own `_redirects` file can't redirect between hostnames, so this is done at the zone.)
 3. **SSL/TLS → Edge Certificates → Always Use HTTPS: On.**
 4. The browser API key already allows `saintfrancischapel.com` (see Google setup). Nothing to change.
 
@@ -351,7 +358,7 @@ GoDaddy (**DNSSEC → Add DS record**). Cloudflare confirms when it's active.
 
 | Item                         | Cost                                   |
 | ---------------------------- | -------------------------------------- |
-| Cloudflare Pages + DNS       | $0 (free plan)                         |
+| Cloudflare Workers + DNS     | $0 (free plan)                         |
 | GitHub repo + Actions        | $0 (well within free minutes)          |
 | Google Calendar / Drive APIs | $0 (free quota is far above our usage) |
 | Domain (GoDaddy)             | Annual renewal, already being paid     |

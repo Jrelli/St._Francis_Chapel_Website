@@ -1,7 +1,7 @@
 # CLAUDE.md
 
 Static site for **Saint Francis Mission Chapel** (Traditional Latin Mass / SSPX mission, New Market, TN).
-Astro 7 → Cloudflare Pages, ~$0/year, no backend. Human docs: [README.md](README.md) (setup, deploy,
+Astro 7 → Cloudflare Worker serving static assets only (Workers Builds; not the older Pages product), ~$0/year, no backend. Human docs: [README.md](README.md) (setup, deploy,
 DNS cutover), [CONTENT_GUIDE.md](CONTENT_GUIDE.md) (volunteer editors),
 [CONTENT_TO_CONFIRM.md](CONTENT_TO_CONFIRM.md) (unconfirmed facts).
 
@@ -13,7 +13,9 @@ DNS cutover), [CONTENT_GUIDE.md](CONTENT_GUIDE.md) (volunteer editors),
   gallery (`src/assets/photos/`), real page copy.
 - **Testing setup:** the owner's personal Google Cloud keys plus a personal test calendar, via
   `GOOGLE_CALENDAR_ID` in the local `.env`. Verified working locally (build fetch and live refresh).
-  A Cloudflare Pages project exists; its first build failed on an invalid key (since diagnosed).
+  Cloudflare Worker `st-francis-chapel-website` deploys from GitHub `main`. Its build variables
+  (Settings → Build → Build variables and secrets) hold the keys plus `GOOGLE_CALENDAR_ID`
+  (delete that one before launch).
 - **Domain:** registered at GoDaddy; DNS host not yet known. office@saintfrancischapel.com is a
   live **Google Workspace** mailbox, so DNS cutover must preserve its MX/SPF/DKIM/DMARC (README guide).
 
@@ -68,6 +70,11 @@ Node 24 (`.node-version`). `npm run dev` · `npm run build` · `npm test` · `np
   allows it. The mobile nav collapses via `@media (scripting: enabled)` (no inline JS).
 
 ## Gotchas
+
+- **Keep `wrangler.jsonc`** (static assets only, `dist/`). Without it, Cloudflare's
+  `npx wrangler deploy` auto-runs `astro add cloudflare` (SSR adapter, KV, Images bindings) and
+  rebuilds the site without the build variables. Don't add the Cloudflare adapter; the site is
+  fully static. Check changes with `npx wrangler deploy --dry-run` (no login needed).
 
 - ESLint 10: `eslint-plugin-jsx-a11y` doesn't support it, so the project uses the
   `eslint-plugin-jsx-a11y-x` fork.

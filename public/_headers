@@ -1,4 +1,4 @@
-# Cloudflare Pages response headers. Docs: https://developers.cloudflare.com/pages/configuration/headers/
+# Cloudflare static-asset response headers. Docs: https://developers.cloudflare.com/workers/static-assets/headers/
 #
 # Content-Security-Policy, one directive at a time:
 #   default-src 'self'                         only load things from our own site by default
