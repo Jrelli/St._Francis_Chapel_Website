@@ -1,11 +1,7 @@
-/**
- * Loads and validates src/data/schedule.yaml at build time.
- * Zod checks the shape, so a volunteer's typo fails the build with a readable message
- * instead of publishing a half-empty schedule.
- */
+/** Loads and validates src/data/schedule.yaml at build time. */
 import { z } from 'astro/zod';
-import { parse } from 'yaml';
 import raw from '../data/schedule.yaml?raw';
+import { parseYamlData } from './yaml-data';
 
 const ItemSchema = z.object({
   days: z.string().min(1),
@@ -26,15 +22,4 @@ const ScheduleSchema = z.object({
 export type Schedule = z.infer<typeof ScheduleSchema>;
 export type ScheduleItem = z.infer<typeof ItemSchema>;
 
-function load(): Schedule {
-  const result = ScheduleSchema.safeParse(parse(raw));
-  if (!result.success) {
-    const problems = result.error.issues
-      .map((i) => `  - ${i.path.join(' → ') || '(top level)'}: ${i.message}`)
-      .join('\n');
-    throw new Error(`src/data/schedule.yaml has a problem:\n${problems}`);
-  }
-  return result.data;
-}
-
-export const schedule = load();
+export const schedule: Schedule = parseYamlData(raw, ScheduleSchema, 'src/data/schedule.yaml');

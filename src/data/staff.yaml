@@ -1,0 +1,40 @@
+# Staff and board members shown on About → Staff.
+#
+# How to edit:
+#   - Keep the indentation (spaces, not tabs) exactly as it is.
+#   - Each person has a `role` and a `name`. Add or remove "- role: …" blocks to add or remove people.
+#   - Put text that contains a colon (:) inside "quotes".
+#   - Don't add private details (personal phone numbers, home addresses).
+
+groups:
+  - title: Chapel Team
+    people:
+      - role: Mission Priest
+        name: Fr. David Mary of Our Lady of Sorrows, T.C.F.M.
+      - role: Mission Secretary
+        name: Jennifer Strand
+      - role: Financial Officer
+        name: John Paul Diaz
+      - role: Director of Maintenance
+        name: Dan Strand
+      - role: Choir Director
+        name: Ashney Patoka
+      - role: Communication Director
+        name: Drew Chandler
+      - role: Sacristan
+        name: Br. Seraphin Maria of Our Lady of Divine Mercy, T.C.F.M.
+      - role: Director of Young Adult Ministry
+        name: Cullen Chrivia
+
+  - title: Una Voce Tennessee Board of Directors
+    people:
+      - role: Chairman
+        name: Josh Patoka
+      - role: Vice Chairman
+        name: Dr. Wayne Berry
+      - role: Finance Officer
+        name: John Paul Diaz
+      - role: Secretary
+        name: Cullen Chrivia
+      - role: Chaplain
+        name: Fr. David Mary of Our Lady of Sorrows

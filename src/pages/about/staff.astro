@@ -1,16 +1,72 @@
 ---
+import { z } from 'astro/zod';
 import AboutNav from '../../components/AboutNav.astro';
 import PageIntro from '../../components/PageIntro.astro';
-import Placeholder from '../../components/Placeholder.astro';
+import raw from '../../data/staff.yaml?raw';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { parseYamlData } from '../../lib/yaml-data';
+
+const StaffSchema = z.object({
+  groups: z
+    .array(
+      z.object({
+        title: z.string().min(1),
+        people: z.array(z.object({ role: z.string().min(1), name: z.string().min(1) })).min(1),
+      }),
+    )
+    .min(1),
+});
+
+const { groups } = parseYamlData(raw, StaffSchema, 'src/data/staff.yaml');
 ---
 
-<BaseLayout title="Staff">
+<BaseLayout title="Staff" description="The chapel team and Una Voce Tennessee board of directors.">
   <div class="container section">
     <PageIntro eyebrow="About" title="Staff" />
     <AboutNav />
-    <div class="prose">
-      <Placeholder what="the priests who serve the mission and key volunteers, with photos if desired." />
-    </div>
+    {groups.map((group) => (
+      <section class="staff-group" aria-label={group.title}>
+        <h2>{group.title}</h2>
+        <ul class="staff-list" role="list">
+          {group.people.map((person) => (
+            <li class="card staff-card">
+              <p class="eyebrow">{person.role}</p>
+              <p class="staff-card__name">{person.name}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
   </div>
 </BaseLayout>
+
+<style>
+  .staff-group + .staff-group {
+    margin-top: 2.5rem;
+  }
+  .staff-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+  }
+  .staff-card {
+    padding: 1rem 1.25rem;
+  }
+  .staff-card__name {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  @media (min-width: 40em) {
+    .staff-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 64em) {
+    .staff-list {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

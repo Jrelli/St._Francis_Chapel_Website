@@ -1,0 +1,48 @@
+# Frequently asked questions shown on About → FAQ.
+#
+# How to edit:
+#   - Each entry has a `question` and an `answer`.
+#   - Keep the "answer: |" line, and indent every line of the answer by 6 spaces.
+#   - Leave a blank line between paragraphs of an answer.
+#   - Questions appear in the order listed here.
+
+questions:
+  - question: Under whose authority does our chapel operate?
+    answer: |
+      Our chapel is an independently operated traditional Catholic mission served by a priest
+      affiliated with the Society of Saint Pius X (SSPX). While we share the Society's commitment
+      to preserving the traditional Catholic Faith, Mass, and sacraments, our chapel is
+      independently operated and is not directly administered by the SSPX or the local Catholic
+      diocese.
+
+  - question: Are donations to Saint Francis Mission Chapel tax-deductible?
+    answer: |
+      Yes. Our chapel is recognized as a 501(c)(3) nonprofit religious organization. Charitable
+      donations made to the chapel are tax-deductible to the extent permitted by law. Your
+      generosity helps support the chapel's operations, maintenance, and religious mission.
+
+  - question: Is Saint Francis Mission Chapel open to visitors?
+    answer: |
+      Absolutely. All are welcome to attend Holy Mass and experience the beauty and reverence of
+      traditional Catholic worship. Whether you are a lifelong Catholic or just curious about the
+      traditional Latin Mass, we welcome your visit. Please contact the parish office to confirm
+      Mass times and locations.
+
+  - question: Can I receive Holy Communion?
+    answer: |
+      Holy Communion is reserved for baptized, practicing Catholics who are properly disposed and
+      in a state of grace.
+
+      To receive Holy Communion, one must be living in accordance with the teachings of the
+      Catholic Church and have received the Sacrament of Confession after any mortal sin. One must
+      also observe the Eucharistic fast of at least one hour before receiving Communion. Water and
+      medicine do not break this fast.
+
+      Above all, one should approach the Blessed Sacrament with faith, reverence, and a sincere
+      desire to receive the Body, Blood, Soul, and Divinity of Our Lord Jesus Christ.
+
+      At our chapel, Holy Communion is received kneeling (when physically possible) and on the
+      tongue, according to the traditional practice of the Church.
+
+      Those not receiving Holy Communion are welcome to remain in their pews and unite themselves
+      spiritually to Our Lord in prayer.

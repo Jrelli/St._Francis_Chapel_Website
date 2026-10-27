@@ -1,18 +1,64 @@
 ---
-// When writing the FAQ, make each question a native <details><summary> element: it expands
-// and collapses with no JavaScript and works with keyboards and screen readers.
+// Questions live in src/data/faq.yaml. Each is a native <details>/<summary> element: it
+// expands and collapses with no JavaScript and works with keyboards and screen readers.
+import { z } from 'astro/zod';
 import AboutNav from '../../components/AboutNav.astro';
 import PageIntro from '../../components/PageIntro.astro';
-import Placeholder from '../../components/Placeholder.astro';
+import raw from '../../data/faq.yaml?raw';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { paragraphs, parseYamlData } from '../../lib/yaml-data';
+
+const FaqSchema = z.object({
+  questions: z.array(z.object({ question: z.string().min(1), answer: z.string().min(1) })).min(1),
+});
+
+const { questions } = parseYamlData(raw, FaqSchema, 'src/data/faq.yaml');
 ---
 
-<BaseLayout title="Frequently Asked Questions">
+<BaseLayout
+  title="Frequently Asked Questions"
+  description="Answers to common questions about Saint Francis Mission Chapel."
+>
   <div class="container section">
     <PageIntro eyebrow="About" title="Frequently Asked Questions" />
     <AboutNav />
-    <div class="prose">
-      <Placeholder what="common questions and answers." />
+    <div class="faq prose">
+      {questions.map((q) => (
+        <details class="faq__item">
+          <summary>{q.question}</summary>
+          <div class="faq__answer">
+            {paragraphs(q.answer).map((p) => (
+              <p>{p}</p>
+            ))}
+          </div>
+        </details>
+      ))}
     </div>
   </div>
 </BaseLayout>
+
+<style>
+  .faq__item {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--gold);
+    border-radius: var(--radius);
+    margin-bottom: 0.75rem;
+  }
+  .faq__item[open] {
+    border-left-color: var(--red);
+  }
+  summary {
+    cursor: pointer;
+    padding: 0.9rem 1.1rem;
+    font-weight: 700;
+    color: var(--navy);
+    min-height: 48px;
+  }
+  summary:hover {
+    color: var(--red);
+  }
+  .faq__answer {
+    padding: 0 1.1rem 0.25rem;
+  }
+</style>
