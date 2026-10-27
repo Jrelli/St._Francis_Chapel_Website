@@ -30,7 +30,7 @@ export const site = {
   /** Production address; used for canonical URLs and the sitemap. Apex is canonical. */
   url: fact('https://saintfrancischapel.com', true),
 
-  taglineLatin: fact('Ave Maria gratia plena Dominus tecum!', false, 'From Wix draft'),
+  taglineLatin: fact('Ave Domina, sancta Regina, sancta Dei genetrix Maria!', true),
   tagline: fact('The fullness of traditional Catholic life in Tennessee', true),
   description: fact(
     'A traditional Latin Mass mission chapel of the Society of Saint Pius X in New Market, Tennessee.',

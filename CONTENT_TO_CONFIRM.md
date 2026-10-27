@@ -16,7 +16,7 @@ unconfirmed config values have a dotted orange outline (hover to see the TODO).
 | ☑   | `name`                            | Saint Francis Mission Chapel                                                                        | Everywhere (header, titles, footer)                                    | Matches the chapel seal                                                                       |
 | ☐   | `shortName`                       | St. Francis Chapel                                                                                  | Mobile header                                                          | Preferred short form?                                                                         |
 | ☑   | `url`                             | https://saintfrancischapel.com                                                                      | Canonical links, sitemap                                               | Apex chosen as the canonical address                                                          |
-| ☐   | `taglineLatin`                    | Ave Maria gratia plena Dominus tecum!                                                               | Home hero, footer                                                      | Wix draft                                                                                     |
+| ☑   | `taglineLatin`                    | Ave Domina, sancta Regina, sancta Dei genetrix Maria!                                               | Home hero, footer                                                      | Provided by the owner 2026-10-27                                                              |
 | ☑   | `tagline`                         | The fullness of traditional Catholic life in Tennessee                                              | Home hero, page meta description fallback                              | Chosen by the stakeholder 2026-10-27 ("keeping the wording careful")                          |
 | ☐   | `description`                     | A traditional Latin Mass mission chapel of the Society of Saint Pius X in New Market, Tennessee.    | Search/social description, About                                       | How should the SSPX relationship be worded?                                                   |
 | ☐   | `mailingAddress`                  | P.O. Box 27, New Market, TN 37820                                                                   | Footer, Contact                                                        | Wix draft                                                                                     |
@@ -84,7 +84,7 @@ Pages show a dashed "Coming soon" box where copy is still needed.
 - ☐ About → Visiting for the First Time (dress, etiquette, what to expect at a TLM)
 - ☐ Chapel Build → "The Project": **drafted 2026-10-27** from the same posts. Please review; text is in `src/pages/chapel-build.astro`
 - ☐ Home: the "Help Us Build a Permanent Home" heading and "Follow the progress" wording
-- ☐ Locations: each Mass/Confession location's address and written directions
+- ☐ Locations: **addresses and times filled in 2026-10-27** from the Oct 25 newsletter. Still needed: written turn-by-turn directions for each location
 - ☐ Associated Organizations → homeschool groups description
 
 ## Questions raised by the new content
@@ -106,7 +106,10 @@ These are worded as provided. Visitors may notice the differences, so they're wo
 | ☐   | Target: finish the sanctuary for Mass during Advent (2026). Still the plan?                                                                                                                                                                 | Chapel Build               |
 | ☐   | Donations: the posts mention a GiveSendGo campaign and mailed checks; the site's Donate button uses the Stripe link. Which should the site offer?                                                                                           | Donate, Chapel Build       |
 | ☐   | The Oct 1 post says "Diocese of East Tennessee"; the site uses the official name, Diocese of Knoxville.                                                                                                                                     | Our Story                  |
-| ☐   | Location: the posts place the property in Jefferson County (which includes both Dandridge and New Market). Street address for the Locations page?                                                                                           | Locations, Our Story       |
+| ☐   | Is 205 Underwood Rd, New Market (from the Oct 25 newsletter) the regular Sunday Mass location, and is it the new property? The Locations page lists it as "Sunday Mass".                                                                    | Locations, Our Story       |
+| ☐   | Sunday times: the Oct 25 newsletter says Confession at 9:30 AM (outside) with the Rosary in Latin; the home schedule says Confession 9:00 – 10:00 AM. Which is the regular time?                                                            | Home, Locations            |
+| ☐   | Weekday Mass: the newsletter says 8:00 AM Low Mass at the Hermitage Monday–Saturday; the home schedule says "Daily". Is there also a Sunday Mass there?                                                                                     | Home, Locations            |
+| ☐   | Fundraising: the Oct 25 newsletter says the goal is $150k to be ready by Advent ($31k raised); GiveSendGo shows $303,000; the site says $300,000.                                                                                           | Chapel Build               |
 
 ## Domain and accounts
 
