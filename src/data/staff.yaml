@@ -2,12 +2,14 @@
 #
 # How to edit:
 #   - Keep the indentation (spaces, not tabs) exactly as it is.
+#   - Each group has an `id` (used by the website; don't change it) and a `title`.
 #   - Each person has a `role` and a `name`. Add or remove "- role: …" blocks to add or remove people.
 #   - Put text that contains a colon (:) inside "quotes".
 #   - Don't add private details (personal phone numbers, home addresses).
 
 groups:
-  - title: Chapel Team
+  - id: chapel-team
+    title: Chapel Team
     people:
       - role: Mission Priest
         name: Fr. David Mary of Our Lady of Sorrows, T.C.F.M.
@@ -26,7 +28,8 @@ groups:
       - role: Director of Young Adult Ministry
         name: Cullen Chrivia
 
-  - title: Una Voce Tennessee Board of Directors
+  - id: una-voce-board
+    title: Una Voce Tennessee Board of Directors
     people:
       - role: Chairman
         name: Josh Patoka

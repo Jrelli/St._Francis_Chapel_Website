@@ -1,0 +1,58 @@
+---
+// Una Voce Tennessee: the nonprofit that owns and operates the mission property.
+// Board members come from src/data/staff.yaml (group id "una-voce-board").
+import AboutNav from '../../components/AboutNav.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import PeopleList from '../../components/PeopleList.astro';
+import Placeholder from '../../components/Placeholder.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { staffGroup } from '../../lib/staff';
+
+const board = staffGroup('una-voce-board');
+---
+
+<BaseLayout
+  title="Una Voce Tennessee"
+  description="Una Voce Tennessee owns and operates the Saint Francis Mission property."
+>
+  <div class="container section">
+    <PageIntro
+      eyebrow="About"
+      title="Una Voce Tennessee"
+      lead="The nonprofit organization that owns and operates our mission property."
+    />
+    <AboutNav />
+
+    <div class="prose">
+      <section aria-labelledby="who-heading">
+        <h2 id="who-heading">Who We Are</h2>
+        <p>
+          Our Mission property is owned and operated by Una Voce Tennessee, a tax exempt
+          international organization designed to promote and protect the Traditional Latin Mass.
+        </p>
+        <p>
+          The property is five acres of land in Jefferson County, Tennessee, where a large barn is
+          being converted into Saint Francis Mission Chapel.{' '}
+          <a href="/chapel-build/">Follow the chapel build</a>.
+        </p>
+      </section>
+
+      <section aria-labelledby="mission-heading">
+        <h2 id="mission-heading">Mission Statement</h2>
+        <Placeholder what="the mission statement of Una Voce Tennessee." />
+      </section>
+    </div>
+
+    <section aria-labelledby="board-heading">
+      <h2 id="board-heading">{board.title}</h2>
+      <PeopleList people={board.people} />
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  section + section,
+  .prose + section {
+    margin-top: 2.5rem;
+  }
+</style>

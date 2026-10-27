@@ -1,0 +1,47 @@
+---
+/** A grid of role + name cards (Staff page, Una Voce Tennessee board). */
+import type { StaffGroup } from '../lib/staff';
+
+interface Props {
+  people: StaffGroup['people'];
+}
+
+const { people } = Astro.props;
+---
+
+<ul class="people" role="list">
+  {people.map((person) => (
+    <li class="card person">
+      <p class="eyebrow">{person.role}</p>
+      <p class="person__name">{person.name}</p>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .people {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+  }
+  .person {
+    padding: 1rem 1.25rem;
+  }
+  .person__name {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  @media (min-width: 40em) {
+    .people {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 64em) {
+    .people {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

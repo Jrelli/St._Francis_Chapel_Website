@@ -1,40 +1,24 @@
 ---
-import { z } from 'astro/zod';
 import AboutNav from '../../components/AboutNav.astro';
 import PageIntro from '../../components/PageIntro.astro';
-import raw from '../../data/staff.yaml?raw';
+import PeopleList from '../../components/PeopleList.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { parseYamlData } from '../../lib/yaml-data';
-
-const StaffSchema = z.object({
-  groups: z
-    .array(
-      z.object({
-        title: z.string().min(1),
-        people: z.array(z.object({ role: z.string().min(1), name: z.string().min(1) })).min(1),
-      }),
-    )
-    .min(1),
-});
-
-const { groups } = parseYamlData(raw, StaffSchema, 'src/data/staff.yaml');
+import { staffGroups } from '../../lib/staff';
 ---
 
 <BaseLayout title="Staff" description="The chapel team and Una Voce Tennessee board of directors.">
   <div class="container section">
     <PageIntro eyebrow="About" title="Staff" />
     <AboutNav />
-    {groups.map((group) => (
-      <section class="staff-group" aria-label={group.title}>
-        <h2>{group.title}</h2>
-        <ul class="staff-list" role="list">
-          {group.people.map((person) => (
-            <li class="card staff-card">
-              <p class="eyebrow">{person.role}</p>
-              <p class="staff-card__name">{person.name}</p>
-            </li>
-          ))}
-        </ul>
+    {staffGroups.map((group) => (
+      <section class="staff-group" aria-labelledby={`group-${group.id}`}>
+        <h2 id={`group-${group.id}`}>{group.title}</h2>
+        <PeopleList people={group.people} />
+        {group.id === 'una-voce-board' && (
+          <p class="staff-group__more">
+            <a href="/about/una-voce-tennessee/">About Una Voce Tennessee</a>
+          </p>
+        )}
       </section>
     ))}
   </div>
@@ -44,29 +28,7 @@ const { groups } = parseYamlData(raw, StaffSchema, 'src/data/staff.yaml');
   .staff-group + .staff-group {
     margin-top: 2.5rem;
   }
-  .staff-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 1rem;
-  }
-  .staff-card {
-    padding: 1rem 1.25rem;
-  }
-  .staff-card__name {
-    margin: 0;
-    font-size: 1.1rem;
-    font-weight: 600;
-  }
-  @media (min-width: 40em) {
-    .staff-list {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  @media (min-width: 64em) {
-    .staff-list {
-      grid-template-columns: repeat(3, 1fr);
-    }
+  .staff-group__more {
+    margin-top: 1rem;
   }
 </style>
