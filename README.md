@@ -1,6 +1,6 @@
 # Saint Francis Mission Chapel website
 
-Static website for Saint Francis Mission Chapel, a Traditional Latin Mass mission in New Market,
+Static website for Saint Francis Mission Chapel, a Traditional Latin Mass mission in Dandridge,
 Tennessee. Built with [Astro](https://astro.build) and hosted free on Cloudflare (Workers static assets).
 
 - **No server, database, logins or cookies.** Every page is plain HTML built ahead of time.
