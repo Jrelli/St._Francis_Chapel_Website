@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
-import engraving from '../assets/art/engraving.png';
-import linocut from '../assets/art/linocut-blessing.png';
+import churchIllustration from '../assets/art/church-illustration.jpg';
+import aerialPhoto from '../assets/photos/aerial-property.jpg';
 import EventList from '../components/EventList.astro';
 import Fact from '../components/Fact.astro';
 import Schedule from '../components/Schedule.astro';
@@ -29,8 +29,21 @@ const quickLinks = [
 ---
 
 <BaseLayout>
-  <!-- Compact hero so Mass times stay above the fold on phones. -->
+  <!--
+    Aerial photo of the property behind the top of the page, fading into the parchment.
+    It's an <img> (not a CSS background) so it gets responsive sizes and needs no inline style.
+    The text sits below the fade, on near-solid parchment, so contrast stays AA.
+  -->
   <section class="hero">
+    <Image
+      src={aerialPhoto}
+      alt=""
+      widths={[800, 1280, 1672]}
+      sizes="100vw"
+      class="hero__photo"
+      loading="eager"
+      fetchpriority="high"
+    />
     <div class="container hero__inner">
       <div class="hero__text">
         <h1>{site.name.value}</h1>
@@ -45,14 +58,6 @@ const quickLinks = [
           </p>
         )}
       </div>
-      <Image
-        src={engraving}
-        alt="Engraving of Saint Francis of Assisi with arms raised, bearing the stigmata"
-        widths={[240, 480]}
-        sizes="240px"
-        class="hero__art"
-        loading="eager"
-      />
     </div>
   </section>
 
@@ -82,10 +87,10 @@ const quickLinks = [
   <section class="build" aria-labelledby="build-heading">
     <div class="container build__inner">
       <Image
-        src={linocut}
-        alt=""
-        widths={[180, 360]}
-        sizes="(min-width: 40em) 180px, 120px"
+        src={churchIllustration}
+        alt="Watercolor illustration of the chapel building in a mown clearing, surrounded by wooded hills"
+        widths={[480, 800, 1150]}
+        sizes="(min-width: 64em) 34rem, (min-width: 40em) 45vw, 100vw"
         class="build__art"
         loading="lazy"
       />
@@ -127,14 +132,24 @@ const quickLinks = [
 
 <style>
   .hero {
-    padding-block: 1.25rem 0.5rem;
+    /* How much of the photo shows above the title. Kept short on phones so Mass times
+       stay above the fold. */
+    --photo-h: 8.5rem;
+    position: relative;
+    isolation: isolate; /* keeps the photo's negative z-index inside this section */
+    padding-block: var(--photo-h) 0.5rem;
   }
 
-  .hero__inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
+  .hero__photo {
+    position: absolute;
+    inset: 0 0 auto;
+    z-index: -1;
+    width: 100%;
+    height: calc(var(--photo-h) + 1.25rem);
+    object-fit: cover;
+    object-position: center 22%;
+    /* Fade the photo out toward the bottom so it melts into the parchment. */
+    mask-image: linear-gradient(to bottom, #000 35%, transparent 96%);
   }
 
   .hero h1 {
@@ -150,14 +165,6 @@ const quickLinks = [
   .hero__tagline {
     color: var(--ink-muted);
     margin: 0;
-  }
-
-  /* The engraving is decoration on wide screens only; phones go straight to Mass times. */
-  .hero__art {
-    display: none;
-    width: 200px;
-    height: auto;
-    mix-blend-mode: multiply;
   }
 
   .home-grid {
@@ -185,8 +192,10 @@ const quickLinks = [
   }
 
   .build__art {
-    width: 120px;
-    margin-inline: auto;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    border: 1px solid var(--rule);
   }
 
   .build__actions {
@@ -224,23 +233,17 @@ const quickLinks = [
       grid-template-columns: repeat(2, 1fr);
     }
     .build__inner {
-      grid-template-columns: auto 1fr;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
     }
-    .build__art {
-      width: 180px;
+    .hero {
+      --photo-h: 12rem;
     }
   }
 
   @media (min-width: 64em) {
     .hero {
-      padding-block: 1.5rem 0;
-    }
-    .hero__art {
-      display: block;
-      height: 260px;
-      width: auto;
-      object-fit: cover;
-      object-position: top;
+      --photo-h: 16rem;
     }
     .home-grid {
       grid-template-columns: 3fr 2fr;

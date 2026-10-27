@@ -31,7 +31,7 @@ export const site = {
   url: fact('https://saintfrancischapel.com', true),
 
   taglineLatin: fact('Ave Maria gratia plena Dominus tecum!', false, 'From Wix draft'),
-  tagline: fact('The fullness of traditional Catholic life in Tennessee', false, 'From Wix draft'),
+  tagline: fact("East Tennessee's Traditional Latin Mass Catholic Chapel", true),
   description: fact(
     'A traditional Latin Mass mission chapel of the Society of Saint Pius X in New Market, Tennessee.',
     false,
