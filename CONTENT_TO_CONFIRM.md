@@ -53,18 +53,19 @@ Each entry has its own `confirmed:` flag. All are from the Wix draft.
 
 ## Images and logos
 
-| ✓   | Item                                                                     | Used on                                     | Notes                                                                                                |
-| --- | ------------------------------------------------------------------------ | ------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| ☑   | Saint Francis Mission Chapel seal                                        | Header, favicon source                      | The chapel's own mark, confirmed 2026-10-26                                                          |
-| ☑   | Saint Francis engraving (black and white)                                | About overview (wide screens)               | Approved for use 2026-10-26                                                                          |
-| ☑   | Saint Francis linocut blessing (red)                                     | Not currently used                          | Approved for use 2026-10-26                                                                          |
-| ☑   | Aerial photo of the property                                             | Not used                                    | Removed from the home page at the owner's request (2026-10-26); original is in media/property photos |
-| ☑   | Church illustration (watercolor)                                         | Home chapel-build box                       | Provided 2026-10-26                                                                                  |
-| ☐   | SSPX logo                                                                | Associated Organizations (placeholder only) | **Not used until permission is confirmed**                                                           |
-| ☐   | Capuchin Friars logo                                                     | Associated Organizations (placeholder only) | **Not used until permission is confirmed**                                                           |
-| ☑   | 15 construction photos                                                   | Chapel Build gallery                        | Provided 2026-10-26; resized and metadata stripped                                                   |
-| ☐   | People shown in the construction photos are OK with being on the website | Chapel Build gallery                        | Friars and volunteers are recognizable; worth a quick check                                          |
-| ☐   | Renderings ("Chapel Rendering 7A", "Layout render 1/2")                  | Not used yet                                | Could illustrate "The Project" on Chapel Build                                                       |
+| ✓   | Item                                                                     | Used on                                                    | Notes                                                                      |
+| --- | ------------------------------------------------------------------------ | ---------------------------------------------------------- | -------------------------------------------------------------------------- |
+| ☑   | Saint Francis Mission Chapel seal                                        | Header, favicon source                                     | The chapel's own mark, confirmed 2026-10-26                                |
+| ☑   | Saint Francis engraving (black and white)                                | About overview (wide screens)                              | Approved for use 2026-10-26                                                |
+| ☑   | Saint Francis linocut blessing (red)                                     | Not currently used                                         | Approved for use 2026-10-26                                                |
+| ☑   | Aerial photo of the property                                             | Chapel Build → The Property                                | Original (not upscaled); removed from the home page at the owner's request |
+| ☑   | Church illustration (watercolor)                                         | Home chapel-build box                                      | Provided 2026-10-26                                                        |
+| ☐   | SSPX logo                                                                | Associated Organizations (placeholder only)                | **Not used until permission is confirmed**                                 |
+| ☐   | Capuchin Friars logo                                                     | Associated Organizations (placeholder only)                | **Not used until permission is confirmed**                                 |
+| ☑   | 15 construction photos                                                   | Chapel Build gallery                                       | Provided 2026-10-26; resized and metadata stripped                         |
+| ☐   | People shown in the construction photos are OK with being on the website | Chapel Build gallery                                       | Friars and volunteers are recognizable; worth a quick check                |
+| ☑   | Interior rendering ("Chapel Rendering 7A")                               | Chapel Build, captioned "Concept rendering"                | Provided 2026-10-27                                                        |
+| ☑   | Site plan ("Layout render 2")                                            | Chapel Build → The Property, captioned "Concept site plan" | Provided 2026-10-27; labels: chapel, parking, driveway, Marian grotto      |
 
 ## Page copy
 
@@ -76,9 +77,9 @@ Pages show a dashed "Coming soon" box where copy is still needed.
 - ☑ Our Story → letter to Bishop Beckman (Sept 28, 2026), reproduced verbatim
 - ☑ Our Story → Diocese of Knoxville notice (Oct 2, 2026), linked as the original PDF
 - ☑ Associated Organizations → Capuchins, SSPX and Una Voce Tennessee descriptions
-- ☐ Our Story → the history of the mission (still a placeholder)
+- ☐ Our Story → "How the Mission Began": **drafted 2026-10-27** from the TLM Respecter Substack posts (Oct 1 and Oct 14, 2026). Please review; text is in `src/data/our-story.md`
 - ☐ About → Visiting for the First Time (dress, etiquette, what to expect at a TLM)
-- ☐ Chapel Build: the full project story (the short blurb is in `site.ts` above)
+- ☐ Chapel Build → "The Project": **drafted 2026-10-27** from the same posts. Please review; text is in `src/pages/chapel-build.astro`
 - ☐ Home: the "Help Us Build a Permanent Home" heading and "Follow the progress" wording
 - ☐ Locations: each Mass/Confession location's address and written directions
 - ☐ Associated Organizations → homeschool groups description
@@ -97,6 +98,12 @@ These are worded as provided. Visitors may notice the differences, so they're wo
 | ☐   | FAQ: "Please contact the parish office." Link it to the Contact page?                                                                                                                                                                       | FAQ                        |
 | ☐   | Una Voce Tennessee website, if any, to link                                                                                                                                                                                                 | Organizations              |
 | ☑   | FAQ typo fixed: "Saint Francis Mission Chapel chapel" → "Saint Francis Mission Chapel"                                                                                                                                                      | FAQ                        |
+| ☐   | Barn size: the Oct 1 post says ~5,000 sq ft, the Oct 14 post ~4,500 sq ft. The site says "a large barn" until confirmed.                                                                                                                    | Our Story, Chapel Build    |
+| ☐   | Fundraising goal $300,000 (from the Oct 1 post). Still current?                                                                                                                                                                             | Chapel Build               |
+| ☐   | Target: finish the sanctuary for Mass during Advent (2026). Still the plan?                                                                                                                                                                 | Chapel Build               |
+| ☐   | Donations: the posts mention a GiveSendGo campaign and mailed checks; the site's Donate button uses the Stripe link. Which should the site offer?                                                                                           | Donate, Chapel Build       |
+| ☐   | The Oct 1 post says "Diocese of East Tennessee"; the site uses the official name, Diocese of Knoxville.                                                                                                                                     | Our Story                  |
+| ☐   | Location: the posts place the property in Jefferson County (which includes both Dandridge and New Market). Street address for the Locations page?                                                                                           | Locations, Our Story       |
 
 ## Domain and accounts
 
