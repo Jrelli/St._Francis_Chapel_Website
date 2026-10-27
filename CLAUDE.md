@@ -21,8 +21,8 @@ DNS cutover), [CONTENT_GUIDE.md](CONTENT_GUIDE.md) (volunteer editors),
 - **Owner answers (2026-10-27):** mission statement (own page), Una Voce Tennessee is the 501(c)(3)
   and Saint Francis Mission Chapel is its DBA (EIN, footer wording in `site.nonprofit`), SSPX
   wording = "affiliated with, does not govern", B&W engraving in the header, email only (no phone),
-  donations = GiveSendGo + checks (Stripe dropped; **GiveSendGo URL still needed** in
-  `site.donateUrl`). Directions list the chapel at 1921 Sockless Rd, Dandridge: **launch once
+  donations = GiveSendGo (`site.donateUrl`) + checks (Stripe dropped). Fundraising goal: $300,000
+  everywhere. Directions list the chapel at 1921 Sockless Rd, Dandridge: **launch once
   Sunday Mass moves there** (~a month). Don't publish the current temporary home address.
 - **Testing setup:** the owner's personal Google Cloud keys plus a personal test calendar, via
   `GOOGLE_CALENDAR_ID` in the local `.env`. Verified working locally (build fetch and live refresh).
@@ -45,8 +45,9 @@ DNS cutover), [CONTENT_GUIDE.md](CONTENT_GUIDE.md) (volunteer editors),
   list variable names only). If the owner pastes a key in chat, recommend rotating it.
 - **All content is unconfirmed** unless marked `confirmed: true`. Don't invent facts (times,
   policies, places). Use a `<Placeholder>` and add the item to CONTENT_TO_CONFIRM.md.
-- **No SSPX/Capuchin/other org logos** until permission is confirmed (`LogoPlaceholder.astro`).
-  The chapel seal is the chapel's own mark and is approved.
+- **Org logos:** the SSPX, Capuchin and Una Voce emblems on About → Associated Organizations are
+  approved (2026-10-27). Ask before adding any other organization's logo. The chapel seal is the
+  chapel's own mark and is approved.
 
 ## Commands
 

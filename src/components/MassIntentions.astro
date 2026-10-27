@@ -1,0 +1,87 @@
+---
+/**
+ * "Have a Mass Offered": how to schedule a Mass intention. Shown on the home page (with the
+ * illustration) and the Contact page. Contact details live in site.massIntentions.
+ * Wording is from Father's reminder in the Oct 25, 2026 newsletter.
+ */
+import { Image } from 'astro:assets';
+// Philipp Schumacher, "Elevation of the Host" (1920). Public domain, via Wikimedia Commons:
+// https://commons.wikimedia.org/wiki/File:Hostilevado_(Schumacher,_Katholisches_Religionsb%C3%BCchlein)_001.jpg
+import elevation from '../assets/art/elevation-of-the-host.jpg';
+import { site } from '../config/site';
+import { has } from '../lib/config';
+import Fact from './Fact.astro';
+
+interface Props {
+  /** Show the illustration beside the text (home page). */
+  illustrated?: boolean;
+}
+
+const { illustrated = false } = Astro.props;
+const { name, email, offering } = site.massIntentions;
+---
+
+{has(name) && has(email) && (
+  <div class:list={['intentions', { 'intentions--illustrated': illustrated }]}>
+    {illustrated && (
+      <Image
+        src={elevation}
+        alt="Drawing of a priest at the altar raising the Host during Mass, as an altar server rings the bell and the faithful kneel in prayer"
+        widths={[360, 560, 800]}
+        sizes="(min-width: 48em) 20rem, 100vw"
+        class="intentions__art"
+        loading="lazy"
+      />
+    )}
+    <div class="intentions__text">
+      {illustrated && <p class="eyebrow">Mass Intentions</p>}
+      <h2 id="intentions-heading">Have a Mass Offered</h2>
+      <p>
+        Father David Mary reminds everyone of the importance of having the Holy Mass offered for
+        special intentions, both for the living and the deceased. We should never underestimate the
+        grace and power of the Holy Sacrifice of the Mass, especially for the souls in purgatory and
+        for those in need of prayer.
+      </p>
+      <p>
+        To schedule a Mass intention, see <Fact f={name} /> after Sunday Mass or email her at{' '}
+        <a href={`mailto:${email.value}`}>
+          <Fact f={email} />
+        </a>
+        .
+        {has(offering) && (
+          <>
+            {' '}
+            The customary offering is <Fact f={offering} /> per intention.
+          </>
+        )}
+      </p>
+    </div>
+  </div>
+)}
+
+<style>
+  .intentions {
+    display: grid;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .intentions__text {
+    max-width: var(--measure);
+  }
+  .intentions__text p:last-child {
+    margin-bottom: 0;
+  }
+  .intentions__art {
+    width: 100%;
+    max-width: 22rem;
+    height: auto;
+    border-radius: var(--radius);
+    border: 1px solid var(--rule);
+  }
+  @media (min-width: 48em) {
+    .intentions--illustrated {
+      grid-template-columns: 20rem 1fr;
+      gap: 2.5rem;
+    }
+  }
+</style>

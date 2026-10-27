@@ -11,7 +11,7 @@ export const mainNav = [
 /** Extra links shown in the footer. */
 export const footerNav = [
   { href: '/about/first-visit/', label: 'Visiting for the First Time' },
-  { href: '/organizations/', label: 'Associated Organizations' },
+  { href: '/about/organizations/', label: 'Associated Organizations' },
   { href: '/about/faq/', label: 'FAQ' },
   { href: '/donate/', label: 'Donate' },
 ];

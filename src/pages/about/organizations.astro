@@ -1,21 +1,36 @@
 ---
-import Fact from '../components/Fact.astro';
-import LogoPlaceholder from '../components/LogoPlaceholder.astro';
-import PageIntro from '../components/PageIntro.astro';
-import Placeholder from '../components/Placeholder.astro';
-import { site } from '../config/site';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { has } from '../lib/config';
+// Logos used with the owner's approval (2026-10-27). The SSPX emblem is from sspx.org.
+import { Image } from 'astro:assets';
+import capuchinLogo from '../../assets/logos/capuchin-friars.jpg';
+import sspxLogo from '../../assets/logos/sspx.png';
+import unaVoceLogo from '../../assets/logos/una-voce.png';
+import AboutNav from '../../components/AboutNav.astro';
+import Fact from '../../components/Fact.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import Placeholder from '../../components/Placeholder.astro';
+import { site } from '../../config/site';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { has } from '../../lib/config';
 
 const { capuchins, sspx, homeschoolContact } = site.organizations;
 ---
 
-<BaseLayout title="Associated Organizations">
+<BaseLayout
+  title="Associated Organizations"
+  description="The Traditional Capuchin Friars Minor, the Society of Saint Pius X, and Una Voce."
+>
   <div class="container section">
-    <PageIntro title="Associated Organizations" />
+    <PageIntro eyebrow="About" title="Associated Organizations" />
+    <AboutNav />
 
     <section class="org card">
-      <LogoPlaceholder organization="Capuchin Friars" />
+      <Image
+        src={capuchinLogo}
+        alt="Capuchin Friars emblem"
+        width={128}
+        densities={[1, 2]}
+        class="org__logo"
+      />
       <div>
         <h2>Traditional Capuchin Friars Minor</h2>
         <p>
@@ -35,7 +50,13 @@ const { capuchins, sspx, homeschoolContact } = site.organizations;
     </section>
 
     <section class="org card">
-      <LogoPlaceholder organization="SSPX" />
+      <Image
+        src={sspxLogo}
+        alt="Society of Saint Pius X emblem: two hearts beneath a crown and cross"
+        width={128}
+        densities={[1, 2]}
+        class="org__logo"
+      />
       <div>
         <h2>Society of Saint Pius X</h2>
         <p>
@@ -54,6 +75,13 @@ const { capuchins, sspx, homeschoolContact } = site.organizations;
     </section>
 
     <section class="org card">
+      <Image
+        src={unaVoceLogo}
+        alt="Una Voce International emblem"
+        width={128}
+        densities={[1, 2]}
+        class="org__logo"
+      />
       <div>
         <h2>Una Voce Tennessee</h2>
         <p>
@@ -90,6 +118,11 @@ const { capuchins, sspx, homeschoolContact } = site.organizations;
     gap: 1.25rem;
     margin-bottom: 1.5rem;
     max-width: 52rem;
+  }
+  .org__logo {
+    width: 8rem;
+    height: auto;
+    flex: none;
   }
   @media (min-width: 40em) {
     .org {

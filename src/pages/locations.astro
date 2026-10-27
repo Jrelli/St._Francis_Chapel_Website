@@ -11,6 +11,13 @@ const locations = [
     name: 'Saint Francis Mission Chapel',
     note: 'Sunday Mass',
     address: ['1921 Sockless Rd', 'Dandridge, TN 37725'],
+    directions: [
+      'From I-40, take Exit 412.',
+      'Go south on Deep Springs Road.',
+      'Turn right onto Sockless Road.',
+      'The road makes a sharp left curve. The chapel is shortly after it, on your right.',
+      'Look for the driveway across from a row of three mailboxes.',
+    ],
     times: [
       '9:30 AM: Confession (outside) and the Rosary in Latin (inside)',
       '10:00 AM: High Mass',
@@ -35,7 +42,7 @@ const query = (address: string[]) => encodeURIComponent(address.join(', '));
   <div class="container section">
     <PageIntro
       title="Locations & Directions"
-      lead="GPS can be unreliable on rural roads. Please check the address before you set out."
+      lead="Cell coverage can be spotty on rural roads. Please read the directions before you set out."
     />
     <div class="prose">
       {locations.map((loc, i) => (
@@ -55,6 +62,16 @@ const query = (address: string[]) => encodeURIComponent(address.join(', '));
               <li>{t}</li>
             ))}
           </ul>
+          {'directions' in loc && (
+            <>
+              <h3>Directions</h3>
+              <ol class="location__steps">
+                {loc.directions.map((step) => (
+                  <li>{step}</li>
+                ))}
+              </ol>
+            </>
+          )}
           <p class="location__maps no-print">
             <a href={`https://www.google.com/maps/search/?api=1&query=${query(loc.address)}`}>
               Open in Google Maps
@@ -67,7 +84,7 @@ const query = (address: string[]) => encodeURIComponent(address.join(', '));
         Times sometimes change for feast days and the priest's travel. Please check the{' '}
         <a href="/calendar/">calendar</a> before you come.
       </p>
-      <Placeholder what="written turn-by-turn directions for each location." />
+      <Placeholder what="written directions to Holy Crucifixion Hermitage." />
     </div>
   </div>
 </BaseLayout>
@@ -79,6 +96,9 @@ const query = (address: string[]) => encodeURIComponent(address.join(', '));
   .location__address {
     font-size: 1.15rem;
     font-weight: 600;
+  }
+  .location__steps li + li {
+    margin-top: 0.35rem;
   }
   .location__maps {
     display: flex;

@@ -71,7 +71,7 @@ export const site = {
    * The GiveSendGo campaign page, shown on the Donate page. Leave '' to offer checks only.
    * (The owner chose GiveSendGo plus mailed checks over the Stripe link, 2026-10-27.)
    */
-  donateUrl: fact('', false, 'GiveSendGo campaign link not provided yet'),
+  donateUrl: fact('https://www.givesendgo.com/saint-francis-mission-chapel', true),
   checksPayableTo: fact('St. Francis Mission Chapel', true, 'As printed in the newsletter'),
 
   /** The legal nonprofit that operates the chapel (DBA "Saint Francis Mission Chapel"). */

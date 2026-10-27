@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import churchIllustration from '../assets/art/church-illustration.jpg';
 import EventList from '../components/EventList.astro';
 import Fact from '../components/Fact.astro';
+import MassIntentions from '../components/MassIntentions.astro';
 import Schedule from '../components/Schedule.astro';
 import ThisWeek from '../components/ThisWeek.astro';
 import { site } from '../config/site';
@@ -98,6 +99,10 @@ const quickLinks = [
         </p>
       </div>
     </div>
+  </section>
+
+  <section class="container section" aria-labelledby="intentions-heading">
+    <MassIntentions illustrated />
   </section>
 
   <section class="container section" aria-labelledby="links-heading">
