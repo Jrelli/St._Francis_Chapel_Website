@@ -38,6 +38,16 @@ export function getEventFeed(): Promise<EventFeed> {
   return cached;
 }
 
+/**
+ * On Cloudflare Pages, says which environment is building. Variables are set separately for
+ * Production and Preview, which is the usual reason one is "missing".
+ */
+function cloudflareEnvNote(): string {
+  const branch = process.env.CF_PAGES_BRANCH;
+  if (!process.env.CF_PAGES || !branch) return '';
+  return ` (Cloudflare Pages build of branch "${branch}"; check this environment's variables)`;
+}
+
 async function load(): Promise<EventFeed> {
   const now = new Date();
   const from = startOfDay(now);
@@ -51,8 +61,19 @@ async function load(): Promise<EventFeed> {
     );
   }
 
+  // GOOGLE_CALENDAR_ID means someone intends real data, so sample events would only confuse.
+  if (!apiKey && overrideId) {
+    throw new Error(
+      '[calendar] GOOGLE_CALENDAR_ID is set but GOOGLE_API_KEY is missing or empty in this ' +
+        `environment${cloudflareEnvNote()}. Add the build key, then redeploy.`,
+    );
+  }
+
   if (!apiKey || !calendarId) {
-    console.warn('[calendar] No GOOGLE_API_KEY or calendar ID set: using SAMPLE events.');
+    console.warn(
+      `[calendar] ${apiKey ? 'No calendar ID' : 'No GOOGLE_API_KEY'} set${cloudflareEnvNote()}: ` +
+        'using SAMPLE events.',
+    );
     return {
       events: eventsBetween(mockEvents(now, DAYS_AHEAD), from, to),
       source: 'mock',
