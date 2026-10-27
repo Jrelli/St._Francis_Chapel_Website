@@ -31,6 +31,8 @@ export default defineConfig({
   env: {
     schema: {
       GOOGLE_API_KEY: envField.string({ context: 'server', access: 'secret', optional: true }),
+      // Testing only: read this calendar instead of site.calendar.id (not a secret).
+      GOOGLE_CALENDAR_ID: envField.string({ context: 'server', access: 'public', optional: true }),
       PUBLIC_GOOGLE_CALENDAR_BROWSER_KEY: envField.string({
         context: 'client',
         access: 'public',

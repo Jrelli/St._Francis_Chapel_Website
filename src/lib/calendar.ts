@@ -4,14 +4,24 @@
  * - No GOOGLE_API_KEY → sample events (clearly labelled on the page).
  * - Key set but Google fails → the BUILD FAILS on purpose. Cloudflare then keeps the
  *   last good deploy online, which is better than silently publishing sample events.
+ * - GOOGLE_CALENDAR_ID set → read that calendar instead of the one in site.ts. For testing
+ *   only; pages show a "test calendar" note so it can't go unnoticed in production.
  */
-import { GOOGLE_API_KEY } from 'astro:env/server';
+import { GOOGLE_API_KEY, GOOGLE_CALENDAR_ID } from 'astro:env/server';
 import { site } from '../config/site';
 import { startOfDay } from './dates';
 import { cleanApiKey, eventsBetween, fetchGoogleEvents, type ChapelEvent } from './events';
 import { mockEvents } from './mock-events';
 
 export const DAYS_AHEAD = 90;
+
+const configuredId = site.calendar.id.value.trim();
+const overrideId = (GOOGLE_CALENDAR_ID ?? '').trim();
+
+/** The calendar this build reads (also handed to the browser for the live refresh). */
+export const calendarId = overrideId || configuredId;
+/** True when GOOGLE_CALENDAR_ID points somewhere other than the configured calendar. */
+export const isTestCalendar = overrideId !== '' && overrideId !== configuredId;
 
 export interface EventFeed {
   events: ChapelEvent[];
@@ -32,8 +42,14 @@ async function load(): Promise<EventFeed> {
   const now = new Date();
   const from = startOfDay(now);
   const to = startOfDay(now, DAYS_AHEAD);
-  const calendarId = site.calendar.id.value.trim();
   const apiKey = cleanApiKey(GOOGLE_API_KEY);
+
+  if (isTestCalendar) {
+    console.warn(
+      '[calendar] GOOGLE_CALENDAR_ID is set: reading a TEST calendar instead of the one in ' +
+        'src/config/site.ts. Remove it from production settings before launch.',
+    );
+  }
 
   if (!apiKey || !calendarId) {
     console.warn('[calendar] No GOOGLE_API_KEY or calendar ID set: using SAMPLE events.');

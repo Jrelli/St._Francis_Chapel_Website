@@ -75,8 +75,9 @@ tag is the only code that ships to the browser, and Astro bundles it into a sepa
 | ------------------------------------ | ------------------------------------- | ---------------------------------------------------------- |
 | `GOOGLE_API_KEY`                     | Build only (server side)              | Yes. Never sent to browsers.                               |
 | `PUBLIC_GOOGLE_CALENDAR_BROWSER_KEY` | Visitors' browsers (live "This week") | No, it's visible in the page, **so it must be restricted** |
+| `GOOGLE_CALENDAR_ID`                 | Build; **testing only**               | No. Overrides the calendar in `site.ts` (see below)        |
 
-Both are optional. Locally they go in `.env` (git-ignored); in production, in Cloudflare (see below).
+All are optional. Locally they go in `.env` (git-ignored); in production, in Cloudflare (see below).
 The calendar ID and Drive folder ID are **not** secrets and live in `src/config/site.ts`.
 
 **Why two keys?** A key restricted to our website only works when the request comes from a browser
@@ -94,7 +95,8 @@ Use a chapel-owned Google account, not a personal one.
 3. **Enable the API:** _APIs & Services → Library →_ **Google Calendar API** → Enable.
    (Phase 2 also enables **Google Drive API** for bulletins.)
 4. **Create the build key:** _APIs & Services → Credentials → Create credentials → API key_.
-   Edit it:
+   (Use this main Credentials page. The Calendar API's own Credentials tab only offers OAuth and
+   service accounts, which we don't need.) Edit it:
    - Name: `build-key`
    - **API restrictions → Restrict key →** Google Calendar API (and Drive API in Phase 2)
    - Application restrictions: _None_ (it's kept secret instead)
@@ -108,6 +110,22 @@ Use a chapel-owned Google account, not a personal one.
      - `http://localhost:4321/*` (optional, for testing live mode locally)
 6. Put the keys in `.env` locally and in Cloudflare (next sections). Run `npm run build` and look
    for `[calendar] Loaded N events from Google Calendar.`
+
+### Testing with your own calendar
+
+To try things without touching the chapel calendar, make a separate **public** calendar in your
+own Google account and set `GOOGLE_CALENDAR_ID` to its ID (_Settings and sharing → Integrate
+calendar_). The build logs a warning, and the pages show a **"Test calendar"** note while it's set,
+so it can't slip into production unnoticed. Delete the variable to go back to the chapel calendar.
+
+- Locally: put it in `.env`.
+- On Cloudflare: set it under **Preview** variables only, never **Production**.
+- Keys created in a personal Google Cloud project work for testing. For launch, recreate them in a
+  chapel-owned project so the site doesn't depend on one person's account.
+
+A useful set of test events: a weekly repeating event; one occurrence of it renamed
+`CANCELLED: …` (saved as _This event_); a `CHANGED: …` event and an all-day `NOTICE: …` this week;
+a one-time event this week with formatting in its description; and an event 2–3 weeks out.
 
 ## How the calendar works
 

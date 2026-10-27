@@ -2,8 +2,7 @@
 import EventList from '../components/EventList.astro';
 import { site } from '../config/site';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { DAYS_AHEAD, getEventFeed } from '../lib/calendar';
-import { has } from '../lib/config';
+import { calendarId, DAYS_AHEAD, getEventFeed, isTestCalendar } from '../lib/calendar';
 import { formatMonth, formatStamp } from '../lib/dates';
 import type { ChapelEvent } from '../lib/events';
 
@@ -19,7 +18,7 @@ for (const e of feed.events.filter((ev) => ev.end > nowIso)) {
   else months.push({ label, events: [e] });
 }
 
-const calId = encodeURIComponent(site.calendar.id.value);
+const calId = encodeURIComponent(calendarId);
 const googleUrl = `https://calendar.google.com/calendar/embed?src=${calId}&ctz=${encodeURIComponent(site.calendar.timeZone.value)}`;
 const icalUrl = `https://calendar.google.com/calendar/ical/${calId}/public/basic.ics`;
 ---
@@ -36,7 +35,7 @@ const icalUrl = `https://calendar.google.com/calendar/ical/${calId}/public/basic
         Central Time. For last-minute changes, check <a href="/#this-week-heading">This Week</a> on
         the home page.
       </p>
-      {has(site.calendar.id) && (
+      {calendarId && (
         <p class="no-print">
           <a href={googleUrl} rel="noopener">
             Open in Google Calendar
@@ -48,6 +47,12 @@ const icalUrl = `https://calendar.google.com/calendar/ical/${calId}/public/basic
         </p>
       )}
     </div>
+
+    {isTestCalendar && (
+      <p class="sample-note prose">
+        <strong>Test calendar.</strong> These events come from a test calendar, not the chapel’s.
+      </p>
+    )}
 
     {feed.source === 'mock' && (
       <p class="sample-note prose">
