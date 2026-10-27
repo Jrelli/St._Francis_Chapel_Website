@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import engraving from '../../assets/art/engraving.png';
 import AboutNav from '../../components/AboutNav.astro';
 import Fact from '../../components/Fact.astro';
 import PageIntro from '../../components/PageIntro.astro';
@@ -10,7 +12,7 @@ const sections = [
   {
     href: '/about/our-story/',
     title: 'Our Story',
-    text: 'How the mission began, including our letter to Bishop Beckman and his reply.',
+    text: 'How the mission began, including our letter to Bishop Beckman.',
   },
   {
     href: '/about/first-visit/',
@@ -20,7 +22,7 @@ const sections = [
   {
     href: '/about/staff/',
     title: 'Staff',
-    text: 'The priests and volunteers who serve the mission.',
+    text: 'Our chapel team and the Una Voce Tennessee board of directors.',
   },
   { href: '/about/faq/', title: 'Frequently Asked Questions', text: 'Common questions, answered.' },
 ];
@@ -30,11 +32,41 @@ const sections = [
   <div class="container section">
     <PageIntro title="About the Chapel" />
     <AboutNav />
-    {has(site.description) && (
-      <p class="prose">
-        <Fact f={site.description} />
-      </p>
-    )}
+
+    <div class="about-intro">
+      <div class="prose">
+        {has(site.description) && (
+          <p class="lead">
+            <Fact f={site.description} />
+          </p>
+        )}
+        <h2>How Our Mission Is Organized</h2>
+        <p>
+          Saint Francis Mission operates under the guidance and direction of the SSPX. Our priest is
+          a Friend-Associate of the Society and has full authorization by the Society of Pope Saint
+          Pius X.
+        </p>
+        <p>
+          Our Mission property is owned and operated by Una Voce Tennessee, a tax exempt
+          international organization designed to promote and protect the Traditional Latin Mass.
+        </p>
+        <p>
+          Our priests and brothers are members of the Traditional Capuchin Friars Minor, a
+          traditional Franciscan/Capuchin Congregation under the direct care of the SSPX.
+        </p>
+        <p>
+          <a href="/organizations/">More about our associated organizations</a>
+        </p>
+      </div>
+      <Image
+        src={engraving}
+        alt="Engraving of Saint Francis of Assisi with arms raised, bearing the stigmata"
+        widths={[240, 480]}
+        sizes="240px"
+        class="about-intro__art"
+      />
+    </div>
+
     <ul class="about-cards" role="list">
       {sections.map((s) => (
         <li class="card">
@@ -49,10 +81,29 @@ const sections = [
 </BaseLayout>
 
 <style>
+  .about-intro {
+    display: grid;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .lead {
+    font-size: 1.15rem;
+  }
+  .about-intro h2 {
+    margin-top: 1.5rem;
+  }
+  /* Decorative on wide screens only, so phones get straight to the text. */
+  .about-intro__art {
+    display: none;
+    width: 220px;
+    height: auto;
+    mix-blend-mode: multiply;
+  }
+
   .about-cards {
     list-style: none;
     padding: 0;
-    margin: 1.5rem 0 0;
+    margin: 2rem 0 0;
     display: grid;
     gap: 1rem;
   }
@@ -65,6 +116,15 @@ const sections = [
   @media (min-width: 40em) {
     .about-cards {
       grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 64em) {
+    .about-intro {
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+    }
+    .about-intro__art {
+      display: block;
     }
   }
 </style>

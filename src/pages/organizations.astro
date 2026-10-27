@@ -18,7 +18,10 @@ const { capuchins, sspx, homeschoolContact } = site.organizations;
       <LogoPlaceholder organization="Capuchin Friars" />
       <div>
         <h2>Traditional Capuchin Friars Minor</h2>
-        <Placeholder what="a short description of the friars and their connection to the mission." />
+        <p>
+          Our priests and brothers are members of the Traditional Capuchin Friars Minor, a
+          traditional Franciscan/Capuchin Congregation under the direct care of the SSPX.
+        </p>
         {has(capuchins) && (
           <p>
             <a href={capuchins.value} rel="noopener">
@@ -33,7 +36,11 @@ const { capuchins, sspx, homeschoolContact } = site.organizations;
       <LogoPlaceholder organization="SSPX" />
       <div>
         <h2>Society of Saint Pius X</h2>
-        <Placeholder what="a short description of the Society and its relationship to the mission." />
+        <p>
+          Saint Francis Mission operates under the guidance and direction of the SSPX. Our priest is
+          a Friend-Associate of the Society and has full authorization by the Society of Pope Saint
+          Pius X.
+        </p>
         {has(sspx) && (
           <p>
             <a href={sspx.value} rel="noopener">
@@ -41,6 +48,19 @@ const { capuchins, sspx, homeschoolContact } = site.organizations;
             </a>
           </p>
         )}
+      </div>
+    </section>
+
+    <section class="org card">
+      <div>
+        <h2>Una Voce Tennessee</h2>
+        <p>
+          Our Mission property is owned and operated by Una Voce Tennessee, a tax exempt
+          international organization designed to promote and protect the Traditional Latin Mass.
+        </p>
+        <p>
+          <a href="/about/staff/">Una Voce Tennessee board of directors</a>
+        </p>
       </div>
     </section>
 
