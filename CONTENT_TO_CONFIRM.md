@@ -37,19 +37,19 @@ unconfirmed config values have a dotted orange outline (hover to see the TODO).
 
 Each entry has its own `confirmed:` flag. All are from the Wix draft.
 
-| ✓   | Entry                                                                         | Used on                   |
-| --- | ----------------------------------------------------------------------------- | ------------------------- |
-| ☐   | Sunday Holy High Mass, 10:00 AM; potluck ~11:30 AM (location on the calendar) | Home                      |
-| ☐   | Daily Mass, 8:00 AM, Holy Crucifixion Hermitage, Newport                      | Home                      |
-| ☐   | Sunday Confession, 9:00 – 10:00 AM                                            | Home                      |
-| ☐   | Daily Confession at the Hermitage (ring the bell, ask for Father)             | Home                      |
-| ☐   | First Friday Confession, 5:00 – 5:30 PM                                       | Home                      |
-| ☐   | First Saturday Confession, 7:30 – 8:45 AM                                     | Home                      |
-| ☐   | Holy Day Confession, 5:00 – 5:30 PM                                           | Home                      |
-| ☐   | Thursday Adoration, 5:00 – 8:00 PM                                            | Home                      |
-| ☐   | Where is Sunday Mass held? The draft doesn't say.                             | Home, Locations (Phase 2) |
-| ☐   | Which days count as "Daily" (Mon–Sat? every day?)                             | Home                      |
-| ☐   | The note under the schedule ("Times sometimes change…")                       | Home                      |
+| ✓   | Entry                                                                                           | Used on         |
+| --- | ----------------------------------------------------------------------------------------------- | --------------- |
+| ☐   | Sunday Holy High Mass, 10:00 AM; potluck ~11:30 AM (location on the calendar)                   | Home            |
+| ☐   | Daily Mass, 8:00 AM, Holy Crucifixion Hermitage, Newport                                        | Home            |
+| ☑   | Sunday Confession, 9:30 AM (outside; Rosary in Latin inside)                                    | Home            |
+| ☐   | Daily Confession at the Hermitage (ring the bell, ask for Father)                               | Home            |
+| ☐   | First Friday Confession, 5:00 – 5:30 PM                                                         | Home            |
+| ☐   | First Saturday Confession, 7:30 – 8:45 AM                                                       | Home            |
+| ☐   | Holy Day Confession, 5:00 – 5:30 PM                                                             | Home            |
+| ☐   | Thursday Adoration, 5:00 – 8:00 PM                                                              | Home            |
+| ☑   | Sunday Mass is held at a member's home (205 Underwood Rd, New Market) until the chapel is built | Home, Locations |
+| ☐   | Which days count as "Daily" (Mon–Sat? every day?)                                               | Home            |
+| ☐   | The note under the schedule ("Times sometimes change…")                                         | Home            |
 
 ## Images and logos
 
@@ -102,14 +102,12 @@ These are worded as provided. Visitors may notice the differences, so they're wo
 | ☐   | Una Voce Tennessee website, if any, to link                                                                                                                                                                                                 | Organizations              |
 | ☑   | FAQ typo fixed: "Saint Francis Mission Chapel chapel" → "Saint Francis Mission Chapel"                                                                                                                                                      | FAQ                        |
 | ☐   | Barn size: the Oct 1 post says ~5,000 sq ft, the Oct 14 post ~4,500 sq ft. The site says "a large barn" until confirmed.                                                                                                                    | Our Story, Chapel Build    |
-| ☐   | Fundraising goal $300,000 (from the Oct 1 post). Still current?                                                                                                                                                                             | Chapel Build               |
+| ☑   | Fundraising: $150,000 to move in by Advent; $303,000 for the whole project (owner, 2026-10-27)                                                                                                                                              | Chapel Build               |
 | ☐   | Target: finish the sanctuary for Mass during Advent (2026). Still the plan?                                                                                                                                                                 | Chapel Build               |
 | ☐   | Donations: the posts mention a GiveSendGo campaign and mailed checks; the site's Donate button uses the Stripe link. Which should the site offer?                                                                                           | Donate, Chapel Build       |
 | ☐   | The Oct 1 post says "Diocese of East Tennessee"; the site uses the official name, Diocese of Knoxville.                                                                                                                                     | Our Story                  |
-| ☐   | Is 205 Underwood Rd, New Market (from the Oct 25 newsletter) the regular Sunday Mass location, and is it the new property? The Locations page lists it as "Sunday Mass".                                                                    | Locations, Our Story       |
-| ☐   | Sunday times: the Oct 25 newsletter says Confession at 9:30 AM (outside) with the Rosary in Latin; the home schedule says Confession 9:00 – 10:00 AM. Which is the regular time?                                                            | Home, Locations            |
+| ☐   | Mass intentions: the Contact page gives a customary offering of $20 per intention (Oct 25 newsletter). Keep it on the site?                                                                                                                 | Contact                    |
 | ☐   | Weekday Mass: the newsletter says 8:00 AM Low Mass at the Hermitage Monday–Saturday; the home schedule says "Daily". Is there also a Sunday Mass there?                                                                                     | Home, Locations            |
-| ☐   | Fundraising: the Oct 25 newsletter says the goal is $150k to be ready by Advent ($31k raised); GiveSendGo shows $303,000; the site says $300,000.                                                                                           | Chapel Build               |
 
 ## Domain and accounts
 

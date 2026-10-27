@@ -60,6 +60,17 @@ export const site = {
     'Reworded from the Wix draft; confirm acreage and wording',
   ),
 
+  /** Contact for scheduling Mass intentions (Contact page). */
+  massIntentions: {
+    name: fact('Jennifer Strand', true),
+    email: fact('saintfrancismission26@gmail.com', true),
+    offering: fact(
+      '$20',
+      false,
+      'Customary offering per intention, from the Oct 25, 2026 newsletter',
+    ),
+  },
+
   /** External Stripe donation page. The site never handles payments itself. */
   donateUrl: fact(
     'https://donate.stripe.com/5kQdRa1jLebudSg2gy8Vi01',

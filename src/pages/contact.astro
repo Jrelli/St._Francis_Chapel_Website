@@ -10,6 +10,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { has } from '../lib/config';
 
 const { facebook, youtube } = site.social;
+const intentions = site.massIntentions;
 const telHref = `tel:${site.phone.value.replace(/[^\d+]/g, '')}`;
 ---
 
@@ -78,6 +79,25 @@ const telHref = `tel:${site.phone.value.replace(/[^\d+]/g, '')}`;
         </div>
       )}
     </dl>
+    {has(intentions.name) && has(intentions.email) && (
+      <section class="card intentions prose" aria-labelledby="intentions-heading">
+        <h2 id="intentions-heading">Mass Intentions</h2>
+        <p>
+          To have Holy Mass offered for a special intention, for the living or the deceased, see{' '}
+          <Fact f={intentions.name} /> after Sunday Mass or email her at{' '}
+          <a href={`mailto:${intentions.email.value}`}>
+            <Fact f={intentions.email} />
+          </a>
+          .
+          {has(intentions.offering) && (
+            <>
+              {' '}
+              The customary offering is <Fact f={intentions.offering} /> per intention.
+            </>
+          )}
+        </p>
+      </section>
+    )}
     <p class="prose">
       Looking for Mass? See <a href="/locations/">locations and directions</a>.
     </p>
@@ -85,6 +105,9 @@ const telHref = `tel:${site.phone.value.replace(/[^\d+]/g, '')}`;
 </BaseLayout>
 
 <style>
+  .intentions {
+    margin-block: 2rem 1.5rem;
+  }
   .contact > div {
     padding-block: 0.9rem;
     border-bottom: 1px solid var(--rule);

@@ -19,7 +19,7 @@ sections:
       - days: Sundays
         time: '10:00 AM'
         what: Holy High Mass
-        details: A potluck follows around 11:30 AM. The location is listed on the calendar.
+        details: A potluck follows around 11:30 AM. For now, Mass is held at a member's home in New Market; see Directions.
         confirmed: false
       - days: Daily
         time: '8:00 AM'
@@ -29,8 +29,9 @@ sections:
   - title: Confession
     items:
       - days: Sundays
-        time: '9:00 – 10:00 AM'
-        confirmed: false
+        time: '9:30 AM'
+        details: Outside, before Mass. The Rosary is prayed in Latin inside.
+        confirmed: true
       - days: Daily
         time: ''
         location: Holy Crucifixion Hermitage, Newport

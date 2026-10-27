@@ -8,6 +8,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const locations = [
   {
     name: 'Sunday Mass',
+    note: 'Held at the home of a member of the mission until the chapel is built.',
     address: ['205 Underwood Rd', 'New Market, TN 37820'],
     times: [
       '9:30 AM: Confession (outside) and the Rosary in Latin (inside)',
@@ -38,6 +39,7 @@ const query = (address: string[]) => encodeURIComponent(address.join(', '));
       {locations.map((loc, i) => (
         <section class="card location" aria-labelledby={`location-${i}`}>
           <h2 id={`location-${i}`}>{loc.name}</h2>
+          {loc.note && <p class="muted">{loc.note}</p>}
           <p class="location__address">
             {loc.address.map((line) => (
               <>
