@@ -1,4 +1,5 @@
 ---
+import ConstructionGallery from '../components/ConstructionGallery.astro';
 import Fact from '../components/Fact.astro';
 import PageIntro from '../components/PageIntro.astro';
 import Placeholder from '../components/Placeholder.astro';
@@ -29,11 +30,13 @@ import { has } from '../lib/config';
 
       <h2>The Project</h2>
       <Placeholder what="the story of the property and the plans for the chapel, with renderings." />
-
-      <h2>Construction Progress</h2>
-      {/* Phase 2: gallery built from photos placed in src/assets/photos/ */}
-      <Placeholder what="a photo gallery of construction progress." />
     </div>
+
+    <section aria-labelledby="progress-heading">
+      <h2 id="progress-heading">Construction Progress</h2>
+      <p class="prose muted">Select a photo to see it larger.</p>
+      <ConstructionGallery />
+    </section>
   </div>
 </BaseLayout>
 

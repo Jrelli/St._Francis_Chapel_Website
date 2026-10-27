@@ -1,0 +1,22 @@
+# Descriptions (alt text) for the construction photos in src/assets/photos/construction/.
+# Screen readers read these aloud, so describe what's in the photo in one sentence.
+#
+# To add a photo: put the file in that folder (photos appear in filename order), then add
+# a line here: the filename, a colon, and the description in "quotes".
+# Photos without a line here still appear, with a generic description.
+
+construction-01.jpg: 'A volunteer works at a sawhorse table while a friar looks on inside the metal building'
+construction-02.jpg: 'A friar in a brown habit seated at a folding table, with a statue of Our Lady behind him'
+construction-03.jpg: 'A friar steadies a tall wooden post during framing'
+construction-04.jpg: 'A statue of Our Lady beside a lectern inside the building during construction'
+construction-05.jpg: 'A volunteer in a work apron stands in the doorway of an equipment trailer'
+construction-06.jpg: 'Two friars working at a wooden framework on the concrete floor'
+construction-07.jpg: 'A volunteer on a scissor lift fastens framing high on the wall'
+construction-08.jpg: 'Stacks of lumber and a scissor lift inside the building'
+construction-09.jpg: 'Floor framing laid out on the concrete, with double wooden doors on the far wall'
+construction-10.jpg: 'A volunteer stands a tall board upright beside the double wooden doors'
+construction-11.jpg: 'Volunteers assembling wall framing on the floor'
+construction-12.jpg: 'Volunteers working at a table near the open bay door'
+construction-13.jpg: 'A friar moves materials through the large open bay door'
+construction-14.jpg: 'Two volunteers measure and mark boards on the floor'
+construction-15.jpg: 'A friar outside the building beside the open doorway, with trees in autumn color behind'
