@@ -60,7 +60,7 @@ Node 24 (`.node-version`). `npm run dev` · `npm run build` · `npm test` · `np
 - **Exceptions rule** (`isException` in `src/lib/events.ts`): non-recurring events, or any event
   whose title starts with `CANCELLED:`/`CHANGED:`/`NOTICE:`. CONTENT_GUIDE.md documents this for
   editors. Change both together.
-- **Dates:** always use `src/lib/dates.ts` (America/Chicago via Intl). Never use local-time
+- **Dates:** always use `src/lib/dates.ts` (America/New_York, i.e. Eastern Time, via Intl; the chapel is in Jefferson County, TN). Never use local-time
   `Date` getters. Builds run in UTC. Tests cover DST and run with `TZ=Asia/Tokyo`.
 - `src/lib/events.ts` and `dates.ts` are **shared with the browser**: no Node APIs there.
 - `EventList.astro` and `renderEventDays()` in `src/scripts/this-week.ts` produce **identical markup**.

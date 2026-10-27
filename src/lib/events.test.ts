@@ -72,7 +72,7 @@ describe('normalizeGoogleEvent', () => {
     });
   });
 
-  it('treats date-only events as all-day in Chicago', () => {
+  it('treats date-only events as all-day in chapel time', () => {
     const ev = normalizeGoogleEvent({
       id: 'b',
       summary: 'Retreat',
@@ -80,7 +80,7 @@ describe('normalizeGoogleEvent', () => {
       end: { date: '2026-12-06' },
     });
     expect(ev?.allDay).toBe(true);
-    expect(ev?.start).toBe('2026-12-05T06:00:00.000Z');
+    expect(ev?.start).toBe('2026-12-05T05:00:00.000Z');
     expect(ev?.recurring).toBe(false);
   });
 
@@ -105,7 +105,7 @@ const ev = (
 });
 
 describe('home page selections', () => {
-  // Wednesday Oct 28 2026, noon Chicago.
+  // Wednesday Oct 28 2026, 1pm Eastern.
   const now = new Date('2026-10-28T17:00:00Z');
   const events = [
     ev('past-today', '2026-10-28T13:00:00Z', '2026-10-28T13:45:00Z'),
@@ -127,8 +127,8 @@ describe('home page selections', () => {
     expect(selectUpcoming(events, now).map((e) => e.id)).toEqual(['next-week-event']);
   });
 
-  it('groups by Chicago day', () => {
-    const late = ev('late', '2026-11-01T03:00:00Z', '2026-11-01T04:00:00Z'); // Sat 10pm CDT
+  it('groups by chapel-time day', () => {
+    const late = ev('late', '2026-11-01T03:00:00Z', '2026-11-01T04:00:00Z'); // Sat 11pm EDT
     const days = groupByDay([events[3]!, late]);
     expect(days.map((d) => [d.key, d.events.length])).toEqual([['2026-10-31', 2]]);
   });
@@ -158,7 +158,7 @@ describe('mockEvents', () => {
   });
 
   it('replaces the routine Mass that the cancellation stands in for', () => {
-    const thursday8am = mock.filter((e) => e.start === '2026-10-29T13:00:00.000Z');
+    const thursday8am = mock.filter((e) => e.start === '2026-10-29T12:00:00.000Z');
     expect(thursday8am).toHaveLength(1);
     expect(thursday8am[0]?.notice).toBe('cancelled');
   });

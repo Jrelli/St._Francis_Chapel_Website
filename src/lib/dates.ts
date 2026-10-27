@@ -2,14 +2,15 @@
  * Date helpers pinned to the chapel's timezone.
  *
  * Why this exists: Cloudflare builds run in UTC and visitors may be anywhere, but
- * "today", "this week" and "10:00 AM" must always mean Central Time in Tennessee.
+ * "today", "this week" and "10:00 AM" must always mean the chapel's local time (Eastern Time, East Tennessee).
  * JavaScript's Date is just an instant (ms since 1970, UTC); Intl.DateTimeFormat with
- * an explicit timeZone is how we read and print wall-clock times in Chicago.
+ * an explicit timeZone is how we read and print wall-clock times at the chapel.
  *
  * Shared by build-time code and the browser, so it must not use Node-only APIs.
  */
 
-export const TIME_ZONE = 'America/Chicago';
+// Keep in sync with site.calendar.timeZone in src/config/site.ts (a test checks this).
+export const TIME_ZONE = 'America/New_York';
 
 const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
@@ -36,7 +37,7 @@ const partsFormat = new Intl.DateTimeFormat('en-US', {
   hourCycle: 'h23', // 0–23; plain hour12:false can yield "24" at midnight
 });
 
-/** What a clock on the wall in Chicago reads at this instant. */
+/** What a clock on the wall at the chapel reads at this instant. */
 export function wallTime(date: Date): WallTime {
   const p: Record<string, string> = {};
   for (const { type, value } of partsFormat.formatToParts(date)) p[type] = value;
@@ -51,14 +52,14 @@ export function wallTime(date: Date): WallTime {
   };
 }
 
-/** Chicago's offset from UTC (in ms) at a given instant; negative, e.g. -5h or -6h. */
+/** The chapel's offset from UTC (in ms) at a given instant; negative, e.g. -4h (EDT) or -5h (EST). */
 function offsetAt(ms: number): number {
   const w = wallTime(new Date(ms));
   return Date.UTC(w.year, w.month - 1, w.day, w.hour, w.minute, w.second) - ms;
 }
 
 /**
- * The instant at which Chicago's wall clock reads the given date and time.
+ * The instant at which the chapel's wall clock reads the given date and time.
  * Out-of-range days roll over (day 32 → next month), which makes date math easy.
  */
 export function zonedInstant(year: number, month: number, day: number, hour = 0, minute = 0): Date {
@@ -71,29 +72,29 @@ export function zonedInstant(year: number, month: number, day: number, hour = 0,
   return new Date(ms);
 }
 
-/** Midnight (Chicago) at the start of the day containing `date`, shifted by `days`. */
+/** Midnight (chapel time) at the start of the day containing `date`, shifted by `days`. */
 export function startOfDay(date: Date, days = 0): Date {
   const w = wallTime(date);
   return zonedInstant(w.year, w.month, w.day + days);
 }
 
-/** Sunday 00:00 (Chicago) of the week containing `date`. Weeks run Sunday–Saturday. */
+/** Sunday 00:00 (chapel time) of the week containing `date`. Weeks run Sunday–Saturday. */
 export function startOfWeek(date: Date): Date {
   return startOfDay(date, -wallTime(date).weekday);
 }
 
-/** The following Sunday 00:00 (Chicago): the exclusive end of the current week. */
+/** The following Sunday 00:00 (chapel time): the exclusive end of the current week. */
 export function endOfWeek(date: Date): Date {
   return startOfDay(date, 7 - wallTime(date).weekday);
 }
 
-/** "YYYY-MM-DD" in Chicago; used to group events by day. */
+/** "YYYY-MM-DD" in chapel time; used to group events by day. */
 export function dayKey(date: Date): string {
   const w = wallTime(date);
   return `${w.year}-${String(w.month).padStart(2, '0')}-${String(w.day).padStart(2, '0')}`;
 }
 
-/** Parses an all-day date like "2026-11-01" as midnight Chicago time. */
+/** Parses an all-day date like "2026-11-01" as midnight chapel time. */
 export function parseDateOnly(value: string): Date {
   const [y, m, d] = value.split('-').map(Number);
   return zonedInstant(y ?? 1970, m ?? 1, d ?? 1);

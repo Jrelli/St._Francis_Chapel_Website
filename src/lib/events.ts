@@ -11,7 +11,7 @@ export interface ChapelEvent {
   /** Title with any "CANCELLED:" / "CHANGED:" / "NOTICE:" prefix removed. */
   title: string;
   notice?: NoticeKind | undefined;
-  /** ISO 8601 instants. All-day events start at midnight Chicago time. */
+  /** ISO 8601 instants. All-day events start at midnight chapel time. */
   start: string;
   end: string;
   allDay: boolean;
@@ -233,7 +233,7 @@ export interface EventDay {
   events: ChapelEvent[];
 }
 
-/** Groups (already sorted) events by their Chicago start date. */
+/** Groups (already sorted) events by their start date in chapel time. */
 export function groupByDay(events: ChapelEvent[]): EventDay[] {
   const days: EventDay[] = [];
   for (const e of events) {

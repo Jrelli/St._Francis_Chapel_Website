@@ -74,7 +74,7 @@ export const site = {
       false,
       'Confirm this is the calendar editors will maintain, and that it is public',
     ),
-    timeZone: fact('America/Chicago', true),
+    timeZone: fact('America/New_York', true, 'Eastern Time: Jefferson County, TN'),
   },
 
   bulletins: {

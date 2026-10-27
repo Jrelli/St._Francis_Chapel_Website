@@ -51,7 +51,7 @@ src/
   lib/
     calendar.ts          Build-time Google Calendar fetch (or sample data)
     events.ts            Event model, Google API conversion, "exception" rules
-    dates.ts             All date math, pinned to America/Chicago
+    dates.ts             All date math, pinned to America/New_York (Eastern Time)
     mock-events.ts       Sample events used when no API key is set
     schedule.ts          Loads and validates schedule.yaml
   scripts/               Small browser scripts: mobile menu, live "This week"
@@ -90,6 +90,8 @@ Use a chapel-owned Google account, not a personal one.
 
 1. **Make the calendar public.** In Google Calendar, open the calendar's _Settings and sharing →
    Access permissions for events_ → tick **Make available to public** → **See all event details**.
+   In the same settings, set **Time zone** to **(GMT-05:00) Eastern Time - New York**, so the
+   times editors type match what the website shows (the site uses Eastern Time).
 2. **Create a Google Cloud project** at <https://console.cloud.google.com> (free; no billing account
    is needed for these APIs at our volume).
 3. **Enable the API:** _APIs & Services → Library →_ **Google Calendar API** → Enable.
@@ -150,7 +152,7 @@ Google Calendar ──(build, every ~3h)──► static HTML: This week, Upcomi
 - **Key set but Google fails:** the build **fails on purpose** after one retry. Cloudflare keeps the
   previous deploy online, so sample data can never replace real events.
 - **Timezone:** builds run in UTC and visitors can be anywhere, so all date math goes through
-  `src/lib/dates.ts`, which uses `America/Chicago` explicitly. Tests cover daylight-saving changes.
+  `src/lib/dates.ts`, which uses `America/New_York` (Eastern Time) explicitly. Tests cover daylight-saving changes.
 
 ## Deploying to Cloudflare
 
