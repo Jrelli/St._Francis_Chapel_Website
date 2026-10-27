@@ -331,3 +331,89 @@ img {
   border-radius: var(--radius);
   font-size: 0.95rem;
 }
+
+/* Photo viewer (src/scripts/lightbox.ts). Global because the dialog is built in the browser.
+   The backdrop is translucent so the page stays visible, dimmed, behind the photo. */
+.lightbox {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 3.75rem var(--gutter) 1rem;
+  border: 0;
+  background: transparent;
+  color: #fff;
+}
+.lightbox[open] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+.lightbox::backdrop {
+  background: rgb(20 23 22 / 0.85);
+}
+html:has(.lightbox[open]) {
+  overflow: hidden; /* don't scroll the page behind */
+}
+.lightbox__figure {
+  margin: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+.lightbox__img {
+  max-width: 100%;
+  max-height: calc(100dvh - 11rem);
+  width: auto;
+  object-fit: contain;
+  border-radius: var(--radius);
+  touch-action: pan-y; /* horizontal swipes go to the viewer, not the page */
+  user-select: none;
+}
+.lightbox__caption {
+  max-width: 50rem;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+.lightbox__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.lightbox__bar[hidden] {
+  display: none;
+}
+.lightbox__count {
+  min-width: 5em;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.lightbox__button {
+  min-height: 48px;
+  padding: 0.5rem 1rem;
+  font: inherit;
+  font-weight: 600;
+  color: var(--dark);
+  background: #fff;
+  border: 0;
+  border-radius: var(--radius);
+  white-space: nowrap;
+  cursor: pointer;
+}
+.lightbox__button:hover {
+  background: var(--band);
+}
+.lightbox__close {
+  position: fixed;
+  top: 0.6rem;
+  right: var(--gutter);
+}
+.lightbox :focus-visible {
+  outline-color: #fff;
+}
