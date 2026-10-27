@@ -2,27 +2,77 @@
 import AboutNav from '../../components/AboutNav.astro';
 import PageIntro from '../../components/PageIntro.astro';
 import Placeholder from '../../components/Placeholder.astro';
+import { Content as LetterToBishop } from '../../data/letters/2026-09-28-letter-to-bishop-beckman.md';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// The Diocese's public notice, reproduced unaltered as a PDF in public/documents/.
+const dioceseNotice = {
+  href: '/documents/2026-10-02-diocese-of-knoxville-notice.pdf',
+  size: '570 KB',
+};
 ---
 
-<BaseLayout title="Our Story" description="How Saint Francis Mission Chapel began.">
+<BaseLayout
+  title="Our Story"
+  description="How Saint Francis Mission Chapel began, including our letter to Bishop Beckman."
+>
   <div class="container section">
     <PageIntro eyebrow="About" title="Our Story" />
     <AboutNav />
     <div class="prose">
       <Placeholder what="the history of the mission: how it began and who it serves." />
 
-      <h2>Letter to Bishop Beckman</h2>
-      <Placeholder what="the text of our letter to Bishop Beckman." />
+      <section aria-labelledby="letter-heading">
+        <h2 id="letter-heading">Letter to Bishop Beckman</h2>
+        <p class="muted">
+          Letter from Saint Francis Mission Chapel to His Excellency, the Most Reverend Mark
+          Beckman, Bishop of Knoxville. Sent September 28, 2026.
+        </p>
+        <article class="letter" aria-label="Letter to Bishop Beckman">
+          <LetterToBishop />
+        </article>
+      </section>
 
-      <h2>Bishop Beckman’s Reply</h2>
-      <Placeholder what="the text of Bishop Beckman’s reply." />
+      <section aria-labelledby="notice-heading">
+        <h2 id="notice-heading">Notice from the Diocese of Knoxville</h2>
+        <p>
+          On October 2, 2026, the Diocese of Knoxville issued a public Notice to the Faithful
+          concerning the mission. It is reproduced here in full.
+        </p>
+        <p>
+          <a class="button button--outline" href={dioceseNotice.href}>
+            Read the Diocese’s notice <span class="muted-inline">(PDF, {dioceseNotice.size})</span>
+          </a>
+        </p>
+      </section>
     </div>
   </div>
 </BaseLayout>
 
 <style>
   h2 {
-    margin-top: 2rem;
+    margin-top: 2.5rem;
+  }
+
+  /* The letter is set like a printed letter: paper card, generous margins. */
+  .letter {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-top: 4px solid var(--gold);
+    border-radius: var(--radius);
+    padding: 1.5rem 1.25rem;
+  }
+  .letter :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  .muted-inline {
+    font-weight: 400;
+  }
+
+  @media (min-width: 40em) {
+    .letter {
+      padding: 2.25rem 2.5rem;
+    }
   }
 </style>
