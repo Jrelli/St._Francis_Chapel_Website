@@ -72,6 +72,7 @@ Node 24 (`.node-version`). `npm run dev` · `npm run build` · `npm test` · `np
   New external origins (fetch, embeds) must be added to the CSP.
 - **API keys:** `GOOGLE_API_KEY` is a build-only secret; `PUBLIC_GOOGLE_CALENDAR_BROWSER_KEY` ships to
   the browser and must stay referrer- and API-restricted. Env schema is in `astro.config.mjs`.
+- **Colors** (stakeholder, 2026-10-27): crisp white, light-gray `--band` (#E6E8E5), red accents. `--accent` #E15045 is only ~3.9:1 on white, so use it for large/decorative things and bold 19px+ button text; use `--accent-text` #B83228 for links and small text. Headings are near-black; only h1 is red. Tokens are named by role in `global.css`.
 - **A11y:** WCAG AA colors (tokens in `global.css`), large type for older readers, Mass times above
   the fold on phones. `role="list"` on unstyled lists is intentional (Safari); the ESLint rule
   allows it. The mobile nav collapses via `@media (scripting: enabled)` (no inline JS).
@@ -83,6 +84,7 @@ Node 24 (`.node-version`). `npm run dev` · `npm run build` · `npm test` · `np
   rebuilds the site without the build variables. Don't add the Cloudflare adapter; the site is
   fully static. Check changes with `npx wrangler deploy --dry-run` (no login needed).
 
+- **Missing spaces before links:** Astro drops a line break between text and a tag on the next line ("by<a>" renders "byUna"), and Prettier wraps lines there. End such text lines with `{' '}`. `npm run check:html` (part of `verify` and CI) fails the build if it happens.
 - ESLint 10: `eslint-plugin-jsx-a11y` doesn't support it, so the project uses the
   `eslint-plugin-jsx-a11y-x` fork.
 - Visual checks: headless Chrome/Edge enforces a ~500px minimum window, so `--window-size=390`
