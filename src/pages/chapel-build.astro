@@ -1,8 +1,13 @@
 ---
+// Project facts below come from the mission's own updates (TLM Respecter Substack, Oct 1 and
+// Oct 14, 2026). Figures still awaiting confirmation are listed in CONTENT_TO_CONFIRM.md.
+import aerialPhoto from '../assets/photos/aerial-property.jpg';
+import interiorRendering from '../assets/photos/chapel-rendering-interior.jpg';
+import sitePlan from '../assets/photos/site-plan.jpg';
 import ConstructionGallery from '../components/ConstructionGallery.astro';
 import Fact from '../components/Fact.astro';
+import Figure from '../components/Figure.astro';
 import PageIntro from '../components/PageIntro.astro';
-import Placeholder from '../components/Placeholder.astro';
 import { site } from '../config/site';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { has } from '../lib/config';
@@ -27,10 +32,53 @@ import { has } from '../lib/config';
           </a>
         </p>
       )}
-
-      <h2>The Project</h2>
-      <Placeholder what="the story of the property and the plans for the chapel, with renderings." />
     </div>
+
+    <div class="build-hero">
+      <Figure
+        src={interiorRendering}
+        alt="Concept rendering of the chapel interior: wooden pews facing a white and gold high altar with a crucifix, a communion rail, statues of Our Lady and Saint Joseph, stained-glass windows, and the Stations of the Cross along the walls"
+        caption="Concept rendering of the finished sanctuary."
+        sizes="(min-width: 64em) 56rem, 100vw"
+      />
+    </div>
+
+    <section aria-labelledby="project-heading" class="prose">
+      <h2 id="project-heading">The Project</h2>
+      <p>
+        In June 2026, the mission bought five acres of land in Jefferson County, Tennessee. The
+        property includes a large barn, which we are converting into a chapel complete with a
+        sanctuary, a community center, and classrooms.
+      </p>
+      <p>
+        Volunteers have been cleaning and landscaping the grounds and framing the inside of the
+        barn. Our goal is to finish the sanctuary in time to offer Holy Mass in it during Advent.
+      </p>
+      <p>
+        Our fundraising goal is <strong>$300,000</strong>. Until the chapel is ready, Father David
+        Mary continues to offer the Traditional Latin Mass every Sunday. See the{' '}
+        <a href="/">Mass times</a>.
+      </p>
+    </section>
+
+    <section aria-labelledby="property-heading">
+      <h2 id="property-heading">The Property</h2>
+      <div class="property-figures">
+        <Figure
+          src={aerialPhoto}
+          alt="Aerial view of the mission property: wooded hills along a country road, with mountains on the horizon"
+          caption="The five-acre property from the air."
+          sizes="(min-width: 48em) 45vw, 100vw"
+        />
+        <Figure
+          src={sitePlan}
+          alt="Illustrated site plan of the property: a driveway from the road leads to parking beside the chapel, with a lawn in front and a Marian grotto in the woods"
+          caption="Concept site plan: the chapel, parking, driveway, and a Marian grotto."
+          sizes="(min-width: 48em) 45vw, 100vw"
+          enlarge
+        />
+      </div>
+    </section>
 
     <section aria-labelledby="progress-heading">
       <h2 id="progress-heading">Construction Progress</h2>
@@ -45,6 +93,20 @@ import { has } from '../lib/config';
     font-size: 1.15rem;
   }
   h2 {
-    margin-top: 2rem;
+    margin-top: 2.5rem;
+  }
+  .build-hero {
+    max-width: 56rem;
+    margin-top: 1.5rem;
+  }
+  .property-figures {
+    display: grid;
+    gap: 1.5rem;
+  }
+  @media (min-width: 48em) {
+    .property-figures {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
   }
 </style>
