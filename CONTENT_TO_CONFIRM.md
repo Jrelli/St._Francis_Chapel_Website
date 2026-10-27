@@ -17,7 +17,7 @@ unconfirmed config values have a dotted orange outline (hover to see the TODO).
 | ☐   | `shortName`                       | St. Francis Chapel                                                                                  | Mobile header                                                          | Preferred short form?                                          |
 | ☑   | `url`                             | https://saintfrancischapel.com                                                                      | Canonical links, sitemap                                               | Apex chosen as the canonical address                           |
 | ☐   | `taglineLatin`                    | Ave Maria gratia plena Dominus tecum!                                                               | Home hero, footer                                                      | Wix draft                                                      |
-| ☐   | `tagline`                         | The fullness of traditional Catholic life in Tennessee                                              | Home hero, page meta description fallback                              | Wix draft                                                      |
+| ☑   | `tagline`                         | East Tennessee's Traditional Latin Mass Catholic Chapel                                             | Home hero, page meta description fallback                              | Provided 2026-10-26                                            |
 | ☐   | `description`                     | A traditional Latin Mass mission chapel of the Society of Saint Pius X in New Market, Tennessee.    | Search/social description, About                                       | How should the SSPX relationship be worded?                    |
 | ☐   | `mailingAddress`                  | P.O. Box 27, New Market, TN 37820                                                                   | Footer, Contact                                                        | Wix draft                                                      |
 | ☑   | `email`                           | office@saintfrancischapel.com                                                                       | Footer, Contact                                                        | Google Workspace mailbox, confirmed 2026-10-26                 |
@@ -53,28 +53,50 @@ Each entry has its own `confirmed:` flag. All are from the Wix draft.
 
 ## Images and logos
 
-| ✓   | Item                                        | Used on                                     | Notes                                       |
-| --- | ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| ☑   | Saint Francis Mission Chapel seal           | Header, favicon source                      | The chapel's own mark, confirmed 2026-10-26 |
-| ☑   | Saint Francis engraving (black and white)   | Home hero                                   | Approved for use 2026-10-26                 |
-| ☑   | Saint Francis linocut blessing (red)        | Home chapel-build box                       | Approved for use 2026-10-26                 |
-| ☐   | SSPX logo                                   | Associated Organizations (placeholder only) | **Not used until permission is confirmed**  |
-| ☐   | Capuchin Friars logo                        | Associated Organizations (placeholder only) | **Not used until permission is confirmed**  |
-| ☐   | Construction, property and rendering photos | Chapel Build gallery (Phase 2)              | Drop into `src/assets/photos/`              |
+| ✓   | Item                                                                     | Used on                                     | Notes                                                       |
+| --- | ------------------------------------------------------------------------ | ------------------------------------------- | ----------------------------------------------------------- |
+| ☑   | Saint Francis Mission Chapel seal                                        | Header, favicon source                      | The chapel's own mark, confirmed 2026-10-26                 |
+| ☑   | Saint Francis engraving (black and white)                                | About overview (wide screens)               | Approved for use 2026-10-26                                 |
+| ☑   | Saint Francis linocut blessing (red)                                     | Not currently used                          | Approved for use 2026-10-26                                 |
+| ☑   | Aerial photo of the property                                             | Home page header, fading into the page      | Provided 2026-10-26                                         |
+| ☑   | Church illustration (watercolor)                                         | Home chapel-build box                       | Provided 2026-10-26                                         |
+| ☐   | SSPX logo                                                                | Associated Organizations (placeholder only) | **Not used until permission is confirmed**                  |
+| ☐   | Capuchin Friars logo                                                     | Associated Organizations (placeholder only) | **Not used until permission is confirmed**                  |
+| ☑   | 15 construction photos                                                   | Chapel Build gallery                        | Provided 2026-10-26; resized and metadata stripped          |
+| ☐   | People shown in the construction photos are OK with being on the website | Chapel Build gallery                        | Friars and volunteers are recognizable; worth a quick check |
+| ☐   | Renderings ("Chapel Rendering 7A", "Layout render 1/2")                  | Not used yet                                | Could illustrate "The Project" on Chapel Build              |
 
-## Page copy (placeholder text in Phase 1)
+## Page copy
 
-Every stub page shows a dashed "placeholder" box until real copy is written. Still needed:
+Pages show a dashed "Coming soon" box where copy is still needed.
 
-- ☐ About → Our Story, including the letter to and from Bishop Beckman
+- ☑ About → How Our Mission Is Organized (SSPX, Una Voce Tennessee, Capuchins), provided 2026-10-26
+- ☑ About → Staff (chapel team and Una Voce board), provided 2026-10-26, in `src/data/staff.yaml`
+- ☑ About → FAQ (four questions), provided 2026-10-26, in `src/data/faq.yaml`
+- ☑ Our Story → letter to Bishop Beckman (Sept 28, 2026), reproduced verbatim
+- ☑ Our Story → Diocese of Knoxville notice (Oct 2, 2026), linked as the original PDF
+- ☑ Associated Organizations → Capuchins, SSPX and Una Voce Tennessee descriptions
+- ☐ Our Story → the history of the mission (still a placeholder)
 - ☐ About → Visiting for the First Time (dress, etiquette, what to expect at a TLM)
-- ☐ About → Staff
-- ☐ About → FAQ
 - ☐ Chapel Build: the full project story (the short blurb is in `site.ts` above)
 - ☐ Home: the "Help Us Build a Permanent Home" heading and "Follow the progress" wording
-- ☐ Home hero engraving alt text: "Engraving of Saint Francis of Assisi with arms raised, bearing the stigmata"
 - ☐ Locations: each Mass/Confession location's address and written directions
-- ☐ Associated Organizations descriptions
+- ☐ Associated Organizations → homeschool groups description
+
+## Questions raised by the new content
+
+These are worded as provided. Visitors may notice the differences, so they're worth settling.
+
+| ✓   | Question                                                                                                                                                                                                                                    | Where                      |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| ☐   | SSPX relationship: About/Organizations say the mission "operates under the guidance and direction of the SSPX", while the FAQ says it "is independently operated and is not directly administered by the SSPX". Can both be true as worded? | About, Organizations, FAQ  |
+| ☐   | Which organization is the 501(c)(3)? The FAQ says "our chapel is recognized as a 501(c)(3)"; About says the property is owned by Una Voce Tennessee, "a tax exempt international organization". This matters for donation receipts.         | FAQ, About, Donate         |
+| ☐   | Location: the letter says the mission chapel is "in Dandridge"; the site's mailing address is New Market. Both may be right (property vs. P.O. box).                                                                                        | Our Story, footer, Contact |
+| ☐   | "Society of Pope Saint Pius X" (About) vs. "Society of Saint Pius X" (elsewhere)                                                                                                                                                            | About, Organizations       |
+| ☐   | Spelling: "Ashney Patoka" (Choir Director). Is it "Ashley"?                                                                                                                                                                                 | Staff                      |
+| ☐   | FAQ: "Please contact the parish office." Link it to the Contact page?                                                                                                                                                                       | FAQ                        |
+| ☐   | Una Voce Tennessee website, if any, to link                                                                                                                                                                                                 | Organizations              |
+| ☑   | FAQ typo fixed: "Saint Francis Mission Chapel chapel" → "Saint Francis Mission Chapel"                                                                                                                                                      | FAQ                        |
 
 ## Domain and accounts
 

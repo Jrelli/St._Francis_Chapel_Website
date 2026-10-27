@@ -8,9 +8,16 @@ DNS cutover), [CONTENT_GUIDE.md](CONTENT_GUIDE.md) (volunteer editors),
 ## Status (as of 2026-10-26)
 
 - **Phase 1 done:** scaffold, config, layout, home page, stub pages, calendar module, docs, CI.
+- **Content batch (2026-10-26):** aerial-photo hero, new tagline, church illustration on the home
+  build box, construction gallery (auto-loads `src/assets/photos/construction/`, alt text in
+  `src/data/construction-photos.yaml`), staff (`src/data/staff.yaml`), FAQ (`src/data/faq.yaml`),
+  mission-organization copy (About, Organizations), the letter to Bishop Beckman
+  (`src/data/letters/`, verbatim) and the Diocese's Oct 2 notice (`public/documents/`, original PDF;
+  it is a public notice, not a reply letter, so label it that way). Open wording questions are in
+  CONTENT_TO_CONFIRM.md. Photos: resize and strip metadata before committing (public repo).
 - **Phase 2 (not started; plan first):** bulletins from a Google Drive folder (build-time, same mock
-  fallback as the calendar), locations data file + maps + print-directions view, Chapel Build photo
-  gallery (`src/assets/photos/`), real page copy.
+  fallback as the calendar), locations data file + maps + print-directions view, remaining page copy.
+  Optional: let volunteers add gallery photos via Drive instead of the repo.
 - **Testing setup:** the owner's personal Google Cloud keys plus a personal test calendar, via
   `GOOGLE_CALENDAR_ID` in the local `.env`. Verified working locally (build fetch and live refresh).
   Cloudflare Worker `st-francis-chapel-website` deploys from GitHub `main`. Its build variables
