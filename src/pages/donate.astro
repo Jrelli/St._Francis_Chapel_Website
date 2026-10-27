@@ -1,6 +1,8 @@
 ---
 /**
- * Donations go to an external Stripe page. This site never collects payment details.
+ * How to give: the GiveSendGo campaign (an external page, once its link is set in
+ * site.donateUrl) and checks by mail. This site never collects payment details.
+ * Every Donate button on the site points here.
  */
 import Fact from '../components/Fact.astro';
 import PageIntro from '../components/PageIntro.astro';
@@ -16,32 +18,72 @@ import { has } from '../lib/config';
       lead="Your gifts sustain the mission and help build a permanent chapel."
     />
     <div class="prose">
-      {has(site.donateUrl) ? (
-        <>
+      {has(site.donateUrl) && (
+        <section aria-labelledby="online-heading">
+          <h2 id="online-heading">Give Online</h2>
           <p>
             <a class="button" href={site.donateUrl.value} rel="noopener">
-              Give online
+              Give through GiveSendGo
             </a>
           </p>
           <p class="muted">
-            You’ll be taken to a secure donation page run by Stripe. This website never sees your
-            card details.
+            You’ll be taken to our campaign on GiveSendGo. This website never sees your payment
+            details.
           </p>
-        </>
-      ) : (
-        has(site.email) && (
-          <p>
-            To give, please contact us at{' '}
-            <a href={`mailto:${site.email.value}`}>
-              <Fact f={site.email} />
-            </a>
-            .
-          </p>
-        )
+        </section>
       )}
+
+      {has(site.mailingAddress) && (
+        <section aria-labelledby="check-heading">
+          <h2 id="check-heading">Give by Check</h2>
+          <p>
+            Please make checks payable to{' '}
+            <strong>
+              <Fact f={site.checksPayableTo} />
+            </strong>{' '}
+            and mail them to:
+          </p>
+          <address class="donate-address">
+            <Fact f={site.checksPayableTo} />
+            <br />
+            {site.mailingAddress.value.map((line) => (
+              <>
+                {line}
+                <br />
+              </>
+            ))}
+          </address>
+        </section>
+      )}
+
+      <section aria-labelledby="tax-heading">
+        <h2 id="tax-heading">Tax Deductions</h2>
+        <p>
+          Saint Francis Mission Chapel is operated by{' '}
+          <a href="/about/una-voce-tennessee/">Una Voce Tennessee</a>, a federally recognized
+          501(c)(3) nonprofit organization, doing business as Saint Francis Mission Chapel.
+          Donations are tax-deductible to the extent permitted by law.
+          {has(site.nonprofit.ein) && (
+            <>
+              {' '}
+              EIN: <Fact f={site.nonprofit.ein} />.
+            </>
+          )}
+        </p>
+      </section>
+
       <p>
         <a href="/chapel-build/">Learn about the chapel build</a>
       </p>
     </div>
   </div>
 </BaseLayout>
+
+<style>
+  .donate-address {
+    font-style: normal;
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+</style>

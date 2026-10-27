@@ -25,13 +25,11 @@ import { has } from '../lib/config';
           <Fact f={site.chapelBuildBlurb} />
         </p>
       )}
-      {has(site.donateUrl) && (
-        <p>
-          <a class="button" href={site.donateUrl.value} rel="noopener">
-            Donate to the chapel build<span class="visually-hidden"> (secure Stripe page)</span>
-          </a>
-        </p>
-      )}
+      <p>
+        <a class="button" href="/donate/">
+          Donate to the chapel build
+        </a>
+      </p>
     </div>
 
     <div class="build-hero">

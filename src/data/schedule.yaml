@@ -19,12 +19,14 @@ sections:
       - days: Sundays
         time: '10:00 AM'
         what: Holy High Mass
-        details: A potluck follows around 11:30 AM. For now, Mass is held at a member's home in New Market; see Directions.
+        details: At the chapel in Dandridge (see Directions). A potluck follows around 11:30 AM.
         confirmed: false
-      - days: Daily
+      - days: Monday – Saturday
         time: '8:00 AM'
+        what: Low Mass
         location: Holy Crucifixion Hermitage, Newport
-        confirmed: false
+        details: Father sometimes travels, so please confirm before you go.
+        confirmed: true
 
   - title: Confession
     items:

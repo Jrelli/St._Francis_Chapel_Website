@@ -3,13 +3,14 @@ import PageIntro from '../components/PageIntro.astro';
 import Placeholder from '../components/Placeholder.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-// Addresses and times from the Oct 25, 2026 newsletter (see CONTENT_TO_CONFIRM.md).
+// The chapel address is from the owner (2026-10-27): the site launches once Sunday Mass moves
+// there. Hermitage address and times are from the Oct 25, 2026 newsletter.
 // Phase 2: move locations into a data file and add written turn-by-turn directions.
 const locations = [
   {
-    name: 'Sunday Mass',
-    note: 'Held at the home of a member of the mission until the chapel is built.',
-    address: ['205 Underwood Rd', 'New Market, TN 37820'],
+    name: 'Saint Francis Mission Chapel',
+    note: 'Sunday Mass',
+    address: ['1921 Sockless Rd', 'Dandridge, TN 37725'],
     times: [
       '9:30 AM: Confession (outside) and the Rosary in Latin (inside)',
       '10:00 AM: High Mass',
@@ -17,8 +18,9 @@ const locations = [
   },
   {
     name: 'Holy Crucifixion Hermitage',
+    note: 'Weekday Mass. Father sometimes travels, so please confirm before you go.',
     address: ['696 Hale Brook Road', 'Newport, TN 37821'],
-    times: ['8:00 AM: Low Mass on weekdays'],
+    times: ['8:00 AM: Low Mass, Monday through Saturday'],
   },
 ];
 

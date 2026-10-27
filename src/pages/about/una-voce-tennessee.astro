@@ -1,45 +1,142 @@
 ---
-// Una Voce Tennessee: the nonprofit that owns and operates the mission property.
-// Board members come from src/data/staff.yaml (group id "una-voce-board").
+// Una Voce Tennessee: the nonprofit that operates the chapel (wording from the owner's
+// "About language to use" document, 2026-10-27). Board members come from
+// src/data/staff.yaml (group id "una-voce-board"); nonprofit details from src/config/site.ts.
 import AboutNav from '../../components/AboutNav.astro';
+import Fact from '../../components/Fact.astro';
 import PageIntro from '../../components/PageIntro.astro';
 import PeopleList from '../../components/PeopleList.astro';
-import Placeholder from '../../components/Placeholder.astro';
+import { site } from '../../config/site';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { has } from '../../lib/config';
 import { staffGroup } from '../../lib/staff';
 
 const board = staffGroup('una-voce-board');
+const { nonprofit } = site;
 ---
 
 <BaseLayout
   title="Una Voce Tennessee"
-  description="Una Voce Tennessee owns and operates the Saint Francis Mission property."
+  description="Una Voce Tennessee is the nonprofit organization that operates Saint Francis Mission Chapel."
 >
   <div class="container section">
     <PageIntro
       eyebrow="About"
       title="Una Voce Tennessee"
-      lead="The nonprofit organization that owns and operates our mission property."
+      lead="The nonprofit organization that operates Saint Francis Mission Chapel."
     />
     <AboutNav />
 
     <div class="prose">
       <section aria-labelledby="who-heading">
-        <h2 id="who-heading">Who We Are</h2>
+        <h2 id="who-heading">Saint Francis Mission Chapel &amp; Una Voce Tennessee</h2>
         <p>
-          Our Mission property is owned and operated by Una Voce Tennessee, a tax exempt
-          international organization designed to promote and protect the Traditional Latin Mass.
+          Saint Francis Mission Chapel is operated by Una Voce Tennessee, a Tennessee nonprofit
+          organization. Saint Francis Mission Chapel is the registered Doing Business As (DBA) name
+          of Una Voce Tennessee.
         </p>
         <p>
-          The property is five acres of land in Jefferson County, Tennessee, where a large barn is
-          being converted into Saint Francis Mission Chapel.{' '}
-          <a href="/chapel-build/">Follow the chapel build</a>.
+          Una Voce Tennessee is the legal nonprofit entity responsible for operating and
+          administering Saint Francis Mission Chapel, including its official website,
+          SaintFrancisChapel.com.
+        </p>
+        <p>
+          Saint Francis Mission Chapel is operated by Una Voce Tennessee, a federally recognized
+          501(c)(3) nonprofit organization, doing business as Saint Francis Mission Chapel.
+          Donations to Saint Francis Mission Chapel are tax-deductible to the extent permitted by
+          law. All charitable contributions are received and administered by Una Voce Tennessee in
+          support of the chapel's religious mission and operations.
+        </p>
+        <p>
+          Una Voce is an international federation of associations, founded in 1966 in Rome, that now
+          includes national associations in 17 nations on every continent. It is dedicated to
+          ensuring that the Roman Mass codified by St. Pius V is maintained as one of the forms of
+          eucharistic worship which are honored in universal liturgical life, and to restoring the
+          use of Latin, Gregorian Chant, and sacred polyphony in Catholic liturgy.{' '}
+          <a href="https://www.fiuv.org" rel="noopener">
+            Visit Una Voce International
+          </a>
+          .
         </p>
       </section>
 
       <section aria-labelledby="mission-heading">
-        <h2 id="mission-heading">Mission Statement</h2>
-        <Placeholder what="the mission statement of Una Voce Tennessee." />
+        <h2 id="mission-heading">Our Mission</h2>
+        <p>
+          Our mission is to preserve and promote the Traditional Catholic Faith through the Holy
+          Sacrifice of the Mass, the traditional sacraments, and the timeless teachings of Holy
+          Mother Church. We strive to foster a faithful Catholic community rooted in prayer,
+          reverence, and devotion, passing on the treasures of our Faith to future generations for
+          the greater glory of God and the salvation of souls.
+        </p>
+        <p>
+          <a href="/about/mission-statement/">Read the chapel's full mission statement</a>
+        </p>
+      </section>
+
+      <section aria-labelledby="info-heading">
+        <h2 id="info-heading">Nonprofit Organization Information</h2>
+        <dl class="info">
+          <div>
+            <dt>Legal organization name</dt>
+            <dd>
+              <Fact f={nonprofit.name} />
+            </dd>
+          </div>
+          <div>
+            <dt>Registered DBA</dt>
+            <dd>{site.name.value}</dd>
+          </div>
+          {has(nonprofit.ein) && (
+            <div>
+              <dt>Federal Employer Identification Number (EIN)</dt>
+              <dd>
+                <Fact f={nonprofit.ein} />
+              </dd>
+            </div>
+          )}
+          {has(nonprofit.physicalAddress) && (
+            <div>
+              <dt>Nonprofit physical address</dt>
+              <dd>
+                <Fact f={nonprofit.physicalAddress}>
+                  {nonprofit.physicalAddress.value.map((line) => (
+                    <>
+                      {line}
+                      <br />
+                    </>
+                  ))}
+                </Fact>
+              </dd>
+            </div>
+          )}
+          {has(site.mailingAddress) && (
+            <div>
+              <dt>Nonprofit mailing address</dt>
+              <dd>
+                {site.name.value}
+                <br />
+                {site.mailingAddress.value.map((line) => (
+                  <>
+                    {line}
+                    <br />
+                  </>
+                ))}
+              </dd>
+            </div>
+          )}
+          <div>
+            <dt>Official website</dt>
+            <dd>
+              <a href="/">SaintFrancisChapel.com</a>
+            </dd>
+          </div>
+        </dl>
+        <p>
+          Saint Francis Mission Chapel operates under the legal administration of Una Voce
+          Tennessee. This website serves as the official online presence of the chapel and its
+          operating nonprofit organization.
+        </p>
       </section>
     </div>
 
@@ -54,5 +151,18 @@ const board = staffGroup('una-voce-board');
   section + section,
   .prose + section {
     margin-top: 2.5rem;
+  }
+  .info {
+    margin: 0 0 1.25rem;
+  }
+  .info > div {
+    padding-block: 0.6rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .info dt {
+    font-weight: 700;
+  }
+  .info dd {
+    margin: 0.15rem 0 0;
   }
 </style>

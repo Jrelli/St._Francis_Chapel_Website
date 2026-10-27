@@ -4,7 +4,6 @@ import engraving from '../../assets/art/engraving.png';
 import AboutNav from '../../components/AboutNav.astro';
 import Fact from '../../components/Fact.astro';
 import PageIntro from '../../components/PageIntro.astro';
-import Placeholder from '../../components/Placeholder.astro';
 import { site } from '../../config/site';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { has } from '../../lib/config';
@@ -18,7 +17,7 @@ const sections = [
   {
     href: '/about/una-voce-tennessee/',
     title: 'Una Voce Tennessee',
-    text: 'The nonprofit that owns and operates the mission property, and its board of directors.',
+    text: 'The nonprofit that operates the chapel, and its board of directors.',
   },
   {
     href: '/about/staff/',
@@ -55,23 +54,38 @@ const sections = [
           </p>
         )}
 
-        <h2>Mission Statement</h2>
-        <Placeholder what="the mission statement of Saint Francis Mission Chapel." />
+        <h2>Our Mission</h2>
+        <p>
+          Our mission is to preserve and promote the Traditional Catholic Faith through the Holy
+          Sacrifice of the Mass, the traditional sacraments, and the timeless teachings of Holy
+          Mother Church. We strive to foster a faithful Catholic community rooted in prayer,
+          reverence, and devotion, passing on the treasures of our Faith to future generations for
+          the greater glory of God and the salvation of souls.
+        </p>
+        <p>
+          <a href="/about/mission-statement/">Read our full mission statement</a>
+        </p>
 
         <h2>How Our Mission Is Organized</h2>
         <p>
-          Saint Francis Mission operates under the guidance and direction of the SSPX. Our priest is
-          a Friend-Associate of the Society and has full authorization by the Society of Pope Saint
-          Pius X.
+          Saint Francis Mission Chapel is affiliated with the Society of Saint Pius X (SSPX), but
+          the SSPX does not govern its operations and assumes no legal obligations on its behalf.
+          Our priest, Fr. David Mary, is affiliated with the SSPX.
         </p>
         <p>
-          Our Mission property is owned and operated by{' '}
-          <a href="/about/una-voce-tennessee/">Una Voce Tennessee</a>, a tax exempt international
-          organization designed to promote and protect the Traditional Latin Mass.
+          A mission chapel is one where a priest of the Society does not live on site, but is cared
+          for by a priest from outside an SSPX priory.
         </p>
         <p>
-          Our priests and brothers are members of the Traditional Capuchin Friars Minor, a
-          traditional Franciscan/Capuchin Congregation under the direct care of the SSPX.
+          Saint Francis Mission Chapel is served by the Traditional Capuchin Friars Minor, an
+          independent Capuchin-Franciscan community. The Traditional Capuchin Friars Minor live the
+          authentic Traditional Capuchin Life according to their 800-year-old traditions and
+          liturgical practices.
+        </p>
+        <p>
+          Saint Francis Mission Chapel is operated by{' '}
+          <a href="/about/una-voce-tennessee/">Una Voce Tennessee</a>, a federally recognized
+          501(c)(3) nonprofit organization, doing business as Saint Francis Mission Chapel.
         </p>
       </div>
       <Image

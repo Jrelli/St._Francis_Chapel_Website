@@ -9,10 +9,11 @@
  *   menu.ts toggles aria-expanded; CSS shows the list when it's "true".
  */
 import { Image } from 'astro:assets';
-import sealMark from '../assets/brand/seal-mark.png';
+// Black-and-white engraving chosen by the owner (2026-10-27). The brown seal crop is
+// still in src/assets/brand/seal-mark.png if they change their mind.
+import sealMark from '../assets/brand/francis-mark.png';
 import { mainNav } from '../config/nav';
 import { site } from '../config/site';
-import { has } from '../lib/config';
 
 const path = Astro.url.pathname;
 const isCurrent = (href: string) => path === href || (href !== '/' && path.startsWith(href));
@@ -47,13 +48,11 @@ const isCurrent = (href: string) => path === href || (href !== '/' && path.start
             </a>
           </li>
         ))}
-        {has(site.donateUrl) && (
-          <li class="site-nav__donate">
-            <a class="button" href="/donate/">
-              Donate
-            </a>
-          </li>
-        )}
+        <li class="site-nav__donate">
+          <a class="button" href="/donate/">
+            Donate
+          </a>
+        </li>
       </ul>
     </nav>
   </div>
@@ -97,7 +96,7 @@ const isCurrent = (href: string) => path === href || (href !== '/' && path.start
     width: 44px;
     height: 44px;
     flex: none;
-    mix-blend-mode: multiply; /* blends the seal's cream background into the page */
+    mix-blend-mode: multiply; /* blends the engraving's white background into the header gray */
   }
 
   .menu-toggle {

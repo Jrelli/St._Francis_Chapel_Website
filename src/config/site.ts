@@ -25,7 +25,7 @@ const fact = <T>(value: T, confirmed: boolean, todo?: string): Fact<T> => ({
 
 export const site = {
   name: fact('Saint Francis Mission Chapel', true, 'Matches the chapel seal'),
-  shortName: fact('St. Francis Chapel', false, 'Confirm preferred short name'),
+  shortName: fact('Saint Francis Mission Chapel', true, 'Owner is also open to "SFMC"'),
 
   /** Production address; used for canonical URLs and the sitemap. Apex is canonical. */
   url: fact('https://saintfrancischapel.com', true),
@@ -33,20 +33,16 @@ export const site = {
   taglineLatin: fact('Ave Domina, sancta Regina, sancta Dei genetrix Maria!', true),
   tagline: fact('The fullness of traditional Catholic life in Tennessee', true),
   description: fact(
-    'A traditional Latin Mass mission chapel of the Society of Saint Pius X in New Market, Tennessee.',
+    'A traditional Latin Mass mission chapel in Dandridge, Tennessee, affiliated with the Society of Saint Pius X.',
     false,
-    'Confirm wording, especially how the SSPX relationship should be described',
+    'Reworded 2026-10-27 to match the mission statement ("affiliated with" the SSPX)',
   ),
 
   /** Each line is shown on its own line. Use [] to hide the address. */
-  mailingAddress: fact(
-    ['P.O. Box 27', 'New Market, TN 37820'],
-    false,
-    'From Wix draft; confirm the P.O. box is current',
-  ),
+  mailingAddress: fact(['P.O. Box 27', 'New Market, TN 37820'], true),
   /** Google Workspace mailbox (confirmed 2026-10-26). */
   email: fact('office@saintfrancischapel.com', true),
-  phone: fact('', false, 'No phone number provided yet'),
+  phone: fact('', true, 'Email only for now (owner, 2026-10-27)'),
 
   social: {
     facebook: fact('https://www.facebook.com/saintfrancissspx', false, 'From Wix draft'),
@@ -71,12 +67,19 @@ export const site = {
     ),
   },
 
-  /** External Stripe donation page. The site never handles payments itself. */
-  donateUrl: fact(
-    'https://donate.stripe.com/5kQdRa1jLebudSg2gy8Vi01',
-    false,
-    'From Wix draft; confirm the Stripe page belongs to the chapel and is live',
-  ),
+  /**
+   * The GiveSendGo campaign page, shown on the Donate page. Leave '' to offer checks only.
+   * (The owner chose GiveSendGo plus mailed checks over the Stripe link, 2026-10-27.)
+   */
+  donateUrl: fact('', false, 'GiveSendGo campaign link not provided yet'),
+  checksPayableTo: fact('St. Francis Mission Chapel', true, 'As printed in the newsletter'),
+
+  /** The legal nonprofit that operates the chapel (DBA "Saint Francis Mission Chapel"). */
+  nonprofit: {
+    name: fact('Una Voce Tennessee', true),
+    ein: fact('42-3384159', true),
+    physicalAddress: fact(['4719 Old Knoxville Hwy', 'Rockford, TN 37853'], true),
+  },
 
   calendar: {
     /** Public Google Calendar that holds Masses, events and exceptions. */

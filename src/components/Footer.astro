@@ -27,7 +27,9 @@ const telHref = `tel:${site.phone.value.replace(/[^\d+]/g, '')}`;
           <Fact f={site.taglineLatin} />
         </p>
       )}
-      <p class="site-footer__note">A traditional Latin Mass mission in East Tennessee.</p>
+      <p class="site-footer__note">
+        Operated by {site.nonprofit.name.value}, a Tennessee nonprofit organization.
+      </p>
     </section>
 
     {hasContact && (
@@ -87,20 +89,21 @@ const telHref = `tel:${site.phone.value.replace(/[^\d+]/g, '')}`;
     <nav aria-labelledby="footer-more">
       <h2 id="footer-more">More</h2>
       <ul role="list">
-        {footerNav
-          .filter((item) => item.href !== '/donate/' || has(site.donateUrl))
-          .map((item) => (
-            <li>
-              <a href={item.href}>{item.label}</a>
-            </li>
-          ))}
+        {footerNav.map((item) => (
+          <li>
+            <a href={item.href}>{item.label}</a>
+          </li>
+        ))}
       </ul>
     </nav>
   </div>
 
   <div class="container site-footer__base">
     <p>
-      &copy; {year} {site.name.value}
+      &copy; {year} {site.nonprofit.name.value}. All rights reserved.
+      {has(site.nonprofit.ein) && (
+        <span class="site-footer__ein">EIN: {site.nonprofit.ein.value}</span>
+      )}
     </p>
   </div>
 </footer>
@@ -188,5 +191,10 @@ const telHref = `tel:${site.phone.value.replace(/[^\d+]/g, '')}`;
 
   .site-footer__base p {
     margin: 0;
+  }
+
+  .site-footer__ein {
+    display: inline-block;
+    margin-left: 1rem;
   }
 </style>

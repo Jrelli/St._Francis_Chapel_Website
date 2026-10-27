@@ -354,7 +354,7 @@ GoDaddy (**DNSSEC → Add DS record**). Cloudflare confirms when it's active.
 - **No analytics, trackers, cookies, or third-party embeds** in Phase 1. The only third-party
   request is the browser's call to `www.googleapis.com` for the live calendar (no cookies sent).
   Adding any of these requires sign-off first.
-- **Payments** go to the external Stripe page only. This site never handles card data.
+- **Payments** go to the external GiveSendGo campaign page only (or by mailed check). This site never handles card data.
 
 ## Costs
 

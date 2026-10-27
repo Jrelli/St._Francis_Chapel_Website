@@ -37,35 +37,34 @@ unconfirmed config values have a dotted orange outline (hover to see the TODO).
 
 Each entry has its own `confirmed:` flag. All are from the Wix draft.
 
-| ✓   | Entry                                                                                           | Used on         |
-| --- | ----------------------------------------------------------------------------------------------- | --------------- |
-| ☐   | Sunday Holy High Mass, 10:00 AM; potluck ~11:30 AM (location on the calendar)                   | Home            |
-| ☐   | Daily Mass, 8:00 AM, Holy Crucifixion Hermitage, Newport                                        | Home            |
-| ☑   | Sunday Confession, 9:30 AM (outside; Rosary in Latin inside)                                    | Home            |
-| ☐   | Daily Confession at the Hermitage (ring the bell, ask for Father)                               | Home            |
-| ☐   | First Friday Confession, 5:00 – 5:30 PM                                                         | Home            |
-| ☐   | First Saturday Confession, 7:30 – 8:45 AM                                                       | Home            |
-| ☐   | Holy Day Confession, 5:00 – 5:30 PM                                                             | Home            |
-| ☐   | Thursday Adoration, 5:00 – 8:00 PM                                                              | Home            |
-| ☑   | Sunday Mass is held at a member's home (205 Underwood Rd, New Market) until the chapel is built | Home, Locations |
-| ☐   | Which days count as "Daily" (Mon–Sat? every day?)                                               | Home            |
-| ☐   | The note under the schedule ("Times sometimes change…")                                         | Home            |
+| ✓   | Entry                                                                                                                                 | Used on         |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
+| ☐   | Sunday Holy High Mass, 10:00 AM; potluck ~11:30 AM (location on the calendar)                                                         | Home            |
+| ☑   | Weekday Low Mass, 8:00 AM, Monday – Saturday, Holy Crucifixion Hermitage ("confirm before you go")                                    | Home, Locations |
+| ☑   | Sunday Confession, 9:30 AM (outside; Rosary in Latin inside)                                                                          | Home            |
+| ☐   | Daily Confession at the Hermitage (ring the bell, ask for Father)                                                                     | Home            |
+| ☐   | First Friday Confession, 5:00 – 5:30 PM                                                                                               | Home            |
+| ☐   | First Saturday Confession, 7:30 – 8:45 AM                                                                                             | Home            |
+| ☐   | Holy Day Confession, 5:00 – 5:30 PM                                                                                                   | Home            |
+| ☐   | Thursday Adoration, 5:00 – 8:00 PM                                                                                                    | Home            |
+| ☑   | Sunday Mass at the chapel, 1921 Sockless Rd, Dandridge, TN 37725. The site launches once Mass is held there (owner email, 2026-10-27) | Home, Locations |
+| ☐   | The note under the schedule ("Times sometimes change…")                                                                               | Home            |
 
 ## Images and logos
 
-| ✓   | Item                                                                     | Used on                                                    | Notes                                                                      |
-| --- | ------------------------------------------------------------------------ | ---------------------------------------------------------- | -------------------------------------------------------------------------- |
-| ☑   | Saint Francis Mission Chapel seal                                        | Header, favicon source                                     | The chapel's own mark, confirmed 2026-10-26                                |
-| ☑   | Saint Francis engraving (black and white)                                | About overview (wide screens)                              | Approved for use 2026-10-26                                                |
-| ☑   | Saint Francis linocut blessing (red)                                     | Not currently used                                         | Approved for use 2026-10-26                                                |
-| ☑   | Aerial photo of the property                                             | Chapel Build → The Property                                | Original (not upscaled); removed from the home page at the owner's request |
-| ☑   | Church illustration (watercolor)                                         | Home chapel-build box                                      | Provided 2026-10-26                                                        |
-| ☐   | SSPX logo                                                                | Associated Organizations (placeholder only)                | **Not used until permission is confirmed**                                 |
-| ☐   | Capuchin Friars logo                                                     | Associated Organizations (placeholder only)                | **Not used until permission is confirmed**                                 |
-| ☑   | 15 construction photos                                                   | Chapel Build gallery                                       | Provided 2026-10-26; resized and metadata stripped                         |
-| ☐   | People shown in the construction photos are OK with being on the website | Chapel Build gallery                                       | Friars and volunteers are recognizable; worth a quick check                |
-| ☑   | Interior rendering ("Chapel Rendering 7A")                               | Chapel Build, captioned "Concept rendering"                | Provided 2026-10-27                                                        |
-| ☑   | Site plan ("Layout render 2")                                            | Chapel Build → The Property, captioned "Concept site plan" | Provided 2026-10-27; labels: chapel, parking, driveway, Marian grotto      |
+| ✓   | Item                                                                     | Used on                                                    | Notes                                                                                                          |
+| --- | ------------------------------------------------------------------------ | ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| ☑   | Saint Francis Mission Chapel seal                                        | Favicon, social-share image                                | The chapel's own mark, confirmed 2026-10-26. The brown header crop is kept in `src/assets/brand/seal-mark.png` |
+| ☑   | Saint Francis engraving (black and white)                                | Header (circle crop), About overview (wide screens)        | Owner prefers it in the header (owner email, 2026-10-27)                                                       |
+| ☑   | Saint Francis linocut blessing (red)                                     | Not currently used                                         | Approved for use 2026-10-26                                                                                    |
+| ☑   | Aerial photo of the property                                             | Chapel Build → The Property                                | Original (not upscaled); removed from the home page at the owner's request                                     |
+| ☑   | Church illustration (watercolor)                                         | Home chapel-build box                                      | Provided 2026-10-26                                                                                            |
+| ☐   | SSPX logo                                                                | Associated Organizations (placeholder only)                | **Not used until permission is confirmed**                                                                     |
+| ☐   | Capuchin Friars logo                                                     | Associated Organizations (placeholder only)                | **Not used until permission is confirmed**                                                                     |
+| ☑   | 15 construction photos                                                   | Chapel Build gallery                                       | Provided 2026-10-26; resized and metadata stripped                                                             |
+| ☐   | People shown in the construction photos are OK with being on the website | Chapel Build gallery                                       | Friars and volunteers are recognizable; worth a quick check                                                    |
+| ☑   | Interior rendering ("Chapel Rendering 7A")                               | Chapel Build, captioned "Concept rendering"                | Provided 2026-10-27                                                                                            |
+| ☑   | Site plan ("Layout render 2")                                            | Chapel Build → The Property, captioned "Concept site plan" | Provided 2026-10-27; labels: chapel, parking, driveway, Marian grotto                                          |
 
 ## Page copy
 
@@ -75,8 +74,8 @@ Pages show a dashed "Coming soon" box where copy is still needed.
 - ☑ About → Staff (chapel team and Una Voce board), provided 2026-10-26, in `src/data/staff.yaml`
 - ☑ About → FAQ (four questions), provided 2026-10-26, in `src/data/faq.yaml`
 - ☑ Our Story → letter to Bishop Beckman (Sept 28, 2026), reproduced verbatim
-- ☐ About → **Mission Statement** of Saint Francis Mission Chapel (placeholder on the About overview)
-- ☐ About → Una Voce Tennessee → **Mission Statement** (placeholder)
+- ☑ About → **Mission Statement**: full text on its own page (`src/data/mission-statement.md`), short "Our Mission" on the overview (owner email, 2026-10-27)
+- ☑ About → Una Voce Tennessee: relationship wording, "Our Mission" and nonprofit information from "Una Voce blurb and footer" (owner email, 2026-10-27)
 - ☑ About → Una Voce Tennessee page: who they are, the property, board of directors (from `staff.yaml`)
 - ☑ Our Story → Diocese of Knoxville notice (Oct 2, 2026), linked as the original PDF
 - ☑ Associated Organizations → Capuchins, SSPX and Una Voce Tennessee descriptions
@@ -84,30 +83,32 @@ Pages show a dashed "Coming soon" box where copy is still needed.
 - ☐ About → Visiting for the First Time (dress, etiquette, what to expect at a TLM)
 - ☐ Chapel Build → "The Project": **drafted 2026-10-27** from the same posts. Please review; text is in `src/pages/chapel-build.astro`
 - ☐ Home: the "Help Us Build a Permanent Home" heading and "Follow the progress" wording
-- ☐ Locations: **addresses and times filled in 2026-10-27** from the Oct 25 newsletter. Still needed: written turn-by-turn directions for each location
+- ☐ Locations: addresses and times filled in 2026-10-27. Still needed: written turn-by-turn directions for each location
 - ☐ Associated Organizations → homeschool groups description
 
 ## Questions raised by the new content
 
 These are worded as provided. Visitors may notice the differences, so they're worth settling.
 
-| ✓   | Question                                                                                                                                                                                                                                    | Where                      |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
-| ☐   | SSPX relationship: About/Organizations say the mission "operates under the guidance and direction of the SSPX", while the FAQ says it "is independently operated and is not directly administered by the SSPX". Can both be true as worded? | About, Organizations, FAQ  |
-| ☐   | Which organization is the 501(c)(3)? The FAQ says "our chapel is recognized as a 501(c)(3)"; About says the property is owned by Una Voce Tennessee, "a tax exempt international organization". This matters for donation receipts.         | FAQ, About, Donate         |
-| ☐   | Location: the letter says the mission chapel is "in Dandridge"; the site's mailing address is New Market. Both may be right (property vs. P.O. box).                                                                                        | Our Story, footer, Contact |
-| ☐   | "Society of Pope Saint Pius X" (About) vs. "Society of Saint Pius X" (elsewhere)                                                                                                                                                            | About, Organizations       |
-| ☐   | Spelling: "Ashney Patoka" (Choir Director). Is it "Ashley"?                                                                                                                                                                                 | Staff                      |
-| ☐   | FAQ: "Please contact the parish office." Link it to the Contact page?                                                                                                                                                                       | FAQ                        |
-| ☐   | Una Voce Tennessee website, if any, to link                                                                                                                                                                                                 | Organizations              |
-| ☑   | FAQ typo fixed: "Saint Francis Mission Chapel chapel" → "Saint Francis Mission Chapel"                                                                                                                                                      | FAQ                        |
-| ☐   | Barn size: the Oct 1 post says ~5,000 sq ft, the Oct 14 post ~4,500 sq ft. The site says "a large barn" until confirmed.                                                                                                                    | Our Story, Chapel Build    |
-| ☑   | Fundraising: $150,000 to move in by Advent; $303,000 for the whole project (owner, 2026-10-27)                                                                                                                                              | Chapel Build               |
-| ☐   | Target: finish the sanctuary for Mass during Advent (2026). Still the plan?                                                                                                                                                                 | Chapel Build               |
-| ☐   | Donations: the posts mention a GiveSendGo campaign and mailed checks; the site's Donate button uses the Stripe link. Which should the site offer?                                                                                           | Donate, Chapel Build       |
-| ☐   | The Oct 1 post says "Diocese of East Tennessee"; the site uses the official name, Diocese of Knoxville.                                                                                                                                     | Our Story                  |
-| ☐   | Mass intentions: the Contact page gives a customary offering of $20 per intention (Oct 25 newsletter). Keep it on the site?                                                                                                                 | Contact                    |
-| ☐   | Weekday Mass: the newsletter says 8:00 AM Low Mass at the Hermitage Monday–Saturday; the home schedule says "Daily". Is there also a Sunday Mass there?                                                                                     | Home, Locations            |
+| ✓   | Question                                                                                                                                                                                                      | Where                      |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+| ☑   | SSPX relationship: now worded as in the mission statement ("affiliated with the SSPX, but the SSPX does not govern its operations…") on About, Organizations and FAQ (owner email, 2026-10-27)                | About, Organizations, FAQ  |
+| ☑   | 501(c)(3): Una Voce Tennessee; Saint Francis Mission Chapel is its registered DBA. EIN 42-3384159 (owner email, 2026-10-27)                                                                                   | FAQ, About, Donate, footer |
+| ☑   | Location: the chapel is in Dandridge (1921 Sockless Rd); the mailing address is the New Market P.O. box                                                                                                       | Our Story, footer, Contact |
+| ☑   | "Society of Pope Saint Pius X" wording replaced by the mission statement's "Society of Saint Pius X"                                                                                                          | About, Organizations       |
+| ☑   | Spelling: "Ashney Patoka" is correct (owner email, 2026-10-27)                                                                                                                                                | Staff                      |
+| ☐   | FAQ: "Please contact the parish office." Link it to the Contact page?                                                                                                                                         | FAQ                        |
+| ☑   | Una Voce Tennessee has no website of its own; the Una Voce International site (fiuv.org) is linked instead (owner email, 2026-10-27)                                                                          | Una Voce, Organizations    |
+| ☑   | FAQ typo fixed: "Saint Francis Mission Chapel chapel" → "Saint Francis Mission Chapel"                                                                                                                        | FAQ                        |
+| ☐   | Barn size: the Oct 1 post says ~5,000 sq ft, the Oct 14 post ~4,500 sq ft. The site says "a large barn" until confirmed.                                                                                      | Our Story, Chapel Build    |
+| ☑   | Fundraising: $150,000 to move in by Advent; $303,000 for the whole project (owner, 2026-10-27)                                                                                                                | Chapel Build               |
+| ☑   | Target: sanctuary ready for Mass during Advent 2026 (owner email, 2026-10-27)                                                                                                                                 | Chapel Build               |
+| ☑   | Donations: GiveSendGo and mailed checks; Stripe dropped (owner email, 2026-10-27)                                                                                                                             | Donate, Chapel Build       |
+| ☐   | The Oct 1 post says "Diocese of East Tennessee"; the site uses the official name, Diocese of Knoxville.                                                                                                       | Our Story                  |
+| ☐   | Mission statement: published as provided, except "Saint Francis Mass Mission Chapel" → "Saint Francis Mission Chapel" (a typo?). The first sentence says "Saint Francis of Assisi Mission Chapel"; keep that? | About → Mission Statement  |
+| ☐   | Una Voce page shows the nonprofit physical address (4719 Old Knoxville Hwy, Rockford) as listed in the provided document. OK to publish?                                                                      | About → Una Voce Tennessee |
+| ☐   | Mass intentions: the Contact page gives a customary offering of $20 per intention (Oct 25 newsletter). Keep it on the site?                                                                                   | Contact                    |
+| ☑   | Weekday Mass: every day except Sunday; confirm before going as Father sometimes travels (owner email, 2026-10-27)                                                                                             | Home, Locations            |
 
 ## Domain and accounts
 

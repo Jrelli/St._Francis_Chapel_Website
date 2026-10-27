@@ -92,11 +92,9 @@ const quickLinks = [
           <a class="button" href="/chapel-build/">
             Follow the progress
           </a>
-          {has(site.donateUrl) && (
-            <a class="button button--outline" href={site.donateUrl.value} rel="noopener">
-              Donate<span class="visually-hidden"> (secure Stripe page)</span>
-            </a>
-          )}
+          <a class="button button--outline" href="/donate/">
+            Donate
+          </a>
         </p>
       </div>
     </div>

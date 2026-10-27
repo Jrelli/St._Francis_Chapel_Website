@@ -18,6 +18,12 @@ DNS cutover), [CONTENT_GUIDE.md](CONTENT_GUIDE.md) (volunteer editors),
 - **Phase 2 (ON HOLD per the owner, 2026-10-26; do not start unless asked, then plan first):** bulletins from a Google Drive folder (build-time, same mock
   fallback as the calendar), locations data file + maps + print-directions view, remaining page copy.
   Optional: let volunteers add gallery photos via Drive instead of the repo.
+- **Owner answers (2026-10-27):** mission statement (own page), Una Voce Tennessee is the 501(c)(3)
+  and Saint Francis Mission Chapel is its DBA (EIN, footer wording in `site.nonprofit`), SSPX
+  wording = "affiliated with, does not govern", B&W engraving in the header, email only (no phone),
+  donations = GiveSendGo + checks (Stripe dropped; **GiveSendGo URL still needed** in
+  `site.donateUrl`). Directions list the chapel at 1921 Sockless Rd, Dandridge: **launch once
+  Sunday Mass moves there** (~a month). Don't publish the current temporary home address.
 - **Testing setup:** the owner's personal Google Cloud keys plus a personal test calendar, via
   `GOOGLE_CALENDAR_ID` in the local `.env`. Verified working locally (build fetch and live refresh).
   Cloudflare Worker `st-francis-chapel-website` deploys from GitHub `main`. Its build variables
