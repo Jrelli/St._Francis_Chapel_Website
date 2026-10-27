@@ -49,7 +49,7 @@ const isCurrent = (href: string) => path === href || (href !== '/' && path.start
         ))}
         {has(site.donateUrl) && (
           <li class="site-nav__donate">
-            <a class="button button--gold" href="/donate/">
+            <a class="button" href="/donate/">
               Donate
             </a>
           </li>
@@ -65,8 +65,8 @@ const isCurrent = (href: string) => path === href || (href !== '/' && path.start
 
 <style>
   .site-header {
-    background: var(--parchment);
-    border-bottom: 3px double var(--gold);
+    background: var(--bg);
+    border-bottom: 3px solid var(--accent);
   }
 
   .site-header__bar {
@@ -86,7 +86,7 @@ const isCurrent = (href: string) => path === href || (href !== '/' && path.start
     flex: 1 1 0;
     min-width: 0;
     text-decoration: none;
-    color: var(--red);
+    color: var(--accent-text);
     font-family: var(--font-display);
     font-weight: 700;
     font-size: 1.15rem;
@@ -97,7 +97,7 @@ const isCurrent = (href: string) => path === href || (href !== '/' && path.start
     width: 44px;
     height: 44px;
     flex: none;
-    mix-blend-mode: multiply; /* blends the seal's cream background into the parchment */
+    mix-blend-mode: multiply; /* blends the seal's cream background into the page */
   }
 
   .menu-toggle {
@@ -108,9 +108,9 @@ const isCurrent = (href: string) => path === href || (href !== '/' && path.start
     padding: 0.5rem 0.8rem;
     font: inherit;
     font-weight: 600;
-    color: var(--navy);
+    color: var(--dark);
     background: var(--surface);
-    border: 2px solid var(--navy);
+    border: 2px solid var(--dark);
     border-radius: var(--radius);
     cursor: pointer;
   }
@@ -165,15 +165,15 @@ const isCurrent = (href: string) => path === href || (href !== '/' && path.start
     display: block;
     padding: 0.75rem 0.25rem;
     border-top: 1px solid var(--rule);
-    color: var(--navy);
+    color: var(--dark);
     font-weight: 600;
     text-decoration: none;
   }
   .site-nav a:not(.button):hover,
   .site-nav a[aria-current='page'] {
-    color: var(--red);
+    color: var(--accent-text);
     text-decoration: underline;
-    text-decoration-color: var(--gold);
+    text-decoration-color: var(--accent);
     text-decoration-thickness: 2px;
   }
 

@@ -107,10 +107,10 @@ const telHref = `tel:${site.phone.value.replace(/[^\d+]/g, '')}`;
 
 <style>
   .site-footer {
-    background: var(--navy);
-    color: #f3ecdc; /* ~11:1 on navy */
+    background: var(--dark);
+    color: #eef0ed; /* ~14:1 on --dark */
     margin-top: 3rem;
-    border-top: 4px solid var(--gold-on-navy);
+    border-top: 4px solid var(--accent);
   }
 
   .site-footer__grid {
@@ -131,7 +131,7 @@ const telHref = `tel:${site.phone.value.replace(/[^\d+]/g, '')}`;
   }
 
   h2 {
-    color: var(--gold-on-navy);
+    color: var(--accent-light);
     font-size: 1.35rem;
     margin-bottom: 0.5rem;
   }
@@ -145,7 +145,7 @@ const telHref = `tel:${site.phone.value.replace(/[^\d+]/g, '')}`;
   }
 
   .site-footer__note {
-    color: #d9cfbb; /* ~9:1 on navy */
+    color: #c4c9c5; /* ~9:1 on --dark */
   }
 
   address {
@@ -165,11 +165,11 @@ const telHref = `tel:${site.phone.value.replace(/[^\d+]/g, '')}`;
 
   a {
     color: #fff;
-    text-decoration-color: var(--gold-on-navy);
+    text-decoration-color: var(--accent-light);
   }
 
   a:focus-visible {
-    outline-color: var(--gold-on-navy);
+    outline-color: var(--accent-light);
   }
 
   /* Make each link a comfortable tap target. */
@@ -183,7 +183,7 @@ const telHref = `tel:${site.phone.value.replace(/[^\d+]/g, '')}`;
     border-top: 1px solid rgb(255 255 255 / 0.2);
     padding-block: 1rem 1.5rem;
     font-size: 0.9rem;
-    color: #d9cfbb;
+    color: #c4c9c5;
   }
 
   .site-footer__base p {

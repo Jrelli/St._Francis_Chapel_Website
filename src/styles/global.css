@@ -1,22 +1,31 @@
 /*
  * Global styles. Mobile-first: base rules target phones; @media (min-width) adds desktop layout.
- * Colors: every text/background pair below meets WCAG AA (most meet AAA). Gold is used
- * for text only on navy (#d4af37, ~6.4:1) or as the darker "antique" gold on parchment.
+ *
+ * Colors (contrast ratios are against white unless noted; WCAG AA needs 4.5:1 for normal
+ * text, 3:1 for large/bold text and UI parts):
+ *   --accent #e15045 is the chapel's red. At ~3.9:1 it's used only where large or decorative:
+ *   rules, borders, big headings, and buttons with bold 19px+ text.
+ *   --accent-text #b83228 is the same red, deepened to ~6:1 for links and small text.
  */
 
 :root {
-  --parchment: #f8f2e4;
-  --surface: #fffbf2;
-  --ink: #2b2118; /* ~14:1 on parchment */
-  --ink-muted: #5a4636; /* ~8:1 */
-  --red: #7a2318; /* oxblood, toned toward the seal's sepia; ~9:1 */
-  --red-tint: #f3e0d8;
-  --navy: #1f2e4a; /* ~12:1 */
-  --navy-deep: #16223a;
-  --gold: #b8892b; /* decorative rules/borders only on light backgrounds */
-  --gold-on-navy: #d4af37;
-  --gold-text: #8a6416; /* ~4.8:1, antique gold text on parchment */
-  --rule: #ddcca4;
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --band: #e6e8e5; /* stakeholder's light gray, for section bands */
+  --ink: #1e2321; /* ~16:1 */
+  --ink-muted: #555c58; /* ~6.9:1; ~5.5:1 on --band */
+  --accent: #e15045;
+  --accent-hover: #c93d33;
+  --accent-text: #b83228; /* ~6:1; ~4.8:1 on --band */
+  --accent-tint: #fdeceb; /* exception highlights; accent-text on it ~5.3:1 */
+  --accent-light: #f0948b; /* accent on dark backgrounds; ~7:1 on --dark */
+  --dark: #1e2321; /* footer, outline buttons, nav text */
+  --dark-hover: #000000;
+  --rule: #dcdfdb; /* card and divider borders */
+  --rule-strong: #a9aea9; /* placeholders */
+  /* From the stakeholder's palette, used sparingly. */
+  --terracotta: #936656; /* "Terracotta Brown": CHANGED label */
+  --steel: #527693; /* "Steel Blue": NOTICE label */
 
   --font-body: 'Source Serif 4 Variable', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
   --font-display: 'Cormorant Garamond Variable', 'Garamond', 'Times New Roman', serif;
@@ -46,7 +55,7 @@ html {
 
 body {
   margin: 0;
-  background: var(--parchment);
+  background: var(--bg);
   color: var(--ink);
   font-family: var(--font-body);
   line-height: 1.6;
@@ -69,13 +78,15 @@ h3 {
   font-family: var(--font-display);
   font-weight: 650;
   line-height: 1.15;
-  color: var(--red);
+  color: var(--ink);
   margin: 0 0 0.5em;
   text-wrap: balance;
 }
 
+/* Red is an accent: page titles, labels, card edges and buttons, not every heading. */
 h1 {
   font-size: clamp(2.1rem, 7vw, 3.2rem);
+  color: var(--accent-text);
 }
 h2 {
   font-size: clamp(1.7rem, 5vw, 2.2rem);
@@ -91,7 +102,7 @@ ol {
 }
 
 a {
-  color: var(--red);
+  color: var(--accent-text);
   text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
 }
@@ -107,7 +118,7 @@ img {
 
 /* Strong, consistent keyboard focus ring. */
 :focus-visible {
-  outline: 3px solid var(--navy);
+  outline: 3px solid var(--dark);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -126,7 +137,7 @@ img {
   left: var(--gutter);
   top: -100px;
   z-index: 10;
-  background: var(--navy);
+  background: var(--dark);
   color: #fff;
   padding: 0.6rem 1rem;
   border-radius: var(--radius);
@@ -155,7 +166,7 @@ img {
 .ornament {
   border: 0;
   height: 1px;
-  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  background: linear-gradient(to right, transparent, var(--accent), transparent);
   margin: 2rem auto;
   max-width: 24rem;
 }
@@ -163,7 +174,7 @@ img {
 .card {
   background: var(--surface);
   border: 1px solid var(--rule);
-  border-top: 4px solid var(--gold);
+  border-top: 4px solid var(--accent);
   border-radius: var(--radius);
   padding: 1.25rem;
 }
@@ -171,7 +182,7 @@ img {
 .eyebrow {
   font-variant: small-caps;
   letter-spacing: 0.08em;
-  color: var(--gold-text);
+  color: var(--accent-text);
   font-weight: 600;
   margin: 0 0 0.25rem;
 }
@@ -182,43 +193,41 @@ img {
 
 /* ---------- Buttons ---------- */
 
+/* Primary button: white on the chapel red. The text must stay bold and at least 19px:
+   that makes it "large text" for WCAG, where #e15045's 3.9:1 contrast passes. */
 .button {
   display: inline-block;
   min-height: 48px; /* comfortable tap target */
   padding: 0.65rem 1.4rem;
   border-radius: var(--radius);
-  border: 2px solid var(--navy);
-  background: var(--navy);
+  border: 2px solid var(--accent);
+  background: var(--accent);
   color: #fff;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 700;
   text-decoration: none;
   line-height: 1.4;
 }
 .button:hover {
-  background: var(--navy-deep);
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
 }
 .button--outline {
   background: transparent;
-  color: var(--navy);
+  border-color: var(--dark);
+  color: var(--dark);
 }
 .button--outline:hover {
-  background: var(--navy);
+  background: var(--dark);
+  border-color: var(--dark);
   color: #fff;
-}
-.button--gold {
-  background: var(--gold-on-navy);
-  border-color: var(--gold-on-navy);
-  color: var(--navy-deep); /* ~6.4:1 */
-}
-.button--gold:hover {
-  background: #e2c25a;
 }
 
 /* ---------- Placeholders & dev-only markers ---------- */
 
 .placeholder-note {
   margin-bottom: 1rem;
-  border: 2px dashed var(--gold);
+  border: 2px dashed var(--rule-strong);
   background: var(--surface);
   padding: 1rem 1.25rem;
   border-radius: var(--radius);
@@ -252,7 +261,7 @@ img {
   font-family: var(--font-body);
   font-size: 1rem;
   font-weight: 700;
-  color: var(--navy);
+  color: var(--dark);
   margin: 0 0 0.5rem;
   padding-bottom: 0.25rem;
   border-bottom: 1px solid var(--rule);
@@ -285,8 +294,8 @@ img {
 
 /* Exceptions (CANCELLED / CHANGED / NOTICE) stand out. */
 .event[data-notice] {
-  border-left-color: var(--red);
-  background: var(--red-tint);
+  border-left-color: var(--accent-text);
+  background: var(--accent-tint);
   border-radius: 0 var(--radius) var(--radius) 0;
 }
 
@@ -299,7 +308,7 @@ img {
   margin-right: 0.5rem;
   padding: 0.05rem 0.5rem;
   border-radius: 3px;
-  background: var(--red);
+  background: var(--accent-text);
   color: #fff;
   font-size: 0.75rem;
   font-weight: 700;
@@ -308,15 +317,15 @@ img {
   vertical-align: 0.1em;
 }
 .badge--changed {
-  background: var(--gold-text); /* white on antique gold ~5.4:1 */
+  background: var(--terracotta); /* white ~4.9:1 */
 }
 .badge--notice {
-  background: var(--navy);
+  background: var(--steel); /* white ~4.8:1 */
 }
 
 .sample-note {
-  border: 2px dashed var(--red);
-  background: var(--red-tint);
+  border: 2px dashed var(--accent-text);
+  background: var(--accent-tint);
   padding: 0.5rem 0.75rem;
   border-radius: var(--radius);
   font-size: 0.95rem;

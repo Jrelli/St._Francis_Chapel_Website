@@ -41,22 +41,22 @@ const { questions } = parseYamlData(raw, FaqSchema, 'src/data/faq.yaml');
   .faq__item {
     background: var(--surface);
     border: 1px solid var(--rule);
-    border-left: 4px solid var(--gold);
+    border-left: 4px solid var(--accent);
     border-radius: var(--radius);
     margin-bottom: 0.75rem;
   }
   .faq__item[open] {
-    border-left-color: var(--red);
+    border-left-color: var(--accent-text);
   }
   summary {
     cursor: pointer;
     padding: 0.9rem 1.1rem;
     font-weight: 700;
-    color: var(--navy);
+    color: var(--dark);
     min-height: 48px;
   }
   summary:hover {
-    color: var(--red);
+    color: var(--accent-text);
   }
   .faq__answer {
     padding: 0 1.1rem 0.25rem;
