@@ -13,9 +13,9 @@ DNS cutover), [CONTENT_GUIDE.md](CONTENT_GUIDE.md) (volunteer editors),
   `src/data/construction-photos.yaml`), staff (`src/data/staff.yaml`), FAQ (`src/data/faq.yaml`),
   mission-organization copy (About, Organizations), the letter to Bishop Beckman
   (`src/data/letters/`, verbatim) and the Diocese's Oct 2 notice (`public/documents/`, original PDF;
-  it is a public notice, not a reply letter, so label it that way). Open wording questions are in
+  section titled "The Response from the Diocese of Knoxville" per the owner; the PDF itself is a public Notice to the Faithful). Open wording questions are in
   CONTENT_TO_CONFIRM.md. Photos: resize and strip metadata before committing (public repo).
-- **Phase 2 (not started; plan first):** bulletins from a Google Drive folder (build-time, same mock
+- **Phase 2 (ON HOLD per the owner, 2026-10-26; do not start unless asked, then plan first):** bulletins from a Google Drive folder (build-time, same mock
   fallback as the calendar), locations data file + maps + print-directions view, remaining page copy.
   Optional: let volunteers add gallery photos via Drive instead of the repo.
 - **Testing setup:** the owner's personal Google Cloud keys plus a personal test calendar, via
