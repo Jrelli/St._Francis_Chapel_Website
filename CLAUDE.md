@@ -62,8 +62,8 @@ Node 24 (`.node-version`). `npm run dev` · `npm run build` · `npm test` · `np
 - **Regular schedule:** `src/data/schedule.yaml`, Zod-validated in `src/lib/schedule.ts`.
 - **Calendar** (`src/lib/calendar.ts`, build time): no key → labelled sample data
   (`mock-events.ts`); key set but Google fails → **throw** (Cloudflare keeps the last good deploy).
-  Keep this policy. `GOOGLE_CALENDAR_ID` overrides `site.calendar.id` for testing and shows a
-  "Test calendar" note.
+  Keep this policy. `GOOGLE_CALENDAR_ID` overrides `site.calendar.id` for testing (build-log warning only;
+  the on-page note was removed at the owner's request).
 - **Exceptions rule** (`isException` in `src/lib/events.ts`): non-recurring events, or any event
   whose title starts with `CANCELLED:`/`CHANGED:`/`NOTICE:`. CONTENT_GUIDE.md documents this for
   editors. Change both together.

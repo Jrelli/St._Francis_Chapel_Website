@@ -117,8 +117,8 @@ Use a chapel-owned Google account, not a personal one.
 
 To try things without touching the chapel calendar, make a separate **public** calendar in your
 own Google account and set `GOOGLE_CALENDAR_ID` to its ID (_Settings and sharing → Integrate
-calendar_). The build logs a warning, and the pages show a **"Test calendar"** note while it's set,
-so it can't slip into production unnoticed. Delete the variable to go back to the chapel calendar.
+calendar_). The build logs a warning while it's set (the pages themselves don't say so),
+so remember to remove it. Delete the variable to go back to the chapel calendar.
 
 - Locally: put it in `.env`.
 - On Cloudflare: add it to the Build variables while testing, and **delete it before launch**.

@@ -1,6 +1,5 @@
 ---
 import PageIntro from '../components/PageIntro.astro';
-import Placeholder from '../components/Placeholder.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 // The chapel address is from the owner (2026-10-27): the site launches once Sunday Mass moves
@@ -84,7 +83,6 @@ const query = (address: string[]) => encodeURIComponent(address.join(', '));
         Times sometimes change for feast days and the priest's travel. Please check the{' '}
         <a href="/calendar/">calendar</a> before you come.
       </p>
-      <Placeholder what="written directions to Holy Crucifixion Hermitage." />
     </div>
   </div>
 </BaseLayout>

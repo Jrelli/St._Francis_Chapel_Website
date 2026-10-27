@@ -85,7 +85,7 @@ Pages show a dashed "Coming soon" box where copy is still needed.
 - ☐ About → Visiting for the First Time (dress, etiquette, what to expect at a TLM)
 - ☐ Chapel Build → "The Project": **drafted 2026-10-27** from the same posts. Please review; text is in `src/pages/chapel-build.astro`
 - ☐ Home: the "Help Us Build a Permanent Home" heading and "Follow the progress" wording
-- ☐ Locations: chapel directions added 2026-10-27. Still needed: written directions to Holy Crucifixion Hermitage
+- ☑ Locations: addresses, times and chapel directions (2026-10-27). The Hermitage needs no written directions (owner)
 - ☐ Associated Organizations → homeschool groups description
 
 ## Questions raised by the new content

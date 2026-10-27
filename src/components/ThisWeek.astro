@@ -8,7 +8,7 @@
  *    same-day cancellation shows up without waiting for the next rebuild.
  * 3. If that fetch fails or times out, the build-time list stays, labelled "As of …".
  */
-import { calendarId, isTestCalendar, type EventFeed } from '../lib/calendar';
+import { calendarId, type EventFeed } from '../lib/calendar';
 import { formatStamp } from '../lib/dates';
 import { selectThisWeek } from '../lib/events';
 import EventList from './EventList.astro';
@@ -30,12 +30,6 @@ const isSample = feed.source === 'mock';
 >
   <h2 id="this-week-heading">This Week</h2>
   <p class="this-week__intro">Changes to the regular schedule, and special events.</p>
-
-  {isTestCalendar && (
-    <p class="sample-note">
-      <strong>Test calendar.</strong> These events come from a test calendar, not the chapel’s.
-    </p>
-  )}
 
   {isSample && (
     <p class="sample-note" data-sample-note>

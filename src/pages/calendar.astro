@@ -2,7 +2,7 @@
 import EventList from '../components/EventList.astro';
 import { site } from '../config/site';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { calendarId, DAYS_AHEAD, getEventFeed, isTestCalendar } from '../lib/calendar';
+import { calendarId, DAYS_AHEAD, getEventFeed } from '../lib/calendar';
 import { formatMonth, formatStamp } from '../lib/dates';
 import type { ChapelEvent } from '../lib/events';
 
@@ -47,12 +47,6 @@ const icalUrl = `https://calendar.google.com/calendar/ical/${calId}/public/basic
         </p>
       )}
     </div>
-
-    {isTestCalendar && (
-      <p class="sample-note prose">
-        <strong>Test calendar.</strong> These events come from a test calendar, not the chapel’s.
-      </p>
-    )}
 
     {feed.source === 'mock' && (
       <p class="sample-note prose">

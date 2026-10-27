@@ -5,7 +5,7 @@
  * - Key set but Google fails → the BUILD FAILS on purpose. Cloudflare then keeps the
  *   last good deploy online, which is better than silently publishing sample events.
  * - GOOGLE_CALENDAR_ID set → read that calendar instead of the one in site.ts. For testing
- *   only; pages show a "test calendar" note so it can't go unnoticed in production.
+ *   only; the build log warns while it's set. Delete it on Cloudflare before launch.
  */
 import { GOOGLE_API_KEY, GOOGLE_CALENDAR_ID } from 'astro:env/server';
 import { site } from '../config/site';
@@ -21,7 +21,7 @@ const overrideId = (GOOGLE_CALENDAR_ID ?? '').trim();
 /** The calendar this build reads (also handed to the browser for the live refresh). */
 export const calendarId = overrideId || configuredId;
 /** True when GOOGLE_CALENDAR_ID points somewhere other than the configured calendar. */
-export const isTestCalendar = overrideId !== '' && overrideId !== configuredId;
+const isTestCalendar = overrideId !== '' && overrideId !== configuredId;
 
 export interface EventFeed {
   events: ChapelEvent[];
