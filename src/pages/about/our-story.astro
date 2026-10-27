@@ -1,8 +1,9 @@
 ---
 import AboutNav from '../../components/AboutNav.astro';
 import PageIntro from '../../components/PageIntro.astro';
-import Placeholder from '../../components/Placeholder.astro';
 import { Content as LetterToBishop } from '../../data/letters/2026-09-28-letter-to-bishop-beckman.md';
+// Drafted from the mission's own updates (TLM Respecter Substack, Oct 1 and Oct 14, 2026).
+import { Content as OurStory } from '../../data/our-story.md';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 // The Diocese's public notice, reproduced unaltered as a PDF in public/documents/.
@@ -20,7 +21,12 @@ const dioceseNotice = {
     <PageIntro eyebrow="About" title="Our Story" />
     <AboutNav />
     <div class="prose">
-      <Placeholder what="the history of the mission: how it began and who it serves." />
+      <section aria-labelledby="history-heading">
+        <h2 id="history-heading" class="first-heading">
+          How the Mission Began
+        </h2>
+        <OurStory />
+      </section>
 
       <section aria-labelledby="letter-heading">
         <h2 id="letter-heading">Letter to Bishop Beckman</h2>
@@ -52,6 +58,9 @@ const dioceseNotice = {
 <style>
   h2 {
     margin-top: 2.5rem;
+  }
+  h2.first-heading {
+    margin-top: 0.5rem;
   }
 
   /* The letter is set like a printed letter: paper card, generous margins. */
