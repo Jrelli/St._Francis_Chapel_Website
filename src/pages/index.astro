@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import churchIllustration from '../assets/art/church-illustration.jpg';
+import ChildrenSacraments from '../components/ChildrenSacraments.astro';
 import EventList from '../components/EventList.astro';
 import Fact from '../components/Fact.astro';
 import MassIntentions from '../components/MassIntentions.astro';
@@ -103,6 +104,10 @@ const quickLinks = [
 
   <section class="container section" aria-labelledby="intentions-heading">
     <MassIntentions illustrated />
+  </section>
+
+  <section class="container section" aria-labelledby="sacraments-heading">
+    <ChildrenSacraments />
   </section>
 
   <section class="container section" aria-labelledby="links-heading">
