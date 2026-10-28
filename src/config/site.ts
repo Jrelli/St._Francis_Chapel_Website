@@ -93,7 +93,7 @@ export const site = {
 
   bulletins: {
     /** Google Drive folder ID (the long code at the end of the folder's share link). */
-    driveFolderId: fact('', false, 'Folder not created/shared yet (Phase 2)'),
+    driveFolderId: fact('', false, 'Folder not created/shared yet'),
   },
 
   organizations: {

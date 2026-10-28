@@ -7,7 +7,7 @@
 #   img-src 'self' data:                       our images (data: for tiny inline SVGs browsers use)
 #   font-src 'self'                            self-hosted fonts only
 #   connect-src 'self' https://www.googleapis.com   the live "This week" calendar fetch
-#   frame-src 'none'                           no embeds yet; Phase 2 maps will need an entry here
+#   frame-src 'none'                           no embeds yet; a map embed would need an entry here
 #   frame-ancestors 'none'                     nobody may put our site in a frame (clickjacking)
 #   base-uri / form-action / object-src        close off rarely-needed, often-abused features
 #

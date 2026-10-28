@@ -5,9 +5,11 @@ Astro 7 → Cloudflare Worker serving static assets only (Workers Builds; not th
 DNS cutover), [CONTENT_GUIDE.md](CONTENT_GUIDE.md) (volunteer editors),
 [CONTENT_TO_CONFIRM.md](CONTENT_TO_CONFIRM.md) (unconfirmed facts).
 
-## Status (as of 2026-10-26)
+## Status (as of 2026-10-27)
 
-- **Phase 1 done:** scaffold, config, layout, home page, stub pages, calendar module, docs, CI.
+This is an ongoing project with no phases: work comes as requests from the owner.
+
+- **Built:** scaffold, config, layout, home page, pages, calendar module, docs, CI.
 - **Content batch (2026-10-26):** new tagline (an aerial-photo hero was tried and removed at the owner's request), church illustration on the home
   build box, construction gallery (auto-loads `src/assets/photos/construction/`, alt text in
   `src/data/construction-photos.yaml`), staff (`src/data/staff.yaml`), FAQ (`src/data/faq.yaml`),
@@ -15,9 +17,11 @@ DNS cutover), [CONTENT_GUIDE.md](CONTENT_GUIDE.md) (volunteer editors),
   (`src/data/letters/`, verbatim) and the Diocese's Oct 2 notice (`public/documents/`, original PDF;
   section titled "The Response from the Diocese of Knoxville" per the owner; the PDF itself is a public Notice to the Faithful). Open wording questions are in
   CONTENT_TO_CONFIRM.md. Photos: resize and strip metadata before committing (public repo).
-- **Phase 2 (ON HOLD per the owner, 2026-10-26; do not start unless asked, then plan first):** bulletins from a Google Drive folder (build-time, same mock
-  fallback as the calendar), locations data file + maps + print-directions view, remaining page copy.
-  Optional: let volunteers add gallery photos via Drive instead of the repo.
+- **Owner's open to-do list (2026-10-27):** Visiting for the First Time copy, staff photos,
+  homeschool group info, more FAQs, accurate construction-photo descriptions, a bulletin/newsletter
+  section (how bulletins are made, newsletter sign-up, archive: undecided), maybe a fundraising
+  thermometer, switch to the real chapel calendar, and the domain cutover. Don't start any of these
+  unless asked; for a larger one, propose a short plan first.
 - **Owner answers (2026-10-27):** mission statement (own page), Una Voce Tennessee is the 501(c)(3)
   and Saint Francis Mission Chapel is its DBA (EIN, footer wording in `site.nonprofit`), SSPX
   wording = "affiliated with, does not govern", B&W engraving in the header, email only (no phone),
@@ -36,7 +40,7 @@ DNS cutover), [CONTENT_GUIDE.md](CONTENT_GUIDE.md) (volunteer editors),
 
 - The owner is a CS student (C#/Java/Python/C++), newer to web frameworks. **Briefly explain
   non-obvious choices.**
-- **Propose a short plan and wait for approval** before starting a new phase or larger feature.
+- **Propose a short plan and wait for approval** before starting a larger feature.
 - **Ask first** before adding any paid service, analytics, third-party tracking, cookies, or
   third-party embeds (e.g. Google Maps iframes can set cookies), and **before every `git push`**.
 - Commit in small, logical steps with clear messages, on `main` (origin:

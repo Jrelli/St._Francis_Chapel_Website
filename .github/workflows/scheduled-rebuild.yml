@@ -1,5 +1,5 @@
-# Rebuilds the live site every 3 hours so new Google Calendar events (and, in Phase 2,
-# new bulletins) appear without anyone touching code.
+# Rebuilds the live site every 3 hours so new Google Calendar events appear without anyone
+# touching code.
 #
 # How it works: Cloudflare (Workers Builds) gives us a secret "deploy hook" URL. POSTing to it starts
 # a fresh build, which re-fetches the calendar. Setup steps are in README.md.

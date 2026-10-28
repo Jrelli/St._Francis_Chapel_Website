@@ -4,8 +4,8 @@ Static website for Saint Francis Mission Chapel, a Traditional Latin Mass missio
 Tennessee. Built with [Astro](https://astro.build) and hosted free on Cloudflare (Workers static assets).
 
 - **No server, database, logins or cookies.** Every page is plain HTML built ahead of time.
-- **Volunteers never touch code.** Events come from a public Google Calendar, and (Phase 2)
-  bulletins come from a Google Drive folder. See [CONTENT_GUIDE.md](CONTENT_GUIDE.md).
+- **Volunteers never touch code.** Events come from a public Google Calendar. See
+  [CONTENT_GUIDE.md](CONTENT_GUIDE.md).
 - **Unconfirmed facts** are tracked in [CONTENT_TO_CONFIRM.md](CONTENT_TO_CONFIRM.md).
 
 **Contents:** [Local development](#local-development) · [Project layout](#project-layout) ·
@@ -95,12 +95,11 @@ Use a chapel-owned Google account, not a personal one.
 2. **Create a Google Cloud project** at <https://console.cloud.google.com> (free; no billing account
    is needed for these APIs at our volume).
 3. **Enable the API:** _APIs & Services → Library →_ **Google Calendar API** → Enable.
-   (Phase 2 also enables **Google Drive API** for bulletins.)
 4. **Create the build key:** _APIs & Services → Credentials → Create credentials → API key_.
    (Use this main Credentials page. The Calendar API's own Credentials tab only offers OAuth and
    service accounts, which we don't need.) Edit it:
    - Name: `build-key`
-   - **API restrictions → Restrict key →** Google Calendar API (and Drive API in Phase 2)
+   - **API restrictions → Restrict key →** Google Calendar API
    - Application restrictions: _None_ (it's kept secret instead)
 5. **Create the browser key** the same way. Edit it:
    - Name: `browser-key`
@@ -351,22 +350,17 @@ GoDaddy (**DNSSEC → Add DS record**). Cloudflare confirms when it's active.
 - **Content from Google is treated as untrusted:** event text is rendered as text, never as HTML.
 - **CSP** in `public/_headers` blocks inline and third-party scripts. Astro is configured never to
   inline scripts or styles (`astro.config.mjs`) so the policy can stay strict.
-- **No analytics, trackers, cookies, or third-party embeds** in Phase 1. The only third-party
+- **No analytics, trackers, cookies, or third-party embeds**. The only third-party
   request is the browser's call to `www.googleapis.com` for the live calendar (no cookies sent).
   Adding any of these requires sign-off first.
 - **Payments** go to the external GiveSendGo campaign page only (or by mailed check). This site never handles card data.
 
 ## Costs
 
-| Item                         | Cost                                   |
-| ---------------------------- | -------------------------------------- |
-| Cloudflare Workers + DNS     | $0 (free plan)                         |
-| GitHub repo + Actions        | $0 (well within free minutes)          |
-| Google Calendar / Drive APIs | $0 (free quota is far above our usage) |
-| Domain (GoDaddy)             | Annual renewal, already being paid     |
-| Google Workspace email       | Existing; unchanged by this project    |
-
-## Phase 2 (not built yet)
-
-Bulletins from Google Drive · Locations data file with maps (map provider TBD, as embeds can set
-cookies) and a print-directions view · Chapel Build photo gallery · real page copy.
+| Item                     | Cost                                   |
+| ------------------------ | -------------------------------------- |
+| Cloudflare Workers + DNS | $0 (free plan)                         |
+| GitHub repo + Actions    | $0 (well within free minutes)          |
+| Google Calendar API      | $0 (free quota is far above our usage) |
+| Domain (GoDaddy)         | Annual renewal, already being paid     |
+| Google Workspace email   | Existing; unchanged by this project    |
