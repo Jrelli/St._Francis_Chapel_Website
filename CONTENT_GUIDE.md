@@ -113,6 +113,20 @@ Nothing breaks. The website volunteer gets an email and can fix it.
 
 ---
 
+## Fundraising total _(coming soon: not connected yet)_
+
+Once the website volunteer connects the fundraising sheet, updating the total on the website
+will work like this:
+
+1. Open the **Fundraising** sheet in Google Drive.
+2. Type the new total under **Raised** (like `$33,500`) and today's date under **As of**.
+
+That's it. The website shows the new amount and moves the progress bar within about 3 hours.
+Please don't rename the **Raised** column or add rows above it; the website looks for that
+header.
+
+---
+
 ## Bulletins _(coming soon: not connected yet)_
 
 Once this is set up, posting the weekly bulletin will work like this:

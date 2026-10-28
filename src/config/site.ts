@@ -71,6 +71,18 @@ export const site = {
   donateUrl: fact('https://www.givesendgo.com/saint-francis-mission-chapel', true),
   checksPayableTo: fact('St. Francis Mission Chapel', true, 'As printed in the newsletter'),
 
+  /**
+   * Chapel-build fundraising, shown as a progress bar (home, Chapel Build, Donate).
+   * Once sheetCsvUrl is set, each build reads the total from that Google Sheet instead, and
+   * `raised`/`asOf` here are ignored. See README → "Fundraising total".
+   */
+  fundraising: {
+    goal: fact(300000, true, 'Owner: reference $300,000 everywhere (2026-10-27)'),
+    raised: fact(32300, true, 'From the Nov 1, 2026 newsletter ("$32.3k")'),
+    asOf: fact('2026-10-27', true, 'Date the Nov 1 newsletter was sent'),
+    sheetCsvUrl: fact('', false, 'Publish the fundraising Google Sheet to the web as CSV'),
+  },
+
   /** The legal nonprofit that operates the chapel (DBA "Saint Francis Mission Chapel"). */
   nonprofit: {
     name: fact('Una Voce Tennessee', true),

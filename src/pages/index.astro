@@ -5,6 +5,7 @@ import ChildrenSacraments from '../components/ChildrenSacraments.astro';
 import EventList from '../components/EventList.astro';
 import Fact from '../components/Fact.astro';
 import FriarsNeeds from '../components/FriarsNeeds.astro';
+import FundraisingProgress from '../components/FundraisingProgress.astro';
 import MassIntentions from '../components/MassIntentions.astro';
 import Schedule from '../components/Schedule.astro';
 import ThisWeek from '../components/ThisWeek.astro';
@@ -91,6 +92,7 @@ const quickLinks = [
             <Fact f={site.chapelBuildBlurb} />
           </p>
         )}
+        <FundraisingProgress />
         <p class="build__actions">
           <a class="button" href="/chapel-build/">
             Follow the progress

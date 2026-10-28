@@ -68,6 +68,9 @@ Node 24 (`.node-version`). `npm run dev` · `npm run build` · `npm test` · `np
   (`mock-events.ts`); key set but Google fails → **throw** (Cloudflare keeps the last good deploy).
   Keep this policy. `GOOGLE_CALENDAR_ID` overrides `site.calendar.id` for testing (build-log warning only;
   the on-page note was removed at the owner's request).
+- **Fundraising total** (`src/lib/fundraising.ts`, build time): `site.fundraising` values, or a
+  published Google Sheet CSV once `site.fundraising.sheetCsvUrl` is set (same fail-the-build
+  policy as the calendar). Bar is an SVG sized by attribute (CSP forbids `style=""`).
 - **Exceptions rule** (`isException` in `src/lib/events.ts`): non-recurring events, or any event
   whose title starts with `CANCELLED:`/`CHANGED:`/`NOTICE:`. CONTENT_GUIDE.md documents this for
   editors. Change both together.
