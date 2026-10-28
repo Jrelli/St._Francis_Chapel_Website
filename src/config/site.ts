@@ -56,12 +56,13 @@ export const site = {
     'Reworded from the Wix draft; confirm acreage and wording',
   ),
 
-  /** Contact for scheduling Mass intentions (Contact page). */
-  massIntentions: {
+  /** Mission secretary: the contact for Mass intentions and donations to the friars. */
+  secretary: {
     name: fact('Jennifer Strand', true),
     email: fact('saintfrancismission26@gmail.com', true),
-    offering: fact('$20', true),
   },
+  /** Customary offering for one Mass intention. Leave '' to hide it. */
+  massIntentionOffering: fact('$20', true),
 
   /**
    * The GiveSendGo campaign page, shown on the Donate page. Leave '' to offer checks only.

@@ -1,0 +1,69 @@
+---
+/**
+ * "The Friars' Needs" on the home page. Wording from the Nov 1, 2026 newsletter; the contact
+ * is the mission secretary in site.secretary.
+ */
+import { Image } from 'astro:assets';
+// The red Saint Francis linocut provided by the chapel (approved 2026-10-26).
+import linocut from '../assets/art/linocut-blessing.png';
+import { site } from '../config/site';
+import { has } from '../lib/config';
+import Fact from './Fact.astro';
+
+const { name, email } = site.secretary;
+---
+
+{has(name) && has(email) && (
+  <div class="friars">
+    <Image
+      src={linocut}
+      alt="Red linocut print of Saint Francis of Assisi standing among flowers with his hands raised"
+      widths={[240, 480]}
+      sizes="(min-width: 48em) 14rem, 12rem"
+      class="friars__art"
+      loading="lazy"
+    />
+    <div class="friars__text">
+      <p class="eyebrow">Support the Friars</p>
+      <h2 id="friars-heading">The Friars' Needs</h2>
+      <p>
+        Our mission is served by the{' '}
+        <a href="/about/organizations/">Traditional Capuchin Friars Minor</a>. If you would like to
+        donate goods to the friars on a weekly basis, such as food, coffee, or toiletries, please
+        see <Fact f={name} /> after Mass or email{' '}
+        <a href={`mailto:${email.value}`}>
+          <Fact f={email} />
+        </a>
+        .
+      </p>
+    </div>
+  </div>
+)}
+
+<style>
+  .friars {
+    display: grid;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .friars__text {
+    max-width: var(--measure);
+  }
+  .friars__text p:last-child {
+    margin-bottom: 0;
+  }
+  .friars__art {
+    width: 12rem;
+    height: auto;
+    justify-self: center;
+  }
+  @media (min-width: 48em) {
+    .friars {
+      grid-template-columns: 20rem 1fr;
+      gap: 2.5rem;
+    }
+    .friars__art {
+      width: 14rem;
+    }
+  }
+</style>

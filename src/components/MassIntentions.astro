@@ -1,7 +1,7 @@
 ---
 /**
  * "Have a Mass Offered": how to schedule a Mass intention. Shown on the home page (with the
- * illustration) and the Contact page. Contact details live in site.massIntentions.
+ * illustration) and the Contact page. Contact details live in site.secretary.
  * Wording is from Father's reminder in the Oct 25, 2026 newsletter.
  */
 import { Image } from 'astro:assets';
@@ -18,7 +18,8 @@ interface Props {
 }
 
 const { illustrated = false } = Astro.props;
-const { name, email, offering } = site.massIntentions;
+const { name, email } = site.secretary;
+const offering = site.massIntentionOffering;
 ---
 
 {has(name) && has(email) && (
