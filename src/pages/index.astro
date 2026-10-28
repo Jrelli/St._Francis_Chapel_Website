@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import churchIllustration from '../assets/art/church-illustration.jpg';
+import engraving from '../assets/art/engraving.png';
 import EventList from '../components/EventList.astro';
 import Fact from '../components/Fact.astro';
 import MassIntentions from '../components/MassIntentions.astro';
@@ -45,6 +46,14 @@ const quickLinks = [
           </p>
         )}
       </div>
+      <Image
+        src={engraving}
+        alt="Engraving of Saint Francis of Assisi with arms raised, bearing the stigmata"
+        widths={[240, 480]}
+        sizes="240px"
+        class="hero__art"
+        loading="eager"
+      />
     </div>
   </section>
 
@@ -124,8 +133,23 @@ const quickLinks = [
     padding-block: 1.25rem 0.5rem;
   }
 
+  .hero__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
   .hero h1 {
     margin-bottom: 0.2rem;
+  }
+
+  /* The engraving is decoration on wide screens only; phones go straight to Mass times. */
+  .hero__art {
+    display: none;
+    width: 200px;
+    height: auto;
+    mix-blend-mode: multiply; /* its white paper takes on the page color */
   }
 
   .hero__latin {
@@ -212,6 +236,13 @@ const quickLinks = [
   @media (min-width: 64em) {
     .hero {
       padding-block: 1.5rem 0;
+    }
+    .hero__art {
+      display: block;
+      height: 260px;
+      width: auto;
+      object-fit: cover;
+      object-position: top;
     }
     .home-grid {
       grid-template-columns: 3fr 2fr;

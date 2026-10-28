@@ -39,6 +39,40 @@
   color-scheme: light;
 }
 
+/*
+ * Color-scheme candidates (branch color-schemes). Only the page, card and band colors change;
+ * the chapel red stays the same. Pick one with data-scheme on <html> in BaseLayout.astro.
+ * Contrast (ink-muted / accent-text on page, card, band) was checked for WCAG AA.
+ */
+:root[data-scheme='ivory'] {
+  /* Warm off-white: soft, slightly warm, not yellow. */
+  --bg: #faf8f4;
+  --surface: #f2efe9;
+  --band: #e8e4dc;
+  --rule: #dcd6cb;
+}
+:root[data-scheme='stone'] {
+  /* Neutral off-white: a quiet gray-white, close to the stakeholder's light gray. */
+  --bg: #f5f5f2;
+  --surface: #ecece8;
+  --band: #e1e2dd;
+  --rule: #d5d6d0;
+}
+:root[data-scheme='linen'] {
+  /* Off-white page with near-white cards: the cards lift off the page instead of sinking in. */
+  --bg: #f3f1ec;
+  --surface: #fcfbf9;
+  --band: #e6e3dc;
+  --rule: #d9d5cc;
+}
+:root[data-scheme='parchment'] {
+  /* Warmest: an old-paper tone that suits the engravings. Closest to "cream", so use with care. */
+  --bg: #f7f3ea;
+  --surface: #efe9dd;
+  --band: #e5ddcc;
+  --rule: #d6ccb8;
+}
+
 /* ---------- Base ---------- */
 
 *,
