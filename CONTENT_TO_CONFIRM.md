@@ -11,44 +11,44 @@ unconfirmed config values have a dotted orange outline (hover to see the TODO).
 
 ## Site-wide facts: `src/config/site.ts`
 
-| ✓   | Fact                              | Current value                                                                                       | Used on                                   | Notes                                                                                         |
-| --- | --------------------------------- | --------------------------------------------------------------------------------------------------- | ----------------------------------------- | --------------------------------------------------------------------------------------------- |
-| ☑   | `name`                            | Saint Francis Mission Chapel                                                                        | Everywhere (header, titles, footer)       | Matches the chapel seal                                                                       |
-| ☐   | `shortName`                       | St. Francis Chapel                                                                                  | Mobile header                             | Preferred short form?                                                                         |
-| ☑   | `url`                             | https://saintfrancischapel.com                                                                      | Canonical links, sitemap                  | Apex chosen as the canonical address                                                          |
-| ☑   | `taglineLatin`                    | Ave Domina, sancta Regina, sancta Dei genetrix Maria!                                               | Home hero, footer                         | Provided by the owner 2026-10-27                                                              |
-| ☑   | `tagline`                         | The fullness of traditional Catholic life in Tennessee                                              | Home hero, page meta description fallback | Chosen by the stakeholder 2026-10-27 ("keeping the wording careful")                          |
-| ☐   | `description`                     | A traditional Latin Mass mission chapel of the Society of Saint Pius X in New Market, Tennessee.    | Search/social description, About          | How should the SSPX relationship be worded?                                                   |
-| ☐   | `mailingAddress`                  | P.O. Box 27, New Market, TN 37820                                                                   | Footer, Contact                           | Wix draft                                                                                     |
-| ☑   | `email`                           | office@saintfrancischapel.com                                                                       | Footer, Contact                           | Google Workspace mailbox, confirmed 2026-10-26                                                |
-| ☐   | `phone`                           | _(blank, hidden)_                                                                                   | Footer, Contact                           | Is there a public number?                                                                     |
-| ☐   | `social.facebook`                 | https://www.facebook.com/saintfrancissspx                                                           | Footer, Contact, Home quick links         | Wix draft                                                                                     |
-| ☐   | `social.youtube`                  | https://www.youtube.com/@saintfrancischapel                                                         | Footer, Contact, Home quick links         | Wix draft                                                                                     |
-| ☐   | `chapelBuildBlurb`                | On five acres of Tennessee land, we are building a chapel worthy of the Holy Sacrifice of the Mass… | Home chapel-build box, Chapel Build       | Reworded from the Wix draft; confirm acreage and wording                                      |
-| ☑   | `donateUrl`                       | https://www.givesendgo.com/saint-francis-mission-chapel                                             | Donate page                               | GiveSendGo campaign (owner, 2026-10-27)                                                       |
-| ☐   | `calendar.id`                     | `c_ce9ab…726c6d@group.calendar.google.com`                                                          | Home (This week, Upcoming), Calendar page | Is this the calendar editors will use? Is it public?                                          |
-| ☑   | `calendar.timeZone`               | America/New_York (Eastern)                                                                          | All dates and times                       | Was America/Chicago in the original brief; corrected 2026-10-27 (Jefferson County is Eastern) |
-| ☐   | `bulletins.driveFolderId`         | _(blank)_                                                                                           | Bulletins page                            | Create the Drive folder and share it as "Anyone with the link"                                |
-| ☐   | `organizations.capuchins`         | https://www.porziuncolaproject.com/                                                                 | Associated Organizations                  | Link and description                                                                          |
-| ☐   | `organizations.sspx`              | https://sspx.org/                                                                                   | Associated Organizations                  | Which SSPX site? US District?                                                                 |
-| ☐   | `organizations.homeschoolContact` | _(blank, hidden)_                                                                                   | Associated Organizations                  | Contact person's name and how to reach them                                                   |
+| ✓   | Fact                              | Current value                                                                                                 | Used on                                   | Notes                                                                                         |
+| --- | --------------------------------- | ------------------------------------------------------------------------------------------------------------- | ----------------------------------------- | --------------------------------------------------------------------------------------------- |
+| ☑   | `name`                            | Saint Francis Mission Chapel                                                                                  | Everywhere (header, titles, footer)       | Matches the chapel seal                                                                       |
+| ☑   | `shortName`                       | Saint Francis Mission Chapel                                                                                  | Mobile header                             | "SFMC" is also acceptable (owner, 2026-10-27)                                                 |
+| ☑   | `url`                             | https://saintfrancischapel.com                                                                                | Canonical links, sitemap                  | Apex chosen as the canonical address                                                          |
+| ☑   | `taglineLatin`                    | Ave Domina, sancta Regina, sancta Dei genetrix Maria!                                                         | Home hero, footer                         | Provided by the owner 2026-10-27                                                              |
+| ☑   | `tagline`                         | The fullness of traditional Catholic life in Tennessee                                                        | Home hero, page meta description fallback | Chosen by the stakeholder 2026-10-27 ("keeping the wording careful")                          |
+| ☐   | `description`                     | A traditional Latin Mass mission chapel in Dandridge, Tennessee, affiliated with the Society of Saint Pius X. | Search/social description, About          | Reworded to match the mission statement ("affiliated with"); please review                    |
+| ☑   | `mailingAddress`                  | P.O. Box 27, New Market, TN 37820                                                                             | Footer, Contact, Donate, Una Voce         | In the nonprofit information (owner, 2026-10-27)                                              |
+| ☑   | `email`                           | office@saintfrancischapel.com                                                                                 | Footer, Contact                           | Google Workspace mailbox, confirmed 2026-10-26                                                |
+| ☑   | `phone`                           | _(blank, hidden)_                                                                                             | Footer, Contact                           | Email only for now (owner, 2026-10-27)                                                        |
+| ☑   | `social.facebook`                 | https://www.facebook.com/saintfrancissspx                                                                     | Footer, Contact, Home quick links         | (owner, 2026-10-27)                                                                           |
+| ☑   | `social.youtube`                  | https://www.youtube.com/@saintfrancischapel                                                                   | Footer, Contact, Home quick links         | (owner, 2026-10-27)                                                                           |
+| ☐   | `chapelBuildBlurb`                | On five acres of Tennessee land, we are building a chapel worthy of the Holy Sacrifice of the Mass…           | Home chapel-build box, Chapel Build       | Reworded from the Wix draft; confirm acreage and wording                                      |
+| ☑   | `donateUrl`                       | https://www.givesendgo.com/saint-francis-mission-chapel                                                       | Donate page                               | GiveSendGo campaign (owner, 2026-10-27)                                                       |
+| ☐   | `calendar.id`                     | `c_ce9ab…726c6d@group.calendar.google.com`                                                                    | Home (This week, Upcoming), Calendar page | Is this the calendar editors will use? Is it public?                                          |
+| ☑   | `calendar.timeZone`               | America/New_York (Eastern)                                                                                    | All dates and times                       | Was America/Chicago in the original brief; corrected 2026-10-27 (Jefferson County is Eastern) |
+| ☐   | `bulletins.driveFolderId`         | _(blank)_                                                                                                     | Bulletins page                            | Create the Drive folder and share it as "Anyone with the link"                                |
+| ☑   | `organizations.capuchins`         | https://www.porziuncolaproject.com/                                                                           | Associated Organizations                  | (owner, 2026-10-27)                                                                           |
+| ☑   | `organizations.sspx`              | https://sspx.org/                                                                                             | Associated Organizations                  | (owner, 2026-10-27)                                                                           |
+| ☐   | `organizations.homeschoolContact` | _(blank, hidden)_                                                                                             | Associated Organizations                  | Contact person's name and how to reach them                                                   |
 
 ## Regular schedule: `src/data/schedule.yaml`
 
-Each entry has its own `confirmed:` flag. All are from the Wix draft.
+Each entry has its own `confirmed:` flag. All confirmed (owner, 2026-10-27).
 
 | ✓   | Entry                                                                                                                                 | Used on         |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
-| ☐   | Sunday Holy High Mass, 10:00 AM; potluck ~11:30 AM (location on the calendar)                                                         | Home            |
+| ☑   | Sunday Holy High Mass, 10:00 AM; potluck ~11:30 AM (owner, 2026-10-27)                                                                | Home            |
 | ☑   | Weekday Low Mass, 8:00 AM, Monday – Saturday, Holy Crucifixion Hermitage ("confirm before you go")                                    | Home, Locations |
 | ☑   | Sunday Confession, 9:30 AM (outside; Rosary in Latin inside)                                                                          | Home            |
-| ☐   | Daily Confession at the Hermitage (ring the bell, ask for Father)                                                                     | Home            |
-| ☐   | First Friday Confession, 5:00 – 5:30 PM                                                                                               | Home            |
-| ☐   | First Saturday Confession, 7:30 – 8:45 AM                                                                                             | Home            |
-| ☐   | Holy Day Confession, 5:00 – 5:30 PM                                                                                                   | Home            |
-| ☐   | Thursday Adoration, 5:00 – 8:00 PM                                                                                                    | Home            |
+| ☑   | Daily Confession at the Hermitage (ring the bell, ask for Father)                                                                     | Home            |
+| ☑   | First Friday Confession, 5:00 – 5:30 PM                                                                                               | Home            |
+| ☑   | First Saturday Confession, 7:30 – 8:45 AM                                                                                             | Home            |
+| ☑   | Holy Day Confession, 5:00 – 5:30 PM                                                                                                   | Home            |
+| ☑   | Thursday Adoration, 5:00 – 8:00 PM                                                                                                    | Home            |
 | ☑   | Sunday Mass at the chapel, 1921 Sockless Rd, Dandridge, TN 37725. The site launches once Mass is held there (owner email, 2026-10-27) | Home, Locations |
-| ☐   | The note under the schedule ("Times sometimes change…")                                                                               | Home            |
+| ☑   | The note under the schedule ("Times sometimes change…")                                                                               | Home            |
 
 ## Images and logos
 
@@ -64,7 +64,7 @@ Each entry has its own `confirmed:` flag. All are from the Wix draft.
 | ☑   | Una Voce International emblem                                                         | Associated Organizations                                   | Provided (owner, 2026-10-27)                                                                                   |
 | ☑   | Elevation of the Host (Philipp Schumacher, 1920), public domain via Wikimedia Commons | Home and Contact → Have a Mass Offered                     | Chosen by Claude; swap it if you prefer another image                                                          |
 | ☑   | 15 construction photos                                                                | Chapel Build gallery                                       | Provided 2026-10-26; resized and metadata stripped                                                             |
-| ☐   | People shown in the construction photos are OK with being on the website              | Chapel Build gallery                                       | Friars and volunteers are recognizable; worth a quick check                                                    |
+| ☑   | People shown in the construction photos are OK with being on the website              | Chapel Build gallery                                       | Already public on Facebook (owner, 2026-10-27)                                                                 |
 | ☑   | Interior rendering ("Chapel Rendering 7A")                                            | Chapel Build, captioned "Concept rendering"                | Provided 2026-10-27                                                                                            |
 | ☑   | Site plan ("Layout render 2")                                                         | Chapel Build → The Property, captioned "Concept site plan" | Provided 2026-10-27; labels: chapel, parking, driveway, Marian grotto                                          |
 
@@ -81,9 +81,9 @@ Pages show a dashed "Coming soon" box where copy is still needed.
 - ☑ About → Una Voce Tennessee page: who they are, the property, board of directors (from `staff.yaml`)
 - ☑ Our Story → Diocese of Knoxville notice (Oct 2, 2026), linked as the original PDF
 - ☑ Associated Organizations → Capuchins, SSPX and Una Voce Tennessee descriptions
-- ☐ Our Story → "How the Mission Began": **drafted 2026-10-27** from the TLM Respecter Substack posts (Oct 1 and Oct 14, 2026). Please review; text is in `src/data/our-story.md`
+- ☑ Our Story → "How the Mission Began": drafted from the Substack posts, reviewed and approved (owner, 2026-10-27)
 - ☐ About → Visiting for the First Time (dress, etiquette, what to expect at a TLM)
-- ☐ Chapel Build → "The Project": **drafted 2026-10-27** from the same posts. Please review; text is in `src/pages/chapel-build.astro`
+- ☑ Chapel Build → "The Project": drafted from the same posts, reviewed and approved (owner, 2026-10-27)
 - ☐ Home: the "Help Us Build a Permanent Home" heading and "Follow the progress" wording
 - ☑ Locations: addresses, times and chapel directions (2026-10-27). The Hermitage needs no written directions (owner)
 - ☐ Associated Organizations → homeschool groups description
@@ -109,7 +109,7 @@ These are worded as provided. Visitors may notice the differences, so they're wo
 | ☐   | The Oct 1 post says "Diocese of East Tennessee"; the site uses the official name, Diocese of Knoxville.                                                                                        | Our Story                  |
 | ☑   | Mission statement: chapel name made consistent ("Saint Francis Mission Chapel") in both places (owner, 2026-10-27)                                                                             | About → Mission Statement  |
 | ☐   | Una Voce page shows the nonprofit physical address (4719 Old Knoxville Hwy, Rockford) as listed in the provided document. OK to publish?                                                       | About → Una Voce Tennessee |
-| ☐   | Mass intentions: the Contact page gives a customary offering of $20 per intention (Oct 25 newsletter). Keep it on the site?                                                                    | Contact                    |
+| ☑   | Mass intentions: Jennifer Strand's name and email and the $20 customary offering may be published (owner, 2026-10-27)                                                                          | Home, Contact              |
 | ☑   | Weekday Mass: every day except Sunday; confirm before going as Father sometimes travels (owner email, 2026-10-27)                                                                              | Home, Locations            |
 
 ## Domain and accounts

@@ -45,8 +45,8 @@ export const site = {
   phone: fact('', true, 'Email only for now (owner, 2026-10-27)'),
 
   social: {
-    facebook: fact('https://www.facebook.com/saintfrancissspx', false, 'From Wix draft'),
-    youtube: fact('https://www.youtube.com/@saintfrancischapel', false, 'From Wix draft'),
+    facebook: fact('https://www.facebook.com/saintfrancissspx', true),
+    youtube: fact('https://www.youtube.com/@saintfrancischapel', true),
   },
 
   /** Short pitch used on the home page and Chapel Build page. */
@@ -60,11 +60,7 @@ export const site = {
   massIntentions: {
     name: fact('Jennifer Strand', true),
     email: fact('saintfrancismission26@gmail.com', true),
-    offering: fact(
-      '$20',
-      false,
-      'Customary offering per intention, from the Oct 25, 2026 newsletter',
-    ),
+    offering: fact('$20', true),
   },
 
   /**
@@ -97,8 +93,8 @@ export const site = {
   },
 
   organizations: {
-    capuchins: fact('https://www.porziuncolaproject.com/', false, 'Confirm link and description'),
-    sspx: fact('https://sspx.org/', false, 'Confirm which SSPX site to link (US District?)'),
+    capuchins: fact('https://www.porziuncolaproject.com/', true),
+    sspx: fact('https://sspx.org/', true),
     homeschoolContact: fact('', false, 'Name and email/phone of the homeschool contact person'),
   },
 };

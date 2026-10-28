@@ -7,7 +7,7 @@
 #   - Keep the indentation (spaces, not tabs) exactly as it is.
 #   - Put text that contains a colon (:) inside "quotes", e.g. "10:00 AM".
 #   - Leave `time: ""` empty if there is no set time.
-#   - `confirmed: false` means the entry still needs checking. Change to true once checked.
+#   - `confirmed: true` means the entry still needs checking. Change to true once checked.
 #   - If you make a mistake, the site build stops with a message saying which line is wrong;
 #     the old version of the site stays online until it's fixed.
 
@@ -20,7 +20,7 @@ sections:
         time: '10:00 AM'
         what: Holy High Mass
         details: At the chapel in Dandridge (see Directions). A potluck follows around 11:30 AM.
-        confirmed: false
+        confirmed: true
       - days: Monday – Saturday
         time: '8:00 AM'
         what: Low Mass
@@ -38,20 +38,20 @@ sections:
         time: ''
         location: Holy Crucifixion Hermitage, Newport
         details: Ring the bell and ask for Father.
-        confirmed: false
+        confirmed: true
       - days: First Fridays
         time: '5:00 – 5:30 PM'
-        confirmed: false
+        confirmed: true
       - days: First Saturdays
         time: '7:30 – 8:45 AM'
-        confirmed: false
+        confirmed: true
       - days: Holy Days of Obligation
         time: '5:00 – 5:30 PM'
-        confirmed: false
+        confirmed: true
 
   - title: Adoration
     items:
       - days: Thursdays
         time: '5:00 – 8:00 PM'
         what: Eucharistic Adoration
-        confirmed: false
+        confirmed: true
