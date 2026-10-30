@@ -1,19 +1,20 @@
 /*
  * Global styles. Mobile-first: base rules target phones; @media (min-width) adds desktop layout.
  *
- * Colors (contrast ratios are against white unless noted; WCAG AA needs 4.5:1 for normal
- * text, 3:1 for large/bold text and UI parts):
- *   --accent #e15045 is the chapel's red. At ~3.9:1 it's used only where large or decorative:
- *   rules, borders, big headings, and buttons with bold 19px+ text.
- *   --accent-text #b83228 is the same red, deepened to ~6:1 for links and small text.
+ * Colors (contrast ratios are against the parchment page unless noted; WCAG AA needs 4.5:1
+ * for normal text, 3:1 for large/bold text and UI parts):
+ *   --accent #e15045 is the chapel's red. At ~3.5:1 it's used only where large or decorative:
+ *   rules, borders, big headings, and buttons with bold 19px+ text (white on it is ~3.9:1).
+ *   --accent-text #b83228 is the same red, deepened to ~5.3:1 for links and small text.
  */
 
 :root {
-  --bg: #ffffff;
-  --surface: #f5f6f4; /* cards: a step off the white page so they stand out */
-  --band: #e6e8e5; /* stakeholder's light gray, for section bands */
+  /* Parchment, as in the site's first design (restored 2026-10-29), with Father's red. */
+  --bg: #f8f2e4;
+  --surface: #fffbf2; /* cards: lighter cream, so they lift off the page */
+  --band: #efe5cf; /* header and section bands */
   --header-bg: var(--band);
-  /* Header and footer details, so a scheme can use a dark or red header. */
+  /* Header and footer colors, named so they can be changed in one place. */
   --header-ink: var(--dark);
   --header-brand: var(--accent-text);
   --header-current: var(--accent-text);
@@ -24,17 +25,17 @@
   --header-button-bg: var(--accent);
   --header-button-ink: #fff;
   --footer-bg: var(--dark);
-  --ink: #1e2321; /* ~16:1 */
-  --ink-muted: #555c58; /* ~6.9:1; ~5.5:1 on --band */
+  --ink: #2b2118; /* warm near-black; ~14:1 on --bg */
+  --ink-muted: #5a4636; /* ~8:1 on --bg; ~7:1 on --band */
   --accent: #e15045;
   --accent-hover: #c93d33;
-  --accent-text: #b83228; /* ~6:1; ~4.8:1 on --band */
+  --accent-text: #b83228; /* ~5.3:1 on --bg; ~4.8:1 on --band */
   --accent-tint: #fdeceb; /* exception highlights; accent-text on it ~5.3:1 */
   --accent-light: #f0948b; /* accent on dark backgrounds; ~7:1 on --dark */
-  --dark: #1e2321; /* footer, outline buttons, nav text */
+  --dark: #2b2118; /* footer, outline buttons, nav text */
   --dark-hover: #000000;
-  --rule: #dcdfdb; /* card and divider borders */
-  --rule-strong: #a9aea9; /* placeholders */
+  --rule: #ddcca4; /* card and divider borders */
+  --rule-strong: #b3a27c; /* placeholders, progress-bar outline */
   /* From the stakeholder's palette, used sparingly. */
   --terracotta: #936656; /* "Terracotta Brown": CHANGED label */
   --steel: #527693; /* "Steel Blue": NOTICE label */
@@ -48,133 +49,6 @@
   --page-max: 72rem;
 
   color-scheme: light;
-}
-
-/* Round 2 (2026-10-29): bolder options. The only fixed color is the chapel red. */
-
-/* E. Charcoal: a dark header and footer frame a soft off-white page. */
-:root[data-scheme='charcoal'] {
-  --bg: #f7f6f3;
-  --surface: #efeeea;
-  --band: #e6e4df;
-  --rule: #d9d6d0;
-  --header-bg: #23282a;
-  --header-ink: #eef0ed;
-  --header-brand: #ffffff;
-  --header-current: #f4a199;
-  --header-current-line: var(--accent);
-  --header-rule: rgb(255 255 255 / 0.15);
-  --header-seal-blend: normal;
-  --footer-bg: #23282a;
-}
-
-/* F. Forest: the stakeholder's deep forest green with the red, on a warm off-white. */
-:root[data-scheme='forest'] {
-  --bg: #f7f6f1;
-  --surface: #eeede5;
-  --band: #e2e6dc;
-  --rule: #d4d9cc;
-  --header-bg: #123d27;
-  --header-ink: #eef3ee;
-  --header-brand: #ffffff;
-  --header-current: #f4a199;
-  --header-current-line: var(--accent);
-  --header-rule: rgb(255 255 255 / 0.15);
-  --header-seal-blend: normal;
-  --footer-bg: #123d27;
-}
-
-/* G. Slate: cool blue-gray (from the stakeholder's steel blue) with red accents. */
-:root[data-scheme='slate'] {
-  --bg: #f5f7f8;
-  --surface: #eaeef1;
-  --band: #dde4e9;
-  --rule: #cdd6dd;
-  --header-bg: #2b3a46;
-  --header-ink: #eef2f5;
-  --header-brand: #ffffff;
-  --header-current: #f4a199;
-  --header-current-line: var(--accent);
-  --header-rule: rgb(255 255 255 / 0.15);
-  --header-seal-blend: normal;
-  --footer-bg: #2b3a46;
-}
-
-/* H. Habit brown: warm Franciscan brown frame, warm off-white page. */
-:root[data-scheme='habit'] {
-  --bg: #f9f7f3;
-  --surface: #f1ede6;
-  --band: #e6dfd4;
-  --rule: #d8cfc1;
-  --header-bg: #3b302a;
-  --header-ink: #f3eee8;
-  --header-brand: #ffffff;
-  --header-current: #f4a199;
-  --header-current-line: var(--accent);
-  --header-rule: rgb(255 255 255 / 0.15);
-  --header-seal-blend: normal;
-  --footer-bg: #3b302a;
-}
-
-/* I. Red header: the chapel red as the banner, everything else quiet. */
-:root[data-scheme='crimson'] {
-  --bg: #f8f7f4;
-  --surface: #f0eeea;
-  --band: #e7e4df;
-  --rule: #dad6cf;
-  --header-bg: #b83228;
-  --header-ink: #ffffff;
-  --header-brand: #ffffff;
-  --header-current: #ffffff;
-  --header-current-line: #ffffff;
-  --header-rule: rgb(255 255 255 / 0.25);
-  --header-border: #8f251d;
-  --header-seal-blend: normal;
-  --header-button-bg: #ffffff;
-  --header-button-ink: #b83228;
-}
-
-/* J. Sage: light, calm green-gray from the stakeholder's muted sage; dark green footer. */
-:root[data-scheme='sage'] {
-  --bg: #f6f7f3;
-  --surface: #ecefe8;
-  --band: #dfe6db;
-  --rule: #cfd8ca;
-  --footer-bg: #2e3d33;
-}
-
-/*
- * Color-scheme candidates (branch color-schemes). Only the page, card and band colors change;
- * the chapel red stays the same. Pick one with data-scheme on <html> in BaseLayout.astro.
- * Contrast (ink-muted / accent-text on page, card, band) was checked for WCAG AA.
- */
-:root[data-scheme='ivory'] {
-  /* Warm off-white: soft, slightly warm, not yellow. */
-  --bg: #faf8f4;
-  --surface: #f2efe9;
-  --band: #e8e4dc;
-  --rule: #dcd6cb;
-}
-:root[data-scheme='stone'] {
-  /* Neutral off-white: a quiet gray-white, close to the stakeholder's light gray. */
-  --bg: #f5f5f2;
-  --surface: #ecece8;
-  --band: #e1e2dd;
-  --rule: #d5d6d0;
-}
-:root[data-scheme='linen'] {
-  /* Off-white page with near-white cards: the cards lift off the page instead of sinking in. */
-  --bg: #f3f1ec;
-  --surface: #fcfbf9;
-  --band: #e6e3dc;
-  --rule: #d9d5cc;
-}
-:root[data-scheme='parchment'] {
-  /* Warmest: an old-paper tone that suits the engravings. Closest to "cream", so use with care. */
-  --bg: #f7f3ea;
-  --surface: #efe9dd;
-  --band: #e5ddcc;
-  --rule: #d6ccb8;
 }
 
 /* ---------- Base ---------- */

@@ -86,7 +86,7 @@ Node 24 (`.node-version`). `npm run dev` · `npm run build` · `npm test` · `np
   New external origins (fetch, embeds) must be added to the CSP.
 - **API keys:** `GOOGLE_API_KEY` is a build-only secret; `PUBLIC_GOOGLE_CALENDAR_BROWSER_KEY` ships to
   the browser and must stay referrer- and API-restricted. Env schema is in `astro.config.mjs`.
-- **Colors** (stakeholder, 2026-10-27): crisp white, light-gray `--band` (#E6E8E5), red accents. `--accent` #E15045 is only ~3.9:1 on white, so use it for large/decorative things and bold 19px+ button text; use `--accent-text` #B83228 for links and small text. Headings are near-black; only h1 is red. Tokens are named by role in `global.css`.
+- **Colors** (owner, 2026-10-29): the original parchment page (`--bg` #F8F2E4, cream cards, tan `--band` #EFE5CF) with Father's red accents. (White and ten other schemes were tried on a branch and rejected.) `--accent` #E15045 is only ~3.9:1 on white, so use it for large/decorative things and bold 19px+ button text; use `--accent-text` #B83228 for links and small text. Headings are near-black; only h1 is red. Tokens are named by role in `global.css`.
 - **A11y:** WCAG AA colors (tokens in `global.css`), large type for older readers, Mass times above
   the fold on phones. `role="list"` on unstyled lists is intentional (Safari); the ESLint rule
   allows it. The mobile nav collapses via `@media (scripting: enabled)` (no inline JS).
