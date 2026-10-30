@@ -2,6 +2,8 @@
 // Una Voce Tennessee: the nonprofit that operates the chapel (wording from the owner's
 // "About language to use" document, 2026-10-27). Board members come from
 // src/data/staff.yaml (group id "una-voce-board"); nonprofit details from src/config/site.ts.
+import { Image } from 'astro:assets';
+import unaVoceLogo from '../../assets/logos/una-voce.png';
 import AboutNav from '../../components/AboutNav.astro';
 import Fact from '../../components/Fact.astro';
 import PageIntro from '../../components/PageIntro.astro';
@@ -27,117 +29,126 @@ const { nonprofit } = site;
     />
     <AboutNav />
 
-    <div class="prose">
-      <section aria-labelledby="who-heading">
-        <h2 id="who-heading">Saint Francis Mission Chapel &amp; Una Voce Tennessee</h2>
-        <p>
-          Saint Francis Mission Chapel is operated by Una Voce Tennessee, a Tennessee nonprofit
-          organization. Saint Francis Mission Chapel is the registered Doing Business As (DBA) name
-          of Una Voce Tennessee.
-        </p>
-        <p>
-          Una Voce Tennessee is the legal nonprofit entity responsible for operating and
-          administering Saint Francis Mission Chapel, including its official website,
-          SaintFrancisChapel.com.
-        </p>
-        <p>
-          Saint Francis Mission Chapel is operated by Una Voce Tennessee, a federally recognized
-          501(c)(3) nonprofit organization, doing business as Saint Francis Mission Chapel.
-          Donations to Saint Francis Mission Chapel are tax-deductible to the extent permitted by
-          law. All charitable contributions are received and administered by Una Voce Tennessee in
-          support of the chapel's religious mission and operations.
-        </p>
-        <p>
-          Una Voce is an international federation of associations, founded in 1966 in Rome, that now
-          includes national associations in 17 nations on every continent. It is dedicated to
-          ensuring that the Roman Mass codified by St. Pius V is maintained as one of the forms of
-          eucharistic worship which are honored in universal liturgical life, and to restoring the
-          use of Latin, Gregorian Chant, and sacred polyphony in Catholic liturgy.{' '}
-          <a href="https://www.fiuv.org" rel="noopener">
-            Visit Una Voce International
-          </a>
-          .
-        </p>
-      </section>
+    <div class="uv-intro">
+      <div class="prose">
+        <section aria-labelledby="who-heading">
+          <h2 id="who-heading">Saint Francis Mission Chapel &amp; Una Voce Tennessee</h2>
+          <p>
+            Saint Francis Mission Chapel is operated by Una Voce Tennessee, a Tennessee nonprofit
+            organization. Saint Francis Mission Chapel is the registered Doing Business As (DBA)
+            name of Una Voce Tennessee.
+          </p>
+          <p>
+            Una Voce Tennessee is the legal nonprofit entity responsible for operating and
+            administering Saint Francis Mission Chapel, including its official website,
+            SaintFrancisChapel.com.
+          </p>
+          <p>
+            Saint Francis Mission Chapel is operated by Una Voce Tennessee, a federally recognized
+            501(c)(3) nonprofit organization, doing business as Saint Francis Mission Chapel.
+            Donations to Saint Francis Mission Chapel are tax-deductible to the extent permitted by
+            law. All charitable contributions are received and administered by Una Voce Tennessee in
+            support of the chapel's religious mission and operations.
+          </p>
+          <p>
+            Una Voce is an international federation of associations, founded in 1966 in Rome, that
+            now includes national associations in 17 nations on every continent. It is dedicated to
+            ensuring that the Roman Mass codified by St. Pius V is maintained as one of the forms of
+            eucharistic worship which are honored in universal liturgical life, and to restoring the
+            use of Latin, Gregorian Chant, and sacred polyphony in Catholic liturgy.{' '}
+            <a href="https://www.fiuv.org" rel="noopener">
+              Visit Una Voce International
+            </a>
+            .
+          </p>
+        </section>
 
-      <section aria-labelledby="mission-heading">
-        <h2 id="mission-heading">Our Mission</h2>
-        <p>
-          Our mission is to preserve and promote the Traditional Catholic Faith through the Holy
-          Sacrifice of the Mass, the traditional sacraments, and the timeless teachings of Holy
-          Mother Church. We strive to foster a faithful Catholic community rooted in prayer,
-          reverence, and devotion, passing on the treasures of our Faith to future generations for
-          the greater glory of God and the salvation of souls.
-        </p>
-        <p>
-          <a href="/about/mission-statement/">Read the chapel's full mission statement</a>
-        </p>
-      </section>
+        <section aria-labelledby="mission-heading">
+          <h2 id="mission-heading">Our Mission</h2>
+          <p>
+            Our mission is to preserve and promote the Traditional Catholic Faith through the Holy
+            Sacrifice of the Mass, the traditional sacraments, and the timeless teachings of Holy
+            Mother Church. We strive to foster a faithful Catholic community rooted in prayer,
+            reverence, and devotion, passing on the treasures of our Faith to future generations for
+            the greater glory of God and the salvation of souls.
+          </p>
+          <p>
+            <a href="/about/mission-statement/">Read the chapel's full mission statement</a>
+          </p>
+        </section>
 
-      <section aria-labelledby="info-heading">
-        <h2 id="info-heading">Nonprofit Organization Information</h2>
-        <dl class="info">
-          <div>
-            <dt>Legal organization name</dt>
-            <dd>
-              <Fact f={nonprofit.name} />
-            </dd>
-          </div>
-          <div>
-            <dt>Registered DBA</dt>
-            <dd>{site.name.value}</dd>
-          </div>
-          {has(nonprofit.ein) && (
+        <section aria-labelledby="info-heading">
+          <h2 id="info-heading">Nonprofit Organization Information</h2>
+          <dl class="info">
             <div>
-              <dt>Federal Employer Identification Number (EIN)</dt>
+              <dt>Legal organization name</dt>
               <dd>
-                <Fact f={nonprofit.ein} />
+                <Fact f={nonprofit.name} />
               </dd>
             </div>
-          )}
-          {has(nonprofit.physicalAddress) && (
             <div>
-              <dt>Nonprofit physical address</dt>
-              <dd>
-                <Fact f={nonprofit.physicalAddress}>
-                  {nonprofit.physicalAddress.value.map((line) => (
+              <dt>Registered DBA</dt>
+              <dd>{site.name.value}</dd>
+            </div>
+            {has(nonprofit.ein) && (
+              <div>
+                <dt>Federal Employer Identification Number (EIN)</dt>
+                <dd>
+                  <Fact f={nonprofit.ein} />
+                </dd>
+              </div>
+            )}
+            {has(nonprofit.physicalAddress) && (
+              <div>
+                <dt>Nonprofit physical address</dt>
+                <dd>
+                  <Fact f={nonprofit.physicalAddress}>
+                    {nonprofit.physicalAddress.value.map((line) => (
+                      <>
+                        {line}
+                        <br />
+                      </>
+                    ))}
+                  </Fact>
+                </dd>
+              </div>
+            )}
+            {has(site.mailingAddress) && (
+              <div>
+                <dt>Nonprofit mailing address</dt>
+                <dd>
+                  {site.name.value}
+                  <br />
+                  {site.mailingAddress.value.map((line) => (
                     <>
                       {line}
                       <br />
                     </>
                   ))}
-                </Fact>
-              </dd>
-            </div>
-          )}
-          {has(site.mailingAddress) && (
+                </dd>
+              </div>
+            )}
             <div>
-              <dt>Nonprofit mailing address</dt>
+              <dt>Official website</dt>
               <dd>
-                {site.name.value}
-                <br />
-                {site.mailingAddress.value.map((line) => (
-                  <>
-                    {line}
-                    <br />
-                  </>
-                ))}
+                <a href="/">SaintFrancisChapel.com</a>
               </dd>
             </div>
-          )}
-          <div>
-            <dt>Official website</dt>
-            <dd>
-              <a href="/">SaintFrancisChapel.com</a>
-            </dd>
-          </div>
-        </dl>
-        <p>
-          Saint Francis Mission Chapel operates under the legal administration of Una Voce
-          Tennessee. This website serves as the official online presence of the chapel and its
-          operating nonprofit organization.
-        </p>
-      </section>
+          </dl>
+          <p>
+            Saint Francis Mission Chapel operates under the legal administration of Una Voce
+            Tennessee. This website serves as the official online presence of the chapel and its
+            operating nonprofit organization.
+          </p>
+        </section>
+      </div>
+      <Image
+        src={unaVoceLogo}
+        alt="Una Voce International emblem"
+        width={220}
+        densities={[1, 2]}
+        class="uv-intro__logo"
+      />
     </div>
 
     <section aria-labelledby="board-heading">
@@ -148,8 +159,31 @@ const { nonprofit } = site;
 </BaseLayout>
 
 <style>
+  .uv-intro {
+    display: grid;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  /* Phones: a smaller emblem above the text. Wide screens: beside it, on the right. */
+  .uv-intro__logo {
+    order: -1;
+    width: 7rem;
+    height: auto;
+  }
+  @media (min-width: 64em) {
+    .uv-intro {
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+    }
+    .uv-intro__logo {
+      order: 0;
+      width: 220px;
+      position: sticky;
+      top: 1.5rem;
+    }
+  }
   section + section,
-  .prose + section {
+  .uv-intro + section {
     margin-top: 2.5rem;
   }
   .info {
