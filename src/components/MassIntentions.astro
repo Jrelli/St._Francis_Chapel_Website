@@ -1,7 +1,7 @@
 ---
 /**
- * "Have a Mass Offered": how to schedule a Mass intention. Shown on the home page (with the
- * illustration) and the Contact page. Contact details live in site.secretary.
+ * "Have a Mass Offered" on the home page: how to schedule a Mass intention, with an
+ * illustration. Contact details live in site.secretary.
  * Wording is from Father's reminder in the Oct 25, 2026 newsletter.
  */
 import { Image } from 'astro:assets';
@@ -12,30 +12,22 @@ import { site } from '../config/site';
 import { has } from '../lib/config';
 import Fact from './Fact.astro';
 
-interface Props {
-  /** Show the illustration beside the text (home page). */
-  illustrated?: boolean;
-}
-
-const { illustrated = false } = Astro.props;
 const { name, email } = site.secretary;
 const offering = site.massIntentionOffering;
 ---
 
 {has(name) && has(email) && (
-  <div class:list={['intentions', { 'intentions--illustrated': illustrated }]}>
-    {illustrated && (
-      <Image
-        src={elevation}
-        alt="Drawing of a priest at the altar raising the Host during Mass, as an altar server rings the bell and the faithful kneel in prayer"
-        widths={[360, 560, 800]}
-        sizes="(min-width: 48em) 20rem, 100vw"
-        class="intentions__art"
-        loading="lazy"
-      />
-    )}
+  <div class="intentions">
+    <Image
+      src={elevation}
+      alt="Drawing of a priest at the altar raising the Host during Mass, as an altar server rings the bell and the faithful kneel in prayer"
+      widths={[360, 560, 800]}
+      sizes="(min-width: 48em) 20rem, 100vw"
+      class="intentions__art"
+      loading="lazy"
+    />
     <div class="intentions__text">
-      {illustrated && <p class="eyebrow">Mass Intentions</p>}
+      <p class="eyebrow">Mass Intentions</p>
       <h2 id="intentions-heading">Have a Mass Offered</h2>
       <p>
         Father David Mary reminds everyone of the importance of having the Holy Mass offered for
@@ -80,7 +72,7 @@ const offering = site.massIntentionOffering;
     border: 1px solid var(--rule);
   }
   @media (min-width: 48em) {
-    .intentions--illustrated {
+    .intentions {
       grid-template-columns: 20rem 1fr;
       gap: 2.5rem;
     }

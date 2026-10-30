@@ -4,7 +4,6 @@
  * No contact form (a form would need a third-party service).
  */
 import Fact from '../components/Fact.astro';
-import MassIntentions from '../components/MassIntentions.astro';
 import PageIntro from '../components/PageIntro.astro';
 import { site } from '../config/site';
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -79,9 +78,6 @@ const telHref = `tel:${site.phone.value.replace(/[^\d+]/g, '')}`;
         </div>
       )}
     </dl>
-    <section class="card intentions-card prose" aria-labelledby="intentions-heading">
-      <MassIntentions />
-    </section>
     <p class="prose">
       Looking for Mass? See <a href="/locations/">locations and directions</a>.
     </p>
@@ -89,9 +85,6 @@ const telHref = `tel:${site.phone.value.replace(/[^\d+]/g, '')}`;
 </BaseLayout>
 
 <style>
-  .intentions-card {
-    margin-block: 2rem 1.5rem;
-  }
   .contact > div {
     padding-block: 0.9rem;
     border-bottom: 1px solid var(--rule);

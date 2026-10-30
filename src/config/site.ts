@@ -108,7 +108,6 @@ export const site = {
   organizations: {
     capuchins: fact('https://www.porziuncolaproject.com/', true),
     sspx: fact('https://sspx.org/', true),
-    homeschoolContact: fact('', false, 'Name and email/phone of the homeschool contact person'),
   },
 };
 

@@ -7,12 +7,11 @@ import unaVoceLogo from '../../assets/logos/una-voce.png';
 import AboutNav from '../../components/AboutNav.astro';
 import Fact from '../../components/Fact.astro';
 import PageIntro from '../../components/PageIntro.astro';
-import Placeholder from '../../components/Placeholder.astro';
 import { site } from '../../config/site';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { has } from '../../lib/config';
 
-const { capuchins, sspx, homeschoolContact } = site.organizations;
+const { capuchins, sspx } = site.organizations;
 ---
 
 <BaseLayout
@@ -94,18 +93,6 @@ const { capuchins, sspx, homeschoolContact } = site.organizations;
         <p>
           <a href="/about/una-voce-tennessee/">More about Una Voce Tennessee and its board</a>
         </p>
-      </div>
-    </section>
-
-    <section class="org card">
-      <div>
-        <h2>Homeschool Groups</h2>
-        <Placeholder what="a short description of local homeschool groups." />
-        {has(homeschoolContact) && (
-          <p>
-            Contact: <Fact f={homeschoolContact} />
-          </p>
-        )}
       </div>
     </section>
   </div>
