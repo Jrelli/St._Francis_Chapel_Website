@@ -18,9 +18,8 @@ This is an ongoing project with no phases: work comes as requests from the owner
   section titled "The Response from the Diocese of Knoxville" per the owner; the PDF itself is a public Notice to the Faithful). Open wording questions are in
   CONTENT_TO_CONFIRM.md. Photos: resize and strip metadata before committing (public repo).
 - **Owner's open to-do list (2026-10-27):** Visiting for the First Time copy, staff photos,
-  more FAQs, accurate construction-photo descriptions, a bulletin/newsletter
-  section (how bulletins are made, newsletter sign-up, archive: undecided), maybe a fundraising
-  thermometer, switch to the real chapel calendar, and the domain cutover. Don't start any of these
+  more FAQs, accurate construction-photo descriptions, the News page
+  (`/news/`: Notes from Father, bulletins, newsletter sign-up, all placeholders for now), switch to the real chapel calendar, and the domain cutover. Don't start any of these
   unless asked; for a larger one, propose a short plan first.
 - **Owner answers (2026-10-27):** mission statement (own page), Una Voce Tennessee is the 501(c)(3)
   and Saint Francis Mission Chapel is its DBA (EIN, footer wording in `site.nonprofit`), SSPX

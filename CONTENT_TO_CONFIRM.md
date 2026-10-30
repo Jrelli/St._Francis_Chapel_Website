@@ -28,7 +28,7 @@ unconfirmed config values have a dotted orange outline (hover to see the TODO).
 | ☑   | `donateUrl`               | https://www.givesendgo.com/saint-francis-mission-chapel                                                       | Donate page                               | GiveSendGo campaign (owner, 2026-10-27)                                                       |
 | ☐   | `calendar.id`             | `c_ce9ab…726c6d@group.calendar.google.com`                                                                    | Home (This week, Upcoming), Calendar page | Is this the calendar editors will use? Is it public?                                          |
 | ☑   | `calendar.timeZone`       | America/New_York (Eastern)                                                                                    | All dates and times                       | Was America/Chicago in the original brief; corrected 2026-10-27 (Jefferson County is Eastern) |
-| ☐   | `bulletins.driveFolderId` | _(blank)_                                                                                                     | Bulletins page                            | Create the Drive folder and share it as "Anyone with the link"                                |
+| ☐   | `bulletins.driveFolderId` | _(blank)_                                                                                                     | News page                                 | Create the Drive folder and share it as "Anyone with the link"                                |
 | ☐   | `fundraising.sheetCsvUrl` | _(blank: shows $32,300 as of Oct 27, 2026 from `site.ts`)_                                                    | Home, Chapel Build, Donate (progress bar) | Create the Fundraising sheet and publish it to the web as CSV (README → Fundraising total)    |
 | ☑   | `organizations.capuchins` | https://www.porziuncolaproject.com/                                                                           | Associated Organizations                  | (owner, 2026-10-27)                                                                           |
 | ☑   | `organizations.sspx`      | https://sspx.org/                                                                                             | Associated Organizations                  | (owner, 2026-10-27)                                                                           |
@@ -83,6 +83,7 @@ Pages show a dashed "Coming soon" box where copy is still needed.
 - ☑ Our Story → Diocese of Knoxville notice (Oct 2, 2026), linked as the original PDF
 - ☑ Associated Organizations → Capuchins, SSPX and Una Voce Tennessee descriptions
 - ☑ Our Story → "How the Mission Began": drafted from the Substack posts, reviewed and approved (owner, 2026-10-27)
+- ☐ News → Notes from Father (placeholder), Bulletins (placeholder), Newsletter sign-up link (placeholder; the newsletter is on Mailchimp)
 - ☐ About → Visiting for the First Time (dress, etiquette, what to expect at a TLM)
 - ☑ Chapel Build → "The Project": drafted from the same posts, reviewed and approved (owner, 2026-10-27)
 - ☐ Home: the "Help Us Build a Permanent Home" heading and "Follow the progress" wording

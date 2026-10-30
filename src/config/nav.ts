@@ -3,7 +3,7 @@ export const mainNav = [
   { href: '/calendar/', label: 'Calendar' },
   { href: '/about/', label: 'About' },
   { href: '/chapel-build/', label: 'Chapel Build' },
-  { href: '/bulletins/', label: 'Bulletins' },
+  { href: '/news/', label: 'News' },
   { href: '/locations/', label: 'Directions' },
   { href: '/contact/', label: 'Contact' },
 ];

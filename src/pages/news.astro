@@ -1,0 +1,45 @@
+---
+/**
+ * News: Notes from Father, the weekly bulletins, and newsletter sign-up.
+ * All three are placeholders until their sources are decided (Google Drive for bulletins,
+ * the existing Mailchimp list for the newsletter).
+ */
+import PageIntro from '../components/PageIntro.astro';
+import Placeholder from '../components/Placeholder.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="News"
+  description="Notes from Father, weekly bulletins, and the newsletter of Saint Francis Mission Chapel."
+>
+  <div class="container section">
+    <PageIntro title="News" lead="Notes from Father, the weekly bulletins, and our newsletter." />
+    <div class="prose">
+      <section aria-labelledby="father-heading">
+        <h2 id="father-heading">Notes from Father</h2>
+        <Placeholder what="reflections and messages from Father David Mary." />
+      </section>
+
+      <section aria-labelledby="bulletins-heading">
+        <h2 id="bulletins-heading">Bulletins</h2>
+        <Placeholder what="this week’s bulletin and past issues, newest first." />
+      </section>
+
+      <section aria-labelledby="newsletter-heading">
+        <h2 id="newsletter-heading">Newsletter</h2>
+        <p>
+          Our weekly email newsletter has the Sunday Mass details, announcements, and the week’s
+          schedule.
+        </p>
+        <Placeholder what="a link to sign up for the newsletter." />
+      </section>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  section + section {
+    margin-top: 2.5rem;
+  }
+</style>
