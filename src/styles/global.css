@@ -13,6 +13,17 @@
   --surface: #f5f6f4; /* cards: a step off the white page so they stand out */
   --band: #e6e8e5; /* stakeholder's light gray, for section bands */
   --header-bg: var(--band);
+  /* Header and footer details, so a scheme can use a dark or red header. */
+  --header-ink: var(--dark);
+  --header-brand: var(--accent-text);
+  --header-current: var(--accent-text);
+  --header-current-line: var(--accent);
+  --header-rule: var(--rule);
+  --header-border: var(--accent);
+  --header-seal-blend: multiply;
+  --header-button-bg: var(--accent);
+  --header-button-ink: #fff;
+  --footer-bg: var(--dark);
   --ink: #1e2321; /* ~16:1 */
   --ink-muted: #555c58; /* ~6.9:1; ~5.5:1 on --band */
   --accent: #e15045;
@@ -37,6 +48,99 @@
   --page-max: 72rem;
 
   color-scheme: light;
+}
+
+/* Round 2 (2026-10-29): bolder options. The only fixed color is the chapel red. */
+
+/* E. Charcoal: a dark header and footer frame a soft off-white page. */
+:root[data-scheme='charcoal'] {
+  --bg: #f7f6f3;
+  --surface: #efeeea;
+  --band: #e6e4df;
+  --rule: #d9d6d0;
+  --header-bg: #23282a;
+  --header-ink: #eef0ed;
+  --header-brand: #ffffff;
+  --header-current: #f4a199;
+  --header-current-line: var(--accent);
+  --header-rule: rgb(255 255 255 / 0.15);
+  --header-seal-blend: normal;
+  --footer-bg: #23282a;
+}
+
+/* F. Forest: the stakeholder's deep forest green with the red, on a warm off-white. */
+:root[data-scheme='forest'] {
+  --bg: #f7f6f1;
+  --surface: #eeede5;
+  --band: #e2e6dc;
+  --rule: #d4d9cc;
+  --header-bg: #123d27;
+  --header-ink: #eef3ee;
+  --header-brand: #ffffff;
+  --header-current: #f4a199;
+  --header-current-line: var(--accent);
+  --header-rule: rgb(255 255 255 / 0.15);
+  --header-seal-blend: normal;
+  --footer-bg: #123d27;
+}
+
+/* G. Slate: cool blue-gray (from the stakeholder's steel blue) with red accents. */
+:root[data-scheme='slate'] {
+  --bg: #f5f7f8;
+  --surface: #eaeef1;
+  --band: #dde4e9;
+  --rule: #cdd6dd;
+  --header-bg: #2b3a46;
+  --header-ink: #eef2f5;
+  --header-brand: #ffffff;
+  --header-current: #f4a199;
+  --header-current-line: var(--accent);
+  --header-rule: rgb(255 255 255 / 0.15);
+  --header-seal-blend: normal;
+  --footer-bg: #2b3a46;
+}
+
+/* H. Habit brown: warm Franciscan brown frame, warm off-white page. */
+:root[data-scheme='habit'] {
+  --bg: #f9f7f3;
+  --surface: #f1ede6;
+  --band: #e6dfd4;
+  --rule: #d8cfc1;
+  --header-bg: #3b302a;
+  --header-ink: #f3eee8;
+  --header-brand: #ffffff;
+  --header-current: #f4a199;
+  --header-current-line: var(--accent);
+  --header-rule: rgb(255 255 255 / 0.15);
+  --header-seal-blend: normal;
+  --footer-bg: #3b302a;
+}
+
+/* I. Red header: the chapel red as the banner, everything else quiet. */
+:root[data-scheme='crimson'] {
+  --bg: #f8f7f4;
+  --surface: #f0eeea;
+  --band: #e7e4df;
+  --rule: #dad6cf;
+  --header-bg: #b83228;
+  --header-ink: #ffffff;
+  --header-brand: #ffffff;
+  --header-current: #ffffff;
+  --header-current-line: #ffffff;
+  --header-rule: rgb(255 255 255 / 0.25);
+  --header-border: #8f251d;
+  --header-seal-blend: normal;
+  --header-button-bg: #ffffff;
+  --header-button-ink: #b83228;
+}
+
+/* J. Sage: light, calm green-gray from the stakeholder's muted sage; dark green footer. */
+:root[data-scheme='sage'] {
+  --bg: #f6f7f3;
+  --surface: #ecefe8;
+  --band: #dfe6db;
+  --rule: #cfd8ca;
+  --footer-bg: #2e3d33;
 }
 
 /*

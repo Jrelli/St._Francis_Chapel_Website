@@ -65,7 +65,7 @@ const isCurrent = (href: string) => path === href || (href !== '/' && path.start
 <style>
   .site-header {
     background: var(--header-bg);
-    border-bottom: 3px solid var(--accent);
+    border-bottom: 3px solid var(--header-border);
   }
 
   .site-header__bar {
@@ -85,7 +85,7 @@ const isCurrent = (href: string) => path === href || (href !== '/' && path.start
     flex: 1 1 0;
     min-width: 0;
     text-decoration: none;
-    color: var(--accent-text);
+    color: var(--header-brand);
     font-family: var(--font-display);
     font-weight: 700;
     font-size: 1.15rem;
@@ -96,7 +96,8 @@ const isCurrent = (href: string) => path === href || (href !== '/' && path.start
     width: 44px;
     height: 44px;
     flex: none;
-    mix-blend-mode: multiply; /* blends the engraving's white background into the header gray */
+    /* Blends the engraving's white paper into a light header; dark headers show it as a disc. */
+    mix-blend-mode: var(--header-seal-blend);
   }
 
   .menu-toggle {
@@ -163,22 +164,26 @@ const isCurrent = (href: string) => path === href || (href !== '/' && path.start
   .site-nav a:not(.button) {
     display: block;
     padding: 0.75rem 0.25rem;
-    border-top: 1px solid var(--rule);
-    color: var(--dark);
+    border-top: 1px solid var(--header-rule);
+    color: var(--header-ink);
     font-weight: 600;
     text-decoration: none;
   }
   .site-nav a:not(.button):hover,
   .site-nav a[aria-current='page'] {
-    color: var(--accent-text);
+    color: var(--header-current);
     text-decoration: underline;
-    text-decoration-color: var(--accent);
+    text-decoration-color: var(--header-current-line);
     text-decoration-thickness: 2px;
   }
 
   .site-nav__donate {
     padding-block: 0.75rem;
-    border-top: 1px solid var(--rule);
+    border-top: 1px solid var(--header-rule);
+  }
+  .site-nav__donate .button {
+    background: var(--header-button-bg);
+    color: var(--header-button-ink);
   }
 
   /* Phones and tablets with JavaScript: collapse behind the Menu button. */
