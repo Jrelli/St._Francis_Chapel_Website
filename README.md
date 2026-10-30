@@ -202,6 +202,32 @@ Notes:
 - Need an update right now? Use **Run workflow** (above), or **Retry build** on the Worker's
   _Deployments_ tab in Cloudflare.
 
+## Fundraising total
+
+The progress bar on the home, Chapel Build and Donate pages comes from `src/lib/fundraising.ts`.
+Until a sheet is connected it shows `site.fundraising.raised` and `asOf` from
+`src/config/site.ts`. To let a volunteer update it without touching code:
+
+1. In the chapel's Google account, create a Google Sheet with this header row and the values
+   below it:
+
+   | Raised  | Goal     | As of      |
+   | ------- | -------- | ---------- |
+   | $32,300 | $300,000 | 10/27/2026 |
+
+   Only **Raised** is required (`Goal` falls back to `site.fundraising.goal`; `As of` is shown as
+   "Updated …"). Header case and column order don't matter.
+
+2. **File → Share → Publish to web →** choose the sheet, **Comma-separated values (.csv)** →
+   Publish. Copy the link (it looks like
+   `https://docs.google.com/spreadsheets/d/e/…/pub?gid=0&single=true&output=csv`).
+3. Paste it into `site.fundraising.sheetCsvUrl` in `src/config/site.ts` and commit.
+
+The sheet is read **at build time only** (no browser request, no CSP change), so a new total
+appears with the next scheduled rebuild (within about 3 hours). Like the calendar, if the URL is
+set but the sheet can't be read or has no usable "Raised" amount, **the build fails on purpose**
+and the previous deploy stays live, so a wrong number is never published.
+
 ## Domain cutover guide
 
 > **Document only. Nothing here is automated.** Do this after the site works on its `*.workers.dev` address.

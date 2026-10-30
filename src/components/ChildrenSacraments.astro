@@ -1,0 +1,57 @@
+---
+/**
+ * "Sacraments for Children" on the home page. Wording from the Oct 25, 2026 newsletter
+ * announcement; the preparation-classes line is from the chapel's mission statement.
+ */
+import { Image } from 'astro:assets';
+// Philipp Schumacher, "Holy Communion" (1920), from the same book as the Mass drawing.
+// Public domain, via Wikimedia Commons:
+// https://commons.wikimedia.org/wiki/File:Komunio_(Schumacher,_Katholisches_Religionsb%C3%BCchlein)_001.jpg
+import firstCommunion from '../assets/art/first-communion.jpg';
+---
+
+<div class="sacraments">
+  <div class="sacraments__text">
+    <p class="eyebrow">For Families</p>
+    <h2 id="sacraments-heading">Sacraments for Children</h2>
+    <p>
+      Have children ready to receive the Sacraments? Please see Father David Mary for information.
+    </p>
+    <p>The mission also intends to offer sacramental preparation classes.</p>
+  </div>
+  <Image
+    src={firstCommunion}
+    alt="Drawing of children in their First Communion clothes kneeling at the altar rail as a priest gives them Holy Communion"
+    widths={[400, 640, 1000]}
+    sizes="(min-width: 48em) 26rem, 100vw"
+    class="sacraments__art"
+    loading="lazy"
+  />
+</div>
+
+<style>
+  .sacraments {
+    display: grid;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .sacraments__text {
+    max-width: var(--measure);
+  }
+  .sacraments__text p:last-child {
+    margin-bottom: 0;
+  }
+  .sacraments__art {
+    width: 100%;
+    max-width: 30rem;
+    height: auto;
+    border-radius: var(--radius);
+    border: 1px solid var(--rule);
+  }
+  @media (min-width: 48em) {
+    .sacraments {
+      grid-template-columns: 1fr 26rem;
+      gap: 2.5rem;
+    }
+  }
+</style>

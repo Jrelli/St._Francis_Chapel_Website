@@ -5,6 +5,7 @@
  * Every Donate button on the site points here.
  */
 import Fact from '../components/Fact.astro';
+import FundraisingProgress from '../components/FundraisingProgress.astro';
 import PageIntro from '../components/PageIntro.astro';
 import { site } from '../config/site';
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -18,6 +19,7 @@ import { has } from '../lib/config';
       lead="Your gifts sustain the mission and help build a permanent chapel."
     />
     <div class="prose">
+      <FundraisingProgress />
       {has(site.donateUrl) && (
         <section aria-labelledby="online-heading">
           <h2 id="online-heading">Give Online</h2>

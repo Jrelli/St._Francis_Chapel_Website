@@ -125,6 +125,15 @@ const stampFormat = new Intl.DateTimeFormat('en-US', {
   minute: '2-digit',
 });
 
+const dateFormat = new Intl.DateTimeFormat('en-US', {
+  timeZone: TIME_ZONE,
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+});
+
+/** "October 27, 2026" */
+export const formatDate = (d: Date): string => dateFormat.format(d);
 /** "Sunday, November 1" */
 export const formatDay = (d: Date): string => dayFormat.format(d);
 /** "November 2026" */
