@@ -12,6 +12,7 @@ import PageIntro from '../components/PageIntro.astro';
 import { site } from '../config/site';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { has } from '../lib/config';
+const walkthroughVideo = 'https://www.youtube.com/watch?v=VcZQ7ViqMGA';
 ---
 
 <BaseLayout
@@ -83,6 +84,16 @@ import { has } from '../lib/config';
 
     <section aria-labelledby="progress-heading">
       <h2 id="progress-heading">Construction Progress</h2>
+      {/* A plain link, not an embedded player: embeds load YouTube's cookies and trackers. */}
+      <p class="video-link">
+        <a class="button button--outline" href={walkthroughVideo} rel="noopener">
+          <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false">
+            <path d="M4 2.5v11l9-5.5z" fill="currentColor" />
+          </svg>
+          Watch the construction walkthrough
+          <span class="visually-hidden"> (video on YouTube)</span>
+        </a>
+      </p>
       <p class="prose muted">Select a photo to see it larger.</p>
       <ConstructionGallery />
     </section>
@@ -90,6 +101,11 @@ import { has } from '../lib/config';
 </BaseLayout>
 
 <style>
+  .video-link .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
   .lead {
     font-size: 1.15rem;
   }
