@@ -128,17 +128,19 @@ const quickLinks = [
     <FriarsNeeds />
   </section>
 
-  <section class="container section" aria-labelledby="links-heading">
-    <h2 id="links-heading">Quick Links</h2>
-    <ul class="quick-links" role="list">
-      {quickLinks.map((link) => (
-        <li>
-          <a href={link.href} rel={'external' in link ? 'noopener' : undefined}>
-            {link.label}
-          </a>
-        </li>
-      ))}
-    </ul>
+  <section class="band band--last" aria-labelledby="links-heading">
+    <div class="container">
+      <h2 id="links-heading">Quick Links</h2>
+      <ul class="quick-links" role="list">
+        {quickLinks.map((link) => (
+          <li>
+            <a href={link.href} rel={'external' in link ? 'noopener' : undefined}>
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
   </section>
 </BaseLayout>
 
@@ -189,11 +191,17 @@ const quickLinks = [
   }
 
   /* Full-width tan bands alternate with plain sections below the schedule:
-     Chapel Build (band), Mass intentions, Sacraments for Children (band), Friars' needs. */
+     Chapel Build (band), Mass intentions, Sacraments for Children (band), Friars' needs,
+     Quick Links (band). */
   .band {
     background: var(--band);
     padding-block: 2.5rem;
     margin-block: 1rem;
+  }
+
+  /* The last band runs straight into the footer, with no strip of page color between. */
+  .band--last {
+    margin-bottom: -3rem;
   }
 
   .build {
