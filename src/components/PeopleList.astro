@@ -1,5 +1,8 @@
 ---
-/** A grid of role + name cards (Staff page, Una Voce Tennessee board). */
+/**
+ * A grid of staff cards (Staff page, Una Voce Tennessee board). Until photos are added, each
+ * card shows a drawn crucifix with "Picture to come".
+ */
 import type { StaffGroup } from '../lib/staff';
 
 interface Props {
@@ -12,8 +15,19 @@ const { people } = Astro.props;
 <ul class="people" role="list">
   {people.map((person) => (
     <li class="card person">
-      <p class="eyebrow">{person.role}</p>
-      <p class="person__name">{person.name}</p>
+      <div class="person__photo" aria-hidden="true">
+        <svg viewBox="0 0 60 80" class="person__cross" focusable="false">
+          <rect x="26" y="4" width="8" height="72" rx="1.5" />
+          <rect x="10" y="20" width="40" height="8" rx="1.5" />
+          <rect class="person__plaque" x="22" y="9" width="16" height="7" rx="1" />
+          <circle class="person__halo" cx="30" cy="31" r="5" />
+        </svg>
+        <span>Picture to come</span>
+      </div>
+      <div>
+        <p class="eyebrow">{person.role}</p>
+        <p class="person__name">{person.name}</p>
+      </div>
     </li>
   ))}
 </ul>
@@ -27,7 +41,39 @@ const { people } = Astro.props;
     gap: 1rem;
   }
   .person {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
     padding: 1rem 1.25rem;
+  }
+  .person__photo {
+    flex: none;
+    width: 5.5rem;
+    aspect-ratio: 4 / 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    background: var(--band);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    color: var(--ink-muted);
+    font-size: 0.7rem;
+    line-height: 1.1;
+    text-align: center;
+  }
+  .person__cross {
+    width: 2.2rem;
+    fill: var(--accent-text);
+  }
+  .person__plaque {
+    fill: var(--band);
+  }
+  .person__halo {
+    fill: none;
+    stroke: var(--band);
+    stroke-width: 1.5;
   }
   .person__name {
     margin: 0;
