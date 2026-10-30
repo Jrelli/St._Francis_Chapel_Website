@@ -83,8 +83,8 @@ const quickLinks = [
     </p>
   </section>
 
-  <section class="container build-section" aria-labelledby="build-heading">
-    <div class="build">
+  <section class="band" aria-labelledby="build-heading">
+    <div class="container build">
       <Image
         src={churchIllustration}
         alt="Watercolor illustration of the chapel building in a mown clearing, surrounded by wooded hills"
@@ -118,8 +118,10 @@ const quickLinks = [
     <MassIntentions />
   </section>
 
-  <section class="container section" aria-labelledby="sacraments-heading">
-    <ChildrenSacraments />
+  <section class="band" aria-labelledby="sacraments-heading">
+    <div class="container">
+      <ChildrenSacraments />
+    </div>
   </section>
 
   <section class="container section" aria-labelledby="friars-heading">
@@ -186,21 +188,18 @@ const quickLinks = [
     margin-bottom: 1rem;
   }
 
-  .build-section {
-    margin-block: 1.5rem;
+  /* Full-width tan bands alternate with plain sections below the schedule:
+     Chapel Build (band), Mass intentions, Sacraments for Children (band), Friars' needs. */
+  .band {
+    background: var(--band);
+    padding-block: 2.5rem;
+    margin-block: 1rem;
   }
 
-  /* A contained feature card (not a full-width band), so it lines up with the sections
-     around it. The red top rule matches the schedule cards. */
   .build {
     display: grid;
     gap: 1.5rem;
     align-items: center;
-    padding: 1.25rem;
-    background: var(--band);
-    border: 1px solid var(--rule);
-    border-top: 4px solid var(--accent);
-    border-radius: calc(var(--radius) * 2);
   }
 
   .build__art {
@@ -247,7 +246,6 @@ const quickLinks = [
     .build {
       grid-template-columns: 1fr 1fr;
       gap: 2rem;
-      padding: 2rem;
     }
   }
 
