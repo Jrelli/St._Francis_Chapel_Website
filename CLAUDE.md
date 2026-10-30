@@ -23,7 +23,7 @@ This is an ongoing project with no phases: work comes as requests from the owner
   unless asked; for a larger one, propose a short plan first.
 - **Owner answers (2026-10-27):** mission statement (own page), Una Voce Tennessee is the 501(c)(3)
   and Saint Francis Mission Chapel is its DBA (EIN, footer wording in `site.nonprofit`), SSPX
-  wording = "affiliated with, does not govern", B&W engraving in the header, email only (no phone),
+  wording = "affiliated with, does not govern", brown seal in the header (B&W engraving tried and reverted 2026-10-29), email only (no phone),
   donations = GiveSendGo (`site.donateUrl`) + checks (Stripe dropped). Fundraising goal: $300,000
   everywhere. Directions list the chapel at 1921 Sockless Rd, Dandridge: **launch once
   Sunday Mass moves there** (~a month). Don't publish the current temporary home address.
