@@ -32,10 +32,12 @@ This is an ongoing project with no phases: work comes as requests from the owner
   Cloudflare Worker `st-francis-chapel-website` deploys from GitHub `main`. Its build variables
   (Settings → Build → Build variables and secrets) hold the keys plus `GOOGLE_CALENDAR_ID`
   (delete that one before launch).
-- **Domain:** registered and DNS-hosted at GoDaddy (ns03/ns04.domaincontrol.com; checked 2026-10-30;
-  DNSSEC off). An old GoDaddy Website Builder page is live there. office@saintfrancischapel.com is a
+- **Domain:** registered at GoDaddy; **DNS moved to Cloudflare 2026-10-30** (bob/ryleigh.ns.cloudflare.com,
+  every record verified identical; all DNS only). The old GoDaddy Website Builder page still answers
+  until launch, when its two `A @` records and `www` CNAME give way to the Worker's custom domains
+  (README Step 7). DNSSEC is off; enable it in Cloudflare later (Step 6). office@saintfrancischapel.com is a
   live **Google Workspace** mailbox, and newsletters use Mailchimp (`k2`/`k3._domainkey`) and Sender
-  (`newsletter`, `sender._domainkey`, SPF include), so DNS cutover must preserve all of those (README guide).
+  (`newsletter`, `sender._domainkey`, SPF include): keep those records.
 
 ## Working agreements with the owner
 
