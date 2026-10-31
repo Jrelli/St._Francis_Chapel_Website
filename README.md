@@ -234,7 +234,9 @@ and the previous deploy stays live, so a wrong number is never published.
 
 **What we know (2026-10-26):** the domain is registered at **GoDaddy**, and
 **office@saintfrancischapel.com is a live Google Workspace mailbox**. That means branch **(a)**
-below applies: email must keep working through the move. Still to find out: where DNS is hosted.
+below applies: email must keep working through the move. Checked 2026-10-30: DNS is hosted at
+**GoDaddy**, DNSSEC is off (so Steps 4 and 6 can be skipped for the move), and the domain also has
+newsletter records for Mailchimp and Sender that must be kept.
 
 The plan: keep GoDaddy as the registrar, move **DNS** to Cloudflare (free), then point the domain
 at the Cloudflare Worker that serves the site. The canonical address is **`https://saintfrancischapel.com`** (apex); `www`

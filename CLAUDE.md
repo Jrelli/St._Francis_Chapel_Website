@@ -32,8 +32,10 @@ This is an ongoing project with no phases: work comes as requests from the owner
   Cloudflare Worker `st-francis-chapel-website` deploys from GitHub `main`. Its build variables
   (Settings → Build → Build variables and secrets) hold the keys plus `GOOGLE_CALENDAR_ID`
   (delete that one before launch).
-- **Domain:** registered at GoDaddy; DNS host not yet known. office@saintfrancischapel.com is a
-  live **Google Workspace** mailbox, so DNS cutover must preserve its MX/SPF/DKIM/DMARC (README guide).
+- **Domain:** registered and DNS-hosted at GoDaddy (ns03/ns04.domaincontrol.com; checked 2026-10-30;
+  DNSSEC off). An old GoDaddy Website Builder page is live there. office@saintfrancischapel.com is a
+  live **Google Workspace** mailbox, and newsletters use Mailchimp (`k2`/`k3._domainkey`) and Sender
+  (`newsletter`, `sender._domainkey`, SPF include), so DNS cutover must preserve all of those (README guide).
 
 ## Working agreements with the owner
 

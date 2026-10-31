@@ -118,7 +118,7 @@ These are worded as provided. Visitors may notice the differences, so they're wo
 | ✓   | Item                                                      | Notes                                                           |
 | --- | --------------------------------------------------------- | --------------------------------------------------------------- |
 | ☑   | Registrar                                                 | GoDaddy (confirmed 2026-10-26)                                  |
-| ☐   | Where DNS is hosted today                                 | Check the domain's nameservers in GoDaddy (see README)          |
+| ☑   | Where DNS is hosted today                                 | GoDaddy (ns03/ns04.domaincontrol.com), checked 2026-10-30       |
 | ☑   | Email on the domain                                       | Google Workspace, live: preserve its DNS records during cutover |
 | ☐   | Who owns the Cloudflare, GitHub and Google Cloud accounts | Use a shared chapel account, not a personal one                 |
 
