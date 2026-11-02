@@ -17,7 +17,7 @@ This is an ongoing project with no phases: work comes as requests from the owner
   (`src/data/letters/`, verbatim) and the Diocese's Oct 2 notice (`public/documents/`, original PDF;
   section titled "The Response from the Diocese of Knoxville" per the owner; the PDF itself is a public Notice to the Faithful). Open wording questions are in
   CONTENT_TO_CONFIRM.md. Photos: resize and strip metadata before committing (public repo).
-- **Owner's open to-do list (2026-10-27):** Visiting for the First Time copy, staff photos,
+- **Owner's open to-do list (2026-10-27):** Staff photos,
   more FAQs, accurate construction-photo descriptions, the News page
   (`/news/`: Notes from Father, bulletins, newsletter sign-up, all placeholders for now), switch to the real chapel calendar, and the domain cutover. Don't start any of these
   unless asked; for a larger one, propose a short plan first.

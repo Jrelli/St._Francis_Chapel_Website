@@ -84,7 +84,7 @@ Pages show a dashed "Coming soon" box where copy is still needed.
 - ☑ Associated Organizations → Capuchins, SSPX and Una Voce Tennessee descriptions
 - ☑ Our Story → "How the Mission Began": drafted from the Substack posts, reviewed and approved (owner, 2026-10-27)
 - ☐ News → Notes from Father (placeholder), Bulletins (placeholder), Newsletter sign-up link (placeholder; the newsletter is on Mailchimp)
-- ☐ About → Visiting for the First Time (dress, etiquette, what to expect at a TLM)
+- ☑ About → Visiting for the First Time: full text from the chapel's Google Doc (2026-11-02), in `src/data/first-visit.md`; the FAQ repeats the practical points
 - ☑ Chapel Build → "The Project": drafted from the same posts, reviewed and approved (owner, 2026-10-27)
 - ☐ Home: the "Help Us Build a Permanent Home" heading and "Follow the progress" wording
 - ☑ Locations: addresses, times and chapel directions (2026-10-27). The Hermitage needs no written directions (owner)
